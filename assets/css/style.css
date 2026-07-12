@@ -1,0 +1,160 @@
+/* ======================================================================
+   style.css — SKELETON ONLY
+   No final colors/fonts are locked in yet. Each section below lists
+   2-3 design OPTIONS as comments. Pick one option per section (or mix),
+   then uncomment / fill in real values.
+
+   Reminder for defense: CCS0043 covers HTML/CSS/Bootstrap classes only
+   from the module PDFs — keep custom CSS simple (colors, spacing,
+   basic flex/grid) so it's easy to explain.
+   ====================================================================== */
+
+/* ----------------------------------------------------------------------
+   ROOT VARIABLES
+   Using CSS custom properties (variables) means we only change a color
+   in ONE place and it updates everywhere it's used.
+
+   OPTION A - Automotive black & dark red (matches PK Auto Parts ref):
+     --color-primary: #1a1a1a;
+     --color-accent:  #b30000;
+     --color-bg:      #f5f5f5;
+     --color-text:    #222222;
+
+   OPTION B - Dark blue & metallic silver:
+     --color-primary: #0b1f3a;
+     --color-accent:  #c0c0c0;
+     --color-bg:      #ffffff;
+     --color-text:    #1a1a1a;
+
+   OPTION C - Charcoal & orange (workshop/garage feel):
+     --color-primary: #262626;
+     --color-accent:  #ff6600;
+     --color-bg:      #fafafa;
+     --color-text:    #1a1a1a;
+---------------------------------------------------------------------- */
+:root {
+    /* --color-primary: ; */
+    /* --color-accent:  ; */
+    /* --color-bg:      ; */
+    /* --color-text:    ; */
+}
+
+/* ----------------------------------------------------------------------
+   BODY / GLOBAL
+   OPTION A: system font stack (fast, no download): font-family: Arial, Helvetica, sans-serif;
+   OPTION B: Google Font (e.g. "Poppins" for headings, "Roboto" for body text)
+---------------------------------------------------------------------- */
+body {
+    /* background-color: var(--color-bg); */
+    /* color: var(--color-text); */
+}
+
+/* ----------------------------------------------------------------------
+   SECTION: NAVBAR
+   OPTION A: solid dark background (.navbar { background-color: var(--color-primary); })
+             + white nav links, red underline on hover/active
+   OPTION B: transparent navbar over a hero image, becomes solid on scroll
+             (would need a small JS scroll listener — optional, may be
+             beyond CCS0043 scope, keep Option A if unsure)
+   OPTION C: light navbar with dark text + accent-colored "Login" button
+---------------------------------------------------------------------- */
+.navbar {
+    /* background-color: ; */
+}
+.navbar-brand {
+    /* font-weight: bold; font-size: 1.5rem; */
+}
+.nav-link {
+    /* color: ; */
+}
+.nav-link.active {
+    /* border-bottom: 2px solid var(--color-accent); */
+}
+
+/* ----------------------------------------------------------------------
+   SECTION: HERO / BANNER (index.php top section)
+   OPTION A: full-width background image + dark overlay + centered white text
+   OPTION B: split layout — text left, product image right (use .row + .col-md-6)
+   OPTION C: simple solid-color banner with big heading + "Shop Now" button
+---------------------------------------------------------------------- */
+.hero {
+    /* min-height: 400px; */
+    /* display: flex; align-items: center; justify-content: center; */
+}
+
+/* ----------------------------------------------------------------------
+   SECTION: PRODUCT CARD (products.php, index.php featured items)
+   OPTION A: plain Bootstrap .card, image on top, hover shadow (.shadow-sm -> .shadow)
+   OPTION B: card with colored top border in accent color to signal category
+   OPTION C: card with a small badge (e.g. "New" / "Out of Stock") top-right corner
+---------------------------------------------------------------------- */
+.product-card {
+    /* transition: box-shadow 0.2s ease-in-out; */
+}
+.product-card:hover {
+    /* box-shadow: 0 4px 12px rgba(0,0,0,0.15); */
+}
+.product-price {
+    /* color: var(--color-accent); font-weight: bold; */
+}
+
+/* ----------------------------------------------------------------------
+   SECTION: CART TABLE (cart.php)
+   OPTION A: Bootstrap .table .table-striped .table-hover (simplest, fits course level)
+   OPTION B: card-per-item layout instead of a table (better on mobile)
+   Recommendation for beginners: start with Option A (table), it maps
+   directly to the "Tables" concept most Bootstrap cheat sheets cover.
+---------------------------------------------------------------------- */
+.cart-table {
+    /* width: 100%; */
+}
+.cart-total-row {
+    /* font-weight: bold; font-size: 1.1rem; */
+}
+
+/* ----------------------------------------------------------------------
+   SECTION: FORMS (login.php, register.php, checkout.php)
+   OPTION A: full-width stacked fields (.form-control mb-3), single column
+   OPTION B: two-column layout on desktop using .row + .col-md-6 for
+             fields like First Name / Last Name, City / Province
+   OPTION C: form inside a centered .card with subtle shadow
+---------------------------------------------------------------------- */
+.auth-form {
+    /* max-width: 420px; margin: 0 auto; */
+}
+.form-control:focus {
+    /* border-color: var(--color-accent); box-shadow: none; */
+}
+
+/* ----------------------------------------------------------------------
+   SECTION: BUTTONS
+   OPTION A: solid accent-colored primary button (.btn-primary override)
+   OPTION B: outline button that fills with accent color on hover
+---------------------------------------------------------------------- */
+.btn-brand {
+    /* background-color: var(--color-accent); color: #fff; border: none; */
+}
+.btn-brand:hover {
+    /* opacity: 0.9; */
+}
+
+/* ----------------------------------------------------------------------
+   SECTION: FOOTER
+   OPTION A: dark background matching navbar, 3-column layout (links,
+             group info, contact), disclaimer line centered at the bottom
+   OPTION B: minimal single-row footer with just disclaimer + social icons
+---------------------------------------------------------------------- */
+.site-footer {
+    /* background-color: var(--color-primary); color: #fff; padding: 2rem 0; */
+}
+.disclaimer {
+    /* font-size: 0.8rem; opacity: 0.7; margin-top: 1rem; */
+}
+
+/* ----------------------------------------------------------------------
+   RESPONSIVE NOTES
+   - Bootstrap's grid (.col-md-*, .col-lg-*) already handles most of the
+     responsive behavior — usually no extra @media query is needed.
+   - Only add a custom @media rule if something specific breaks on mobile,
+     e.g. shrinking the hero text size below 576px.
+---------------------------------------------------------------------- */
