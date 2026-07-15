@@ -56,3 +56,25 @@ function clearConfirmPasswordError(confirmPasswordInput) {
     confirmPasswordInput.style.borderColor = '';
 }
 
+function addPasswordToggle(passwordInput) {
+    const wrapper = passwordInput.closest('.password-wrapper');
+    if (!wrapper) return;
+    
+    const toggleIcon = wrapper.querySelector('.password-toggle');
+    if (!toggleIcon) return;
+    
+    toggleIcon.addEventListener('click', () => {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        
+        // Toggle between fa-eye and fa-eye-slash
+        if (type === 'password') {
+            toggleIcon.classList.remove('fa-eye');
+            toggleIcon.classList.add('fa-eye-slash');
+        } else {
+            toggleIcon.classList.remove('fa-eye-slash');
+            toggleIcon.classList.add('fa-eye');
+        }
+    });
+}
+
