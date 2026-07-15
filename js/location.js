@@ -106,3 +106,35 @@ function populateBarangays(regionCode, provinceName, cityName) {
     });
 }
 
+function initLocationDropdowns() {
+    loadLocationData().then(success => {
+        if (success) {
+            populateRegions();
+        }
+    });
+
+    const regionSelect = document.getElementById('region');
+    const provinceSelect = document.getElementById('province');
+    const citySelect = document.getElementById('city');
+
+    if (regionSelect) {
+        regionSelect.addEventListener('change', (e) => {
+            populateProvinces(e.target.value);
+        });
+    }
+
+    if (provinceSelect) {
+        provinceSelect.addEventListener('change', (e) => {
+            const regionCode = regionSelect ? regionSelect.value : '';
+            populateCities(regionCode, e.target.value);
+        });
+    }
+
+    if (citySelect) {
+        citySelect.addEventListener('change', (e) => {
+            const regionCode = regionSelect ? regionSelect.value : '';
+            const provinceName = provinceSelect ? provinceSelect.value : '';
+            populateBarangays(regionCode, provinceName, e.target.value);
+        });
+    }
+}
