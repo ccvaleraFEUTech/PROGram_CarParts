@@ -24,7 +24,7 @@ export function validateEmail(emailInput) {
 // Shows an email error message under the input field
 export function displayEmailError(emailInput, message) {
     // Clear any existing error
-    clearEmailError(emailInput);
+    hideEmailError(emailInput);
     
     // Show the error message
     let emailErrorMessage = document.getElementById('email-error-message');
@@ -33,7 +33,7 @@ export function displayEmailError(emailInput, message) {
 }
 
 // Hides the email error message under the input field
-export function clearEmailError(emailInput) {
+export function hideEmailError(emailInput) {
     let emailErrorMessage = document.getElementById('email-error-message');
     emailErrorMessage.style.display = 'none';
     
