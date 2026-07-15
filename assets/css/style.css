@@ -940,7 +940,7 @@ form.contact-form textarea{
     font-weight: 600;
 }
 
-#email-error-message {
+#email-error-message, #phone-error-message, #confirm-password-error-message {
     color: red;
 }
 
