@@ -17,7 +17,6 @@ $isLogged = isset($_SESSION['user_id']);
     <link rel="stylesheet" href="<?php echo $basePath; ?>assets/css/style.css">
     <title><?php echo $title; ?></title>
 </head>
-<body>
 <body data-base-path="<?php echo $basePath; ?>">
     <?php if(!isset($hideHeader) || !$hideHeader): ?>
         <?php include 'includes/header.php'; ?>
@@ -111,8 +110,8 @@ $isLogged = isset($_SESSION['user_id']);
 
                         <div class="field">
                             <label class="form-label">Contact Number <span class="required-symbol">*</span></label>
-                            <input type="text" name="contact-number" class="form-control" required placeholder="e.g. 0912 345 6789">
-                            <p id="phone-error-message" style="display: none">Please enter a valid phone number (e.g., 0912 345 6789).</p>
+                            <input type="text" name="contact-number" class="form-control" required placeholder="e.g. 09123456789">
+                            <p id="phone-error-message" style="display: none">Please enter a valid phone number (e.g., 09123456789).</p>
                         </div>
 
                         <button type="submit" class="submit-btn">Register</button>
@@ -131,6 +130,6 @@ $isLogged = isset($_SESSION['user_id']);
     <?php endif; ?>
 
     <script src="<?php echo $basePath; ?>js/location.js"></script>
-    <script src="<?php echo $basePath; ?>js/registration.js"></script>
+    <script type="module" src="<?php echo $basePath; ?>js/registration.js"></script>
 </body>
 </html>
