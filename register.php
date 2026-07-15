@@ -8,17 +8,28 @@ include 'includes/header.php';
 ?>
 
 <div class="auth-page">
+<<<<<<< HEAD
     <?php echo $basePath; ?>index.php class="back">&larr;</a>
+=======
+    <a href="<?php echo $basePath; ?>index.php" class="back">&larr;</a>
+>>>>>>> 4e21e7943f7c1ac1e5cda51f36138960a59bc20a
     <div class="card wide">
         <div class="auth-card-body">
             <h3>Create an Account</h3>
 
+<<<<<<< HEAD
             .php" method="post">
+=======
+            <form action="login/register_handler.php" method="post">
+>>>>>>> 4e21e7943f7c1ac1e5cda51f36138960a59bc20a
                 <div class="field">
                     <label class="form-label">Complete Name <span class="required-symbol">*</span></label>
                     <input type="text" name="full-name" class="form-control" required>
                 </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4e21e7943f7c1ac1e5cda51f36138960a59bc20a
                 <div class="field">
                     <label class="form-label">Email Address <span class="required-symbol">*</span></label>
                     <input type="email" name="email" class="form-control" required>
@@ -32,6 +43,7 @@ include 'includes/header.php';
                             <input type="password" name="password" class="form-control" required>
                             <i class="fa-solid fa-eye-slash password-toggle"></i>
                         </div>
+<<<<<<< HEAD
 
                         <ul class="password-requirements" id="password-requirements">
                             <li data-rule="minlength">
@@ -52,6 +64,9 @@ include 'includes/header.php';
                         </ul>
                     </div>
 
+=======
+                    </div>
+>>>>>>> 4e21e7943f7c1ac1e5cda51f36138960a59bc20a
                     <div class="column">
                         <label class="form-label">Confirm Password <span class="required-symbol">*</span></label>
                         <div class="password-wrapper">
@@ -66,17 +81,26 @@ include 'includes/header.php';
                         <label class="form-label">Region <span class="required-symbol">*</span></label>
                         <select name="region" id="region" class="form-select" required></select>
                     </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4e21e7943f7c1ac1e5cda51f36138960a59bc20a
                     <div class="column">
                         <label class="form-label">Province <span class="required-symbol">*</span></label>
                         <select name="province" id="province" class="form-select" required></select>
                     </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4e21e7943f7c1ac1e5cda51f36138960a59bc20a
                     <div class="column">
                         <label class="form-label">City/Municipality <span class="required-symbol">*</span></label>
                         <select name="city" id="city" class="form-select" required></select>
                     </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4e21e7943f7c1ac1e5cda51f36138960a59bc20a
                     <div class="column">
                         <label class="form-label">Barangay <span class="required-symbol">*</span></label>
                         <select name="barangay" id="barangay" class="form-select" required></select>

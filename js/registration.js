@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Password Re
+<<<<<<< HEAD
     // Password Requirements Checklist
     if (passwordInput) {
         updatePasswordRequirements(passwordInput);
@@ -26,6 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
             updatePasswordRequirements(passwordInput);
         });
     }
+=======
+>>>>>>> 4e21e7943f7c1ac1e5cda51f36138960a59bc20a
 
     // Confirm Password Validation
     if (confirmPasswordInput && passwordInput) {
@@ -64,31 +68,49 @@ document.addEventListener('DOMContentLoaded', () => {
 function validateEmail(emailInput) {
     const email = emailInput.value.trim();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 4e21e7943f7c1ac1e5cda51f36138960a59bc20a
     if (!email) {
         showEmailError(emailInput, 'Email is required');
         return false;
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 4e21e7943f7c1ac1e5cda51f36138960a59bc20a
     if (!emailRegex.test(email)) {
         showEmailError(emailInput, 'Please enter a valid email address');
         return false;
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 4e21e7943f7c1ac1e5cda51f36138960a59bc20a
     return true;
 }
 
 function showEmailError(emailInput, message) {
     clearEmailError(emailInput);
+<<<<<<< HEAD
 
     let emailErrorMessage = document.getElementById('email-error-message');
     if (!emailErrorMessage) return;
 
+=======
+    
+    let emailErrorMessage = document.getElementById('email-error-message');
+>>>>>>> 4e21e7943f7c1ac1e5cda51f36138960a59bc20a
     emailErrorMessage.style.display = 'block';
     emailErrorMessage.textContent = message;
 }
 
 function clearEmailError(emailInput) {
+<<<<<<< HEAD
     const emailErrorMessage = document.getElementById('email-error-message');
     if (emailErrorMessage) {
         emailErrorMessage.style.display = 'none';
@@ -142,33 +164,53 @@ function validatePassword(passwordInput) {
     const results = checkPasswordRequirements(passwordInput.value);
     return Object.values(results).every(Boolean);
 }
+=======
+    // TODO: Make the email error message disappear
+}
+
+>>>>>>> 4e21e7943f7c1ac1e5cda51f36138960a59bc20a
 
 function validateConfirmPassword(passwordInput, confirmPasswordInput) {
     const password = passwordInput.value;
     const confirmPassword = confirmPasswordInput.value;
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 4e21e7943f7c1ac1e5cda51f36138960a59bc20a
     if (!confirmPassword) {
         showConfirmPasswordError(confirmPasswordInput, 'Please confirm your password');
         return false;
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 4e21e7943f7c1ac1e5cda51f36138960a59bc20a
     if (password !== confirmPassword) {
         showConfirmPasswordError(confirmPasswordInput, 'Passwords do not match');
         return false;
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 4e21e7943f7c1ac1e5cda51f36138960a59bc20a
     return true;
 }
 
 function showConfirmPasswordError(confirmPasswordInput, message) {
     clearConfirmPasswordError(confirmPasswordInput);
 
+<<<<<<< HEAD
     const errorElement = document.createElement('p');
     errorElement.className = 'confirm-password-error';
     errorElement.textContent = message;
 
     confirmPasswordInput.closest('.password-wrapper').insertAdjacentElement('afterend', errorElement);
     confirmPasswordInput.style.borderColor = 'red';
+=======
+>>>>>>> 4e21e7943f7c1ac1e5cda51f36138960a59bc20a
 }
 
 function clearConfirmPasswordError(confirmPasswordInput) {
@@ -182,6 +224,7 @@ function clearConfirmPasswordError(confirmPasswordInput) {
 function addPasswordToggle(passwordInput) {
     const wrapper = passwordInput.closest('.password-wrapper');
     if (!wrapper) return;
+<<<<<<< HEAD
 
     const toggleIcon = wrapper.querySelector('.password-toggle');
     if (!toggleIcon) return;
@@ -190,6 +233,16 @@ function addPasswordToggle(passwordInput) {
         const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
         passwordInput.setAttribute('type', type);
 
+=======
+    
+    const toggleIcon = wrapper.querySelector('.password-toggle');
+    if (!toggleIcon) return;
+    
+    toggleIcon.addEventListener('click', () => {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        
+>>>>>>> 4e21e7943f7c1ac1e5cda51f36138960a59bc20a
         // Toggle between fa-eye and fa-eye-slash
         if (type === 'password') {
             toggleIcon.classList.remove('fa-eye');
@@ -205,6 +258,7 @@ function validateRegistrationForm(form) {
     const emailInput = form.querySelector('input[name="email"]');
     const passwordInput = form.querySelector('input[name="password"]');
     const confirmPasswordInput = form.querySelector('input[name="confirm_password"]');
+<<<<<<< HEAD
 
     let isValid = true;
 
@@ -225,3 +279,18 @@ function validateRegistrationForm(form) {
 
     return isValid;
 }
+=======
+    
+    let isValid = true;
+    
+    if (emailInput && !validateEmail(emailInput)) {
+        isValid = false;
+    }
+    
+    if (passwordInput && confirmPasswordInput && !validateConfirmPassword(passwordInput, confirmPasswordInput)) {
+        isValid = false;
+    }
+    
+    return isValid;
+}
+>>>>>>> 4e21e7943f7c1ac1e5cda51f36138960a59bc20a
