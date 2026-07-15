@@ -21,3 +21,8 @@ function showEmailError(emailInput, message) {
     // TODO: Make the email error message visible and set text
 }
 
+function clearEmailError(emailInput) {
+    // TODO: Make the email error message disappear
+}
+
+
