@@ -49,7 +49,7 @@ include 'includes/header.php';
                     </div>
                     <div class="column">
                         <label class="form-label">Barangay</label>
-                        <select name="city" id="barangay" class="form-select" required></select>
+                        <select name="barangay" id="barangay" class="form-select" required></select>
                     </div>
                 </div>
 
