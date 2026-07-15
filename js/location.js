@@ -20,10 +20,9 @@ function populateRegions() {
 
     regionSelect.innerHTML = '<option value="">Select Region</option>';
 
-    // 1. Extract keys and flip them backward
+    // Extract keys and flip them backward
     const regionKeys = Object.keys(locationData).reverse();
 
-    // 2. Loop through the reversed keys
     for (const regionCode of regionKeys) {
         const region = locationData[regionCode];
         const option = document.createElement('option');
