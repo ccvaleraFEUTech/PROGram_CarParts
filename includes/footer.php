@@ -3,7 +3,7 @@
     <div class="footcont">
         <div class="footrow">
             <div class="footcol">
-                <img src="/PROGram/assets/images/logo.png" alt="logo">
+                <img src="assets/images/logo.png" alt="logo">
                 <h5>PROGram</h5>
                 <p>Group members: </p>
                 <div class="members">
