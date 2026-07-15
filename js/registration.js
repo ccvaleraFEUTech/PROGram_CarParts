@@ -1,4 +1,11 @@
 // Registration Form Enhancements
+
+const ERROR_MESSAGE_CONFIRM_PASSWORD_REQUIRED = 'Please confirm your password.';
+const ERROR_MESSAGE_PASSWORDS_DO_NOT_MATCH = 'Passwords do not match.';
+const ERROR_MESSAGE_PHONE_INVALID = 'Please enter a valid phone number (e.g., 0912 345 6789)';
+const ERROR_MESSAGE_PHONE_REQUIRED = 'Phone number is required.';
+const PHONE_MAX_LENGTH = 11;
+
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('form[action="login/register_handler.php"]');
     if (!form) return;
