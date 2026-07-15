@@ -24,11 +24,26 @@ $isLogged = isset($_SESSION['user_id']);
         <section class="contacts-section">
             <div class="contacts-container">
                 <div class="contact-form">
-                    <form action="#" method="post" class="contact-form">
-                        <input type="text" name="name" placeholder="Your Name" required>
-                        <input type="email" name="email" placeholder="Your Email" required>
-                        <input type="text" name="subject" placeholder="Subject" required>
-                        <textarea name="message" placeholder="Your Concern" rows="5" required></textarea>
+                    <form action="contact_handler.php" method="post" class="contact-form">
+                        <div class="field">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                            <p id="name-error-message" style="display: none">Name is required.</p>
+                        </div>
+                        
+                        <div class="field">
+                            <input type="email" name="email" placeholder="Your Email" required>
+                            <p id="email-error-message" style="display: none">Email is required.</p>
+                        </div>
+                        
+                        <div class="field">
+                            <input type="text" name="subject" placeholder="Subject" required>
+                            <p id="subject-error-message" style="display: none">Subject is required.</p>
+                        </div>
+                        
+                        <div class="field">
+                            <textarea name="message" placeholder="Your Concern" rows="5" required></textarea>
+                            <p id="concern-error-message" style="display: none">Message is required.</p>
+                        </div>
                         <button type="submit" class="submit-btn">Submit Concern</button>
                     </form>
                 </div>
@@ -56,5 +71,7 @@ $isLogged = isset($_SESSION['user_id']);
     <?php endif; ?>
 
     <script src="<?php echo $basePath; ?>js/main.js"></script>
+    <script type="module" src="<?php echo $basePath; ?>js/contact.js"></script>
+    <script src="<?php echo $basePath; ?>js/location.js"></script>
 </body>
 </html>
