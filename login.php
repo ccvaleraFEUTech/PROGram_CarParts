@@ -34,15 +34,15 @@ $isLogged = isset($_SESSION['user_id']);
                         <div class="field">
                             <label class="form-label">Email</label>
                             <input type="email" name="email" class="form-control" required>
+                            <p id="email-error-message" style="display: none">Email is required.</p>
                         </div>
                         <div class="field">
+                            <label class="form-label">Password</label>
                             <div class="password-wrapper">
-                                <label class="form-label">Password</label>
-                                <div class="password-wrapper">
-                                    <input type="password" name="password" class="form-control" required>
-                                    <i class="fa-solid fa-eye-slash password-toggle"></i>
-                                </div>
+                                <input type="password" name="password" class="form-control" required>
+                                <i class="fa-solid fa-eye-slash password-toggle"></i>
                             </div>
+                            <p id="password-error-message" style="display: none">Password is required.</p>
                         </div>
 
                         <button type="submit" class="submit-btn">Login</button>
