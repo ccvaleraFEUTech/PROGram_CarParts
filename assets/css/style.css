@@ -1,11 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Cal+Sans&family=Kumbh+Sans:wght,YOPQ@100..900,300&display=swap');
 
-:root {
-    --font-heading: 'Cal Sans', sans-serif;
-    --font-body: 'Kumbh Sans', sans-serif;
-    --font-ui: 'Cal Sans', sans-serif;
-}
-
 *{
     box-sizing: border-box;
     margin: 0;
@@ -17,7 +11,7 @@ body{
 }
 
 li, a{
-    font-family: var(--font-ui);
+    font-family: Cal Sans, sans-serif;
     font-weight: 500;
     font-size: 20px;
     color: #ecf0f1;
@@ -72,31 +66,14 @@ li, a{
 
 .navigation li a{
     transition: all 0.3s ease 0s;
-    position: relative;
-}
-
-.navigation li a::after{
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 2px;
-    background-color: rgb(255, 255, 255);
-    transition: width 0.2s ease;
 }
 
 .navigation li a:hover{
-    color: rgb(255, 255, 255);
-}
-
-.navigation li a:hover::after{
-    width: 100%;
+    color: #404040;
 }
 
 .authentication{
-    font-family: var(--font-ui);
+    font-family: Cal Sans, sans-serif;
     font-weight: 500;
     font-size: 20px;
     color: #ecf0f1;
@@ -114,12 +91,12 @@ li, a{
 }
 
 h1, h2, h3, h4, h5{
-    font-family: var(--font-heading);
+    font-family: 'Cal Sans', sans-serif;
     color: white;
 }
 
 p{
-    font-family: var(--font-body);
+    font-family: "Kumbh Sans", sans-serif;
     color: white;
 }
 
@@ -151,7 +128,7 @@ p{
 
 .banner .brand{
     display: inline-block;
-    font-family: var(--font-ui);
+    font-family: "Cal Sans", sans-serif;
     font-size: 19px;
     font-weight: 500;
     padding: 15px 40px;
@@ -232,7 +209,7 @@ section.container h2, section.why h2{
 }
 
 .cart-btn{
-    font-family: var(--font-ui);
+    font-family: "Cal Sans", sans-serif;
     font-size: 20px;
     background-color: #5c5c5c;
     color: #ecf0f1;
@@ -315,7 +292,7 @@ section.container h2, section.why h2{
     width: 100%;
     max-width: 100%;
     padding: 12px 25px;
-    font-family: var(--font-body);
+    font-family: 'Kumbh Sans', sans-serif;
     color: #404040;
     border: 1px solid #eaeaea;
     border-radius: 10px;
@@ -486,7 +463,7 @@ section.container h2, section.why h2{
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    font-family: var(--font-ui);
+    font-family: 'Cal Sans', sans-serif;
     font-size: 20px;
     background: #000000;
     color: #ffffff;
@@ -530,7 +507,7 @@ section.container h2, section.why h2{
 }
 
 .product-details .breadcrumb{
-    font-family: var(--font-body);
+    font-family: 'Kumbh Sans', sans-serif;
     color: #888888;
     margin-top: 0;
     margin-bottom: 20px;
@@ -563,7 +540,7 @@ section.container h2, section.why h2{
 }
 
 .product-details .description{
-    font-family: var(--font-body);
+    font-family: 'Kumbh Sans', sans-serif;
     color: #5a5a5a;
     font-size: 16px;
     line-height: 1.6;
@@ -578,7 +555,7 @@ section.container h2, section.why h2{
 }
 
 .quantity-label{
-    font-family: var(--font-body);
+    font-family: 'Kumbh Sans', sans-serif;
     color: #333333;
     font-weight: bold;
     font-size: 18px;
@@ -607,7 +584,7 @@ section.container h2, section.why h2{
 }
 
 .quantity-value{
-    font-family: var(--font-body);
+    font-family: 'Kumbh Sans', sans-serif;
     font-size: 16px;
     text-align: center;
     padding: 10px 0;
@@ -629,7 +606,7 @@ section.container h2, section.why h2{
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    font-family: var(--font-ui);
+    font-family: 'Cal Sans', sans-serif;
     font-size: 17px;
     background: #000000;
     color: #ffffff;
@@ -664,7 +641,7 @@ form.contact-form{
 }
 
 form.contact-form input, form.contact-form textarea{
-    font-family: var(--font-body);
+    font-family: 'Kumbh Sans', sans-serif;
     width: 100%;
     color: #404040;
     font-size: 16px;
@@ -687,7 +664,7 @@ form.contact-form textarea{
 
 .submit-btn{
     background-color: #333333;
-    font-family: var(--font-ui);
+    font-family: 'Cal Sans', sans-serif;
     color: #ffffff;
     font-size: 18px;
     padding: 15px;
@@ -716,7 +693,7 @@ form.contact-form textarea{
 }
 
 .contact-info p{
-    font-family: var(--font-body);
+    font-family: 'Kumbh Sans', sans-serif;
     color: #ffffff;
     font-size: 16px;
     line-height: 1.6;
@@ -730,7 +707,7 @@ form.contact-form textarea{
 }
 
 .list-info li{
-    font-family: var(--font-body);
+    font-family: 'Kumbh Sans', sans-serif;
     color: #ffffff;
     font-size: 16px;
     margin-bottom: 20px;
@@ -781,7 +758,7 @@ form.contact-form textarea{
 }
 
 .cart-table{
-    font-family: var(--font-body);
+    font-family: 'Kumbh Sans', sans-serif;
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 30px;
@@ -826,7 +803,7 @@ form.contact-form textarea{
 }
 
 .form-control{
-    font-family: var(--font-body);
+    font-family: 'Kumbh Sans', sans-serif;
     font-size: 16px;
     outline: none;
     text-align: center;
@@ -871,7 +848,7 @@ form.contact-form textarea{
     background-color: #333333;
     color: #ffffff;
     font-size: 18px;
-    font-family: var(--font-ui);
+    font-family: 'Cal Sans', sans-serif;
     padding: 15px 40px;
     margin-top: 20px;
     text-decoration: none;
@@ -935,17 +912,9 @@ form.contact-form textarea{
 }
 
 .form-label{
-    font-family: var(--font-body);
+    font-family: 'Kumbh Sans', sans-serif;
     color: #333333;
     font-weight: 600;
-}
-
-#email-error-message {
-    color: red;
-}
-
-.required-symbol {
-    color: red;
 }
 
 .form-control, .form-select{
@@ -954,32 +923,6 @@ form.contact-form textarea{
     outline: none;
     border-radius: 8px;
     box-sizing: border-box;
-}
-
-select, select option {
-    font-family: var(--font-body);
-}
-
-.password-wrapper {
-    position: relative;
-}
-
-.password-toggle {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    color: #888;
-    z-index: 10;
-}
-
-.password-toggle:hover {
-    color: #333;
-}
-
-.password-wrapper .form-control {
-    padding-right: 45px;
 }
 
 .payment{
@@ -1024,7 +967,7 @@ select, select option {
 
 .summary-list li{
     display: flex;
-    font-family: var(--font-ui);
+    font-family: 'Cal Sans', sans-serif;
     justify-content: space-between;
     margin-bottom: 15px;
 }
@@ -1034,7 +977,7 @@ select, select option {
     justify-content: space-between;
     font-size: 20px;
     font-weight: bold;
-    font-family: var(--font-ui);
+    font-family: 'Cal Sans', sans-serif;
     align-items: center;
     font-size: 22px;
     border-top: 2px solid #333333;
@@ -1078,7 +1021,7 @@ select, select option {
 }
 
 .form-check-label{
-    font-family: var(--font-body);
+    font-family: 'Kumbh Sans', sans-serif;
     color: #404040;
 }
 
@@ -1102,7 +1045,7 @@ select, select option {
 }
 
 .about-intro p{
-    font-family: var(--font-body);
+    font-family: 'Kumbh Sans', sans-serif;
     font-size: 16px;
     line-height: 1.7;
     color: #d9d9d9;
@@ -1138,7 +1081,7 @@ select, select option {
 }
 
 .member-name{
-    font-family: var(--font-ui);
+    font-family: 'Cal Sans', sans-serif;
     color: #ffffff;
     font-size: 16px;
 }
@@ -1154,7 +1097,7 @@ select, select option {
 
 .about-disclaimer{
     margin-top: 60px;
-    font-family: var(--font-body);
+    font-family: 'Kumbh Sans', sans-serif;
     font-size: 13px;
     color: #a7a7a7;
     border-top: 1px solid #404040;
@@ -1163,7 +1106,7 @@ select, select option {
 
 .webfoot{
     background-color: #2a2a2a;
-    font-family: var(--font-ui);
+    font-family: "Cal Sans", sans-serif;
     color: #ecf0f1;
     padding: 60px 20px 20px;
     margin-top: auto;
@@ -1217,7 +1160,7 @@ select, select option {
 
 .footcol p{
     color: #ffffff;
-    font-family: var(--font-body);
+    font-family: "Kumbh Sans", sans-serif;
     font-size: 1rem;
     line-height: 1.6;
     margin: none;
@@ -1331,7 +1274,7 @@ select, select option {
 
 .auth-page .forgot{
     text-align: center;
-    font-family: var(--font-body);
+    font-family: 'Kumbh Sans', sans-serif;
     color: #000000;
     margin-top: 25px;
 }
@@ -1421,7 +1364,7 @@ img{
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: var(--font-ui);
+    font-family: 'Cal Sans', sans-serif;
     font-size: 32px;
 }
  
@@ -1432,7 +1375,7 @@ img{
 }
  
 .profile-head p{
-    font-family: var(--font-body);
+    font-family: 'Kumbh Sans', sans-serif;
     color: #888888;
     font-size: 15px;
 }
@@ -1473,14 +1416,14 @@ img{
 }
  
 .pref-row p{
-    font-family: var(--font-body);
+    font-family: 'Kumbh Sans', sans-serif;
     color: #333333;
     font-size: 15px;
 }
  
 .pref-row span{
     display: block;
-    font-family: var(--font-body);
+    font-family: 'Kumbh Sans', sans-serif;
     color: #a7a7a7;
     font-size: 13px;
     margin-top: 3px;
@@ -1557,7 +1500,7 @@ img{
 }
  
 .address-card p{
-    font-family: var(--font-body);
+    font-family: 'Kumbh Sans', sans-serif;
     color: #333333;
     font-size: 14px;
     line-height: 1.6;
@@ -1568,7 +1511,7 @@ img{
     background-color: #f0f0f0;
     color: #555555;
     font-size: 11px;
-    font-family: var(--font-ui);
+    font-family: 'Cal Sans', sans-serif;
     padding: 4px 10px;
     border-radius: 20px;
     margin-bottom: 8px;
@@ -1581,7 +1524,7 @@ img{
     border: none;
     border-radius: 10px;
     padding: 14px;
-    font-family: var(--font-ui);
+    font-family: 'Cal Sans', sans-serif;
     font-size: 15px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -1595,7 +1538,7 @@ img{
     display: inline-block;
     background-color: #333333;
     color: #ffffff;
-    font-family: var(--font-ui);
+    font-family: 'Cal Sans', sans-serif;
     font-size: 15px;
     padding: 11px 26px;
     border: none;
@@ -1613,13 +1556,81 @@ img{
     display: inline-block;
     background-color: #ffffff;
     color: #333333;
-    font-family: var(--font-ui);
+    font-family: 'Cal Sans', sans-serif;
     font-size: 14px;
     padding: 10px 22px;
     border: 1px solid #CCCCCC;
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
+}
+
+.status{
+    font-family: "Kumbh Sans", sans-serif;
+    font-size: 15px;
+    text-align: center;
+    padding: 12px 18px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.success {
+    background-color: #e5f6ea;
+    color: #1e7e34;
+    border: 1px solid #c3e6cb;
+}
+
+.error {
+    background-color: #fbe3e3;
+    color: #c0392b;
+    border: 1px solid #f4c9c9;
+}
+
+.password-wrapper {
+    position: relative;
+    width: 100%;
+    display: block;
+}
+
+.password-input {
+    padding-right: 45px;
+    width: 100%;
+}
+
+.eye-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #666666;
+    user-select: none;
+    z-index: 10;
+    opacity: 1;
+    transition: color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+}
+
+.eye-icon svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+    pointer-events: none; 
+}
+
+@media (hover: hover) {
+    .eye-icon:hover {
+        color: #ffffff;
+        transform: translateY(-50%) scale(1.1);
+    }
+}
+
+.eye-icon svg {
+    width: 20px;
+    height: 20px;
+    display: block;
 }
 
 @media (max-width: 991px){
@@ -2087,9 +2098,13 @@ img{
     }
 }
 
-.unselectable-text {
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: default;
+@media (max-width: 576px) {
+    .eye-icon {
+        right: 12px;
+    }
+    
+    .eye-icon svg {
+        width: 18px;
+        height: 18px;
+    }
 }
