@@ -48,7 +48,7 @@ $isLogged = isset($_SESSION['user_id']);
                     <input type="text" name="search" placeholder="Search for products" class="search">
                     <div class="grid">
                         <a href="<?php echo $basePath; ?>pages/product-info.php" class="product-link">
-                            <div class="card-product" style="background-image: url('../assets/images/products/aem-x-series-uego.jpg');">
+                            <div class="product-card" style="background-image: url('../assets/images/products/aem-x-series-uego.jpg');">
                                 <button class="add-cart-btn" title="Add to Cart">+</button>
                                 <div class="product-body">
                                     <h4 class="card-title">AEM X-Series Wideband UEGO Gauge Kit</h4>
@@ -56,7 +56,7 @@ $isLogged = isset($_SESSION['user_id']);
                                 </div>
                             </div>
                         </a>
-                        <div class="card-product" style="background-image: url('../assets/images/products/eibach-pro-kit.jpg');">
+                        <div class="product-card" style="background-image: url('../assets/images/products/eibach-pro-kit.jpg');">
                             <button class="add-cart-btn" title="Add to Cart">+</button>
                             <div class="product-body">
                                 <h4 class="card-title">Eibach Pro-Kit Lowering Springs</h4>
@@ -64,7 +64,7 @@ $isLogged = isset($_SESSION['user_id']);
                             </div>
                         </div>
 
-                        <div class="card-product" style="background-image: url('../assets/images/products/garrett-g25.jpg');">
+                        <div class="product-card" style="background-image: url('../assets/images/products/garrett-g25.jpg');">
                             <button class="add-cart-btn" title="Add to Cart">+</button>
                             <div class="product-body">
                                 <h4 class="card-title">Garrett G25-550 Turbocharger</h4>
@@ -72,7 +72,7 @@ $isLogged = isset($_SESSION['user_id']);
                             </div>
                         </div>
 
-                        <div class="card-product" style="background-image: url('../assets/images/products/gtc-300.png');">
+                        <div class="product-card" style="background-image: url('../assets/images/products/gtc-300.png');">
                             <button class="add-cart-btn" title="Add to Cart">+</button>
                             <div class="product-body">
                                 <h4 class="card-title">APR GTC-300 Adjustable Rear Wing</h4>
