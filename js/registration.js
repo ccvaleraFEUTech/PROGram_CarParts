@@ -75,10 +75,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// Properly formats an inputted phone number
 function formatPhoneNumber(input) {
     // Remove all non-numeric characters
     let value = input.value.replace(/\D/g, '');
 
+    // Format as 09XXXXXXXXX
     if (value.length > PHONE_MAX_LENGTH) {
         value = value.substring(0, PHONE_MAX_LENGTH);
     }
@@ -86,6 +88,7 @@ function formatPhoneNumber(input) {
     input.value = value;
 }
 
+// Validates the inputted phone number
 function validatePhoneNumber(phoneInput) {
     const phone = phoneInput.value.trim();
     
@@ -112,6 +115,7 @@ function validatePhoneNumber(phoneInput) {
     return true;
 }
 
+// Displays a phone error message underneath the input field
 function showPhoneNumberError(phoneInput, message) {
     clearPhoneNumberError(phoneInput);
     
@@ -120,12 +124,14 @@ function showPhoneNumberError(phoneInput, message) {
     phoneErrorMessage.textContent = message;
 }
 
+// Clears the phone error message underneath the input field
 function clearPhoneNumberError(phoneInput) {
     let phoneErrorMessage = document.getElementById('phone-error-message');
     phoneErrorMessage.style.display = 'none';
     phoneInput.classList.remove('error');
 }
 
+// Validates the inputted confirm password
 function validateConfirmPassword(passwordInput, confirmPasswordInput) {
     const password = passwordInput.value;
     const confirmPassword = confirmPasswordInput.value;
@@ -133,7 +139,7 @@ function validateConfirmPassword(passwordInput, confirmPasswordInput) {
     // Don't check confirm password if password is empty
     if (!password) return;
     
-    // If password is entered but confirm password is empty
+    // If password is entered but confirm password is empty, display an error message
     if (!confirmPassword) {
         showConfirmPasswordError(confirmPasswordInput, ERROR_MESSAGE_CONFIRM_PASSWORD_REQUIRED);
         return false;
