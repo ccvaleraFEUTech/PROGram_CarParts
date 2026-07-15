@@ -1,10 +1,3 @@
-<?php 
-// $basePath must be defined in the file that includes this footer
-if (!isset($basePath)) {
-    $basePath = '';
-}
-?>
-
 <?php if (!isset($hideFooter) || !$hideFooter): ?>
 <footer class="webfoot">
     <div class="footcont">
@@ -33,11 +26,4 @@ if (!isset($basePath)) {
         </p>
     </div>
 </footer>
-
 <?php endif; ?>
-
-<script src="<?php echo $basePath; ?>js/main.js"></script>
-<script src="<?php echo $basePath; ?>js/location.js"></script>
-<script src="<?php echo $basePath; ?>js/registration.js"></script>
-</body>
-</html>
