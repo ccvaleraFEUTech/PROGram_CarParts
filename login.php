@@ -63,5 +63,6 @@ $isLogged = isset($_SESSION['user_id']);
 
     <!-- JAVASCRIPT -->
     <script src="<?php echo $basePath; ?>js/main.js"></script>
+    <script type="module" src="<?php echo $basePath; ?>js/login.js"></script>
 </body>
 </html>
