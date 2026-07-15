@@ -1,5 +1,6 @@
 <?php 
 $title = "Login";
+$basePath = '';
 $hideHeader = true;
 $hideFooter = true;
 include 'includes/header.php';
@@ -16,9 +17,8 @@ include 'includes/header.php';
                     <input type="email" name="email" class="form-control" required>
                 </div>
                 <div class="field">
-                    <label class="form-label">Password</label>
                     <div class="password-wrapper">
-                        <label class="form-label">Password <span class="required-symbol">*</span></label>
+                        <label class="form-label">Password</label>
                         <div class="password-wrapper">
                             <input type="password" name="password" class="form-control" required>
                             <i class="fa-solid fa-eye-slash password-toggle"></i>

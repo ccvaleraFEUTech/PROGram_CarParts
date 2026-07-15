@@ -18,7 +18,8 @@ if (!isset($basePath)){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="<?php echo $basePath; ?>assets/images/favicon.ico">
-     <link rel="stylesheet" href="<?php echo $basePath; ?>assets/css/style.css">
+    <script src="https://kit.fontawesome.com/5e3c72a53d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="<?php echo $basePath; ?>assets/css/style.css">
     <title><?php echo $title?> || PROGram</title>
 </head>
 <body class="<?php echo (isset($hideHeader) && $hideHeader) ? 'auth-body' : ''; ?>">

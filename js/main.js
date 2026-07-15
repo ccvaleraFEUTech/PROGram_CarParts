@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('.webhead');
 
+    if (!header) return;
+    
     const toggleHead = () => {
         const scrollpos = window.scrollY || document.documentElement.scrollTop;
 
