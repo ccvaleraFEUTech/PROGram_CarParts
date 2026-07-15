@@ -138,3 +138,8 @@ function initLocationDropdowns() {
         });
     }
 }
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', () => {
+    initLocationDropdowns();
+});
