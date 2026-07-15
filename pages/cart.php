@@ -2,6 +2,7 @@
 
 $title = "Your Cart";
 $whiteHeader = true;
+$basePath = '../';
 include('../includes/header.php');
 ?>
 

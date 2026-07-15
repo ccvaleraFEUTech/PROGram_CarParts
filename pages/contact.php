@@ -1,6 +1,7 @@
 <?php 
 
 $title = "Contacts";
+$basePath = '../';
 
 include('../includes/header.php');
 ?>

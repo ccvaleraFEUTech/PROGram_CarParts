@@ -1,6 +1,7 @@
 <?php
 
 $title = "Products";
+$basePath = '../';
 include('../includes/header.php');
 ?>
 

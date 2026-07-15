@@ -2,6 +2,7 @@
 
 $title = "Checkout";
 $whiteHeader = true;
+$basePath = '../';
 include('../includes/header.php');
 
 ?>
