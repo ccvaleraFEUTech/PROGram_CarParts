@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Cal+Sans&family=Kumbh+Sans:wght,YOPQ@100..900,300&display=swap');
 
+:root {
+    --font-heading: 'Cal Sans', sans-serif;
+    --font-body: 'Kumbh Sans', sans-serif;
+    --font-ui: 'Cal Sans', sans-serif;
+}
+
 *{
     box-sizing: border-box;
     margin: 0;
@@ -11,7 +17,7 @@ body{
 }
 
 li, a{
-    font-family: Cal Sans, sans-serif;
+    font-family: var(--font-ui);
     font-weight: 500;
     font-size: 20px;
     color: #ecf0f1;
@@ -66,14 +72,31 @@ li, a{
 
 .navigation li a{
     transition: all 0.3s ease 0s;
+    position: relative;
+}
+
+.navigation li a::after{
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: rgb(255, 255, 255);
+    transition: width 0.2s ease;
 }
 
 .navigation li a:hover{
-    color: #404040;
+    color: rgb(255, 255, 255);
+}
+
+.navigation li a:hover::after{
+    width: 100%;
 }
 
 .authentication{
-    font-family: Cal Sans, sans-serif;
+    font-family: var(--font-ui);
     font-weight: 500;
     font-size: 20px;
     color: #ecf0f1;
@@ -91,12 +114,12 @@ li, a{
 }
 
 h1, h2, h3, h4, h5{
-    font-family: 'Cal Sans', sans-serif;
+    font-family: var(--font-heading);
     color: white;
 }
 
 p{
-    font-family: "Kumbh Sans", sans-serif;
+    font-family: var(--font-body);
     color: white;
 }
 
@@ -128,7 +151,7 @@ p{
 
 .banner .brand{
     display: inline-block;
-    font-family: "Cal Sans", sans-serif;
+    font-family: var(--font-ui);
     font-size: 19px;
     font-weight: 500;
     padding: 15px 40px;
@@ -209,7 +232,7 @@ section.container h2, section.why h2{
 }
 
 .cart-btn{
-    font-family: "Cal Sans", sans-serif;
+    font-family: var(--font-ui);
     font-size: 20px;
     background-color: #5c5c5c;
     color: #ecf0f1;
@@ -292,7 +315,7 @@ section.container h2, section.why h2{
     width: 100%;
     max-width: 100%;
     padding: 12px 25px;
-    font-family: 'Kumbh Sans', sans-serif;
+    font-family: var(--font-body);
     color: #404040;
     border: 1px solid #eaeaea;
     border-radius: 10px;
@@ -463,7 +486,7 @@ section.container h2, section.why h2{
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    font-family: 'Cal Sans', sans-serif;
+    font-family: var(--font-ui);
     font-size: 20px;
     background: #000000;
     color: #ffffff;
@@ -507,7 +530,7 @@ section.container h2, section.why h2{
 }
 
 .product-details .breadcrumb{
-    font-family: 'Kumbh Sans', sans-serif;
+    font-family: var(--font-body);
     color: #888888;
     margin-top: 0;
     margin-bottom: 20px;
@@ -540,7 +563,7 @@ section.container h2, section.why h2{
 }
 
 .product-details .description{
-    font-family: 'Kumbh Sans', sans-serif;
+    font-family: var(--font-body);
     color: #5a5a5a;
     font-size: 16px;
     line-height: 1.6;
@@ -555,7 +578,7 @@ section.container h2, section.why h2{
 }
 
 .quantity-label{
-    font-family: 'Kumbh Sans', sans-serif;
+    font-family: var(--font-body);
     color: #333333;
     font-weight: bold;
     font-size: 18px;
@@ -584,7 +607,7 @@ section.container h2, section.why h2{
 }
 
 .quantity-value{
-    font-family: 'Kumbh Sans', sans-serif;
+    font-family: var(--font-body);
     font-size: 16px;
     text-align: center;
     padding: 10px 0;
@@ -606,7 +629,7 @@ section.container h2, section.why h2{
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    font-family: 'Cal Sans', sans-serif;
+    font-family: var(--font-ui);
     font-size: 17px;
     background: #000000;
     color: #ffffff;
@@ -641,7 +664,7 @@ form.contact-form{
 }
 
 form.contact-form input, form.contact-form textarea{
-    font-family: 'Kumbh Sans', sans-serif;
+    font-family: var(--font-body);
     width: 100%;
     color: #404040;
     font-size: 16px;
@@ -664,7 +687,7 @@ form.contact-form textarea{
 
 .submit-btn{
     background-color: #333333;
-    font-family: 'Cal Sans', sans-serif;
+    font-family: var(--font-ui);
     color: #ffffff;
     font-size: 18px;
     padding: 15px;
@@ -693,7 +716,7 @@ form.contact-form textarea{
 }
 
 .contact-info p{
-    font-family: 'Kumbh Sans', sans-serif;
+    font-family: var(--font-body);
     color: #ffffff;
     font-size: 16px;
     line-height: 1.6;
@@ -707,7 +730,7 @@ form.contact-form textarea{
 }
 
 .list-info li{
-    font-family: 'Kumbh Sans', sans-serif;
+    font-family: var(--font-body);
     color: #ffffff;
     font-size: 16px;
     margin-bottom: 20px;
@@ -758,7 +781,7 @@ form.contact-form textarea{
 }
 
 .cart-table{
-    font-family: 'Kumbh Sans', sans-serif;
+    font-family: var(--font-body);
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 30px;
@@ -803,7 +826,7 @@ form.contact-form textarea{
 }
 
 .form-control{
-    font-family: 'Kumbh Sans', sans-serif;
+    font-family: var(--font-body);
     font-size: 16px;
     outline: none;
     text-align: center;
@@ -848,7 +871,7 @@ form.contact-form textarea{
     background-color: #333333;
     color: #ffffff;
     font-size: 18px;
-    font-family: 'Cal Sans', sans-serif;
+    font-family: var(--font-ui);
     padding: 15px 40px;
     margin-top: 20px;
     text-decoration: none;
@@ -912,7 +935,7 @@ form.contact-form textarea{
 }
 
 .form-label{
-    font-family: 'Kumbh Sans', sans-serif;
+    font-family: var(--font-body);
     color: #333333;
     font-weight: 600;
 }
@@ -923,6 +946,28 @@ form.contact-form textarea{
     outline: none;
     border-radius: 8px;
     box-sizing: border-box;
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #888;
+    z-index: 10;
+}
+
+.password-toggle:hover {
+    color: #333;
+}
+
+.password-wrapper .form-control {
+    padding-right: 45px;
 }
 
 .payment{
@@ -967,7 +1012,7 @@ form.contact-form textarea{
 
 .summary-list li{
     display: flex;
-    font-family: 'Cal Sans', sans-serif;
+    font-family: var(--font-ui);
     justify-content: space-between;
     margin-bottom: 15px;
 }
@@ -977,7 +1022,7 @@ form.contact-form textarea{
     justify-content: space-between;
     font-size: 20px;
     font-weight: bold;
-    font-family: 'Cal Sans', sans-serif;
+    font-family: var(--font-ui);
     align-items: center;
     font-size: 22px;
     border-top: 2px solid #333333;
@@ -1021,7 +1066,7 @@ form.contact-form textarea{
 }
 
 .form-check-label{
-    font-family: 'Kumbh Sans', sans-serif;
+    font-family: var(--font-body);
     color: #404040;
 }
 
@@ -1045,7 +1090,7 @@ form.contact-form textarea{
 }
 
 .about-intro p{
-    font-family: 'Kumbh Sans', sans-serif;
+    font-family: var(--font-body);
     font-size: 16px;
     line-height: 1.7;
     color: #d9d9d9;
@@ -1081,7 +1126,7 @@ form.contact-form textarea{
 }
 
 .member-name{
-    font-family: 'Cal Sans', sans-serif;
+    font-family: var(--font-ui);
     color: #ffffff;
     font-size: 16px;
 }
@@ -1097,7 +1142,7 @@ form.contact-form textarea{
 
 .about-disclaimer{
     margin-top: 60px;
-    font-family: 'Kumbh Sans', sans-serif;
+    font-family: var(--font-body);
     font-size: 13px;
     color: #a7a7a7;
     border-top: 1px solid #404040;
@@ -1106,7 +1151,7 @@ form.contact-form textarea{
 
 .webfoot{
     background-color: #2a2a2a;
-    font-family: "Cal Sans", sans-serif;
+    font-family: var(--font-ui);
     color: #ecf0f1;
     padding: 60px 20px 20px;
     margin-top: auto;
@@ -1160,7 +1205,7 @@ form.contact-form textarea{
 
 .footcol p{
     color: #ffffff;
-    font-family: "Kumbh Sans", sans-serif;
+    font-family: var(--font-body);
     font-size: 1rem;
     line-height: 1.6;
     margin: none;
@@ -1274,7 +1319,7 @@ form.contact-form textarea{
 
 .auth-page .forgot{
     text-align: center;
-    font-family: 'Kumbh Sans', sans-serif;
+    font-family: var(--font-body);
     color: #000000;
     margin-top: 25px;
 }
@@ -1364,7 +1409,7 @@ img{
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Cal Sans', sans-serif;
+    font-family: var(--font-ui);
     font-size: 32px;
 }
  
@@ -1375,7 +1420,7 @@ img{
 }
  
 .profile-head p{
-    font-family: 'Kumbh Sans', sans-serif;
+    font-family: var(--font-body);
     color: #888888;
     font-size: 15px;
 }
@@ -1416,14 +1461,14 @@ img{
 }
  
 .pref-row p{
-    font-family: 'Kumbh Sans', sans-serif;
+    font-family: var(--font-body);
     color: #333333;
     font-size: 15px;
 }
  
 .pref-row span{
     display: block;
-    font-family: 'Kumbh Sans', sans-serif;
+    font-family: var(--font-body);
     color: #a7a7a7;
     font-size: 13px;
     margin-top: 3px;
@@ -1500,7 +1545,7 @@ img{
 }
  
 .address-card p{
-    font-family: 'Kumbh Sans', sans-serif;
+    font-family: var(--font-body);
     color: #333333;
     font-size: 14px;
     line-height: 1.6;
@@ -1511,7 +1556,7 @@ img{
     background-color: #f0f0f0;
     color: #555555;
     font-size: 11px;
-    font-family: 'Cal Sans', sans-serif;
+    font-family: var(--font-ui);
     padding: 4px 10px;
     border-radius: 20px;
     margin-bottom: 8px;
@@ -1524,7 +1569,7 @@ img{
     border: none;
     border-radius: 10px;
     padding: 14px;
-    font-family: 'Cal Sans', sans-serif;
+    font-family: var(--font-ui);
     font-size: 15px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -1538,7 +1583,7 @@ img{
     display: inline-block;
     background-color: #333333;
     color: #ffffff;
-    font-family: 'Cal Sans', sans-serif;
+    font-family: var(--font-ui);
     font-size: 15px;
     padding: 11px 26px;
     border: none;
@@ -1556,7 +1601,7 @@ img{
     display: inline-block;
     background-color: #ffffff;
     color: #333333;
-    font-family: 'Cal Sans', sans-serif;
+    font-family: var(--font-ui);
     font-size: 14px;
     padding: 10px 22px;
     border: 1px solid #CCCCCC;
