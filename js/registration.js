@@ -48,3 +48,11 @@ function showConfirmPasswordError(confirmPasswordInput, message) {
 
 }
 
+function clearConfirmPasswordError(confirmPasswordInput) {
+    const existingError = confirmPasswordInput.parentNode.nextElementSibling;
+    if (existingError && existingError.className === 'confirm-password-error') {
+        existingError.remove();
+    }
+    confirmPasswordInput.style.borderColor = '';
+}
+
