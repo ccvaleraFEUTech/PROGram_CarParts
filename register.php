@@ -4,46 +4,6 @@ $title = "Register";
 $hideHeader = true;
 $hideFooter = true;
 include 'includes/header.php';
-
-    if(isset($_POST['submit'])){
-        $npass = $_POST['pass'];
-        $cpass = $_POST['conf'];
-        
-        $full = trim($_POST['first']) . " " . trim($_POST['middle']) . " " . trim($_POST['surn']);
-        $full = preg_replace('/\s+/', ' ', trim($full));
-
-        $email = trim($_POST['email']);
-        if($npass == $cpass){
-
-            $email_at = strpos($email, '@');
-            $email_dot = strpos($email, '.');
-
-            if($email_at !== false && $email_dot !== false && $email_at > 0 && $email_dot > $email_at + 1 && $email_dot < strlen($email) - 1){
-                $user = $_POST['user'];
-                $connum = $_POST['connum'];
-
-                $message = "Registration Successful";
-                $type = "success";
-
-                $_SESSION['success_message'] = $message;
-                header("Location: ../login.php");
-                exit();
-            } else {
-                $message = "Please enter a valid email address";
-                $type = "error";
-                $_SESSION['error_message'] = $message;
-                header("Location: ../register.php");
-                exit();
-            }
-        } else{
-            $message = "Passwords do not match";
-            $type = "error";
-
-            $_SESSION['error_message'] = $message;
-            header("Location: register.php");
-            exit();
-        }
-    }
 ?>
 
 <div class="auth-page">
@@ -51,33 +11,17 @@ include 'includes/header.php';
     <div class="card wide">
         <div class="auth-card-body">
             <h3>Create an Account</h3>
-            <?php if (isset($_SESSION['success_message'])): ?>
-                <div class="status success">
-                    <?php 
-                        echo $_SESSION['success_message'];
-                        unset($_SESSION['success_message']);
-                    ?>
-                </div>
-            <?php endif; ?>
-            <?php if (isset($_SESSION['error_message'])): ?>
-                <div class="status error">
-                    <?php 
-                        echo $_SESSION['error_message'];
-                        unset($_SESSION['error_message']);
-                    ?>
-                </div>
-            <?php endif; ?>
             <form action="" method="post">
                 <div class="field">
-                    <label class="form-label">First Name</label>
+                    <label class="form-label">First Name <span class="required-symbol">*</span></label>
                     <input type="text" name="first" class="form-control" required>
                 </div>
                 <div class="field">
-                    <label class="form-label">Middle Name</label>
+                    <label class="form-label">Middle Name <span class="required-symbol">*</span></label>
                     <input type="text" name="middle" class="form-control" required>
                 </div>
                 <div class="field">
-                    <label class="form-label">Surname</label>
+                    <label class="form-label">Surname <span class="required-symbol">*</span></label>
                     <input type="text" name="surn" class="form-control" required>
                 </div>
                 <div class="field">
@@ -87,27 +31,17 @@ include 'includes/header.php';
 
                 <div class="row">
                     <div class="column">
-                        <label class="form-label">Password</label>
+                        <label class="form-label">Password <span class="required-symbol">*</span></label>
                         <div class="password-wrapper">
-                            <input type="password" name="pass" id="pass" class="form-control password-input" required>
-                            <span id="eye-pass" class="eye-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                                    <circle cx="12" cy="12" r="3"></circle>
-                                </svg>
-                            </span>
+                            <input type="password" name="password" class="form-control" required>
+                            <i class="fa-solid fa-eye-slash password-toggle"></i>
                         </div>
                     </div>
                     <div class="column">
-                        <label class="form-label">Confirm Password</label>
+                        <label class="form-label">Confirm Password <span class="required-symbol">*</span></label>
                         <div class="password-wrapper">
-                            <input type="password" name="conf" id="conf" class="form-control password-input" required>
-                            <span id="eye-conf" class="eye-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                                    <circle cx="12" cy="12" r="3"></circle>
-                                </svg>
-                            </span>
+                            <input type="password" name="confirm_password" class="form-control" required>
+                            <i class="fa-solid fa-eye-slash password-toggle"></i>
                         </div>
                     </div>
                 </div>

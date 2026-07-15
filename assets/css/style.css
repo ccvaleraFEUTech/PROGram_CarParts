@@ -1597,6 +1597,14 @@ img{
     width: 100%;
 }
 
+#email-error-message {
+    color: red;
+}
+
+.required-symbol {
+    color: red;
+}
+
 .eye-icon {
     position: absolute;
     right: 15px;
