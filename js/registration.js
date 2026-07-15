@@ -1,4 +1,4 @@
-import { validateEmail, clearEmailError, addPasswordToggle } from './authentication.js';
+import { validateEmail, hideEmailError, addPasswordToggle } from './authentication.js';
 
 const ERROR_MESSAGE_CONFIRM_PASSWORD_REQUIRED = 'Please confirm your password.';
 const ERROR_MESSAGE_PASSWORDS_DO_NOT_MATCH = 'Passwords do not match.';
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         emailInput.addEventListener('input', () => {
-            clearEmailError(emailInput);
+            hideEmailError(emailInput);
         });
     }
 
