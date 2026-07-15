@@ -35,7 +35,7 @@ $isLogged = isset($_SESSION['user_id']);
                 <div class="col">
                     <div class="product-card" style="background-image: url('assets/images/index/hks-hi-power.jpg')">
                         <button class="add-cart-btn" title="Add to Cart">+</button>
-                        <div class="card-body">
+                        <div class="product-body">
                             <h5 class="card-title">HKS Hi-Power Exhaust</h5>
                             <p class="price">₱130,267.94</p>
                         </div>
@@ -45,7 +45,7 @@ $isLogged = isset($_SESSION['user_id']);
                 <div class="col">
                     <div class="product-card" style="background-image: url('assets/images/index/tein-flex-z.jpg')">
                         <button class="add-cart-btn" title="Add to Cart">+</button>
-                        <div class="card-body">
+                        <div class="product-body">
                             <h5 class="card-title">Tein Flex Z Coilover Suspension Kit</h5>
                             <p class="price">₱50,130.60</p>
                         </div>
@@ -55,7 +55,7 @@ $isLogged = isset($_SESSION['user_id']);
                 <div class="col">
                     <div class="product-card" style="background-image: url('assets/images/index/brembo-4-piston.jpg')">
                         <button class="add-cart-btn" title="Add to Cart">+</button>
-                        <div class="card-body">
+                        <div class="product-body">
                             <h5 class="card-title">Brembo GT Systems 4 Piston Front Big Brake Kit Red Sl</h5>
                             <p class="price">₱80,632.42</p>
                         </div>
