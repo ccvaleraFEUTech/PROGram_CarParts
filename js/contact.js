@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const subjectInput = form.querySelector('input[name="subject"]');
     const concernInput = form.querySelector('textarea[name="message"]');
 
-    // validate email
     if (emailInput) {
         emailInput.addEventListener('blur', function() {
             validateEmail(emailInput);
