@@ -3,9 +3,9 @@ let locationData = null;
 
 async function loadLocationData() {
     try {
-        const response = await fetch('assets/json/philippine_provinces_cities_municipalities_and_barangays_2019v2.json');
+        const basePath = document.body.getAttribute('data-base-path') || '';
+        const response = await fetch(basePath + 'assets/json/philippine_provinces_cities_municipalities_and_barangays_2019v2.json');
         locationData = await response.json();
-        // reverse sort location data
         
         return true;
     } catch (error) {
