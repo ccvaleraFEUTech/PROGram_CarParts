@@ -1,5 +1,6 @@
 <?php 
 $title = "Login";
+$basePath = '';
 $hideHeader = true;
 $hideFooter = true;
 include 'includes/header.php';

@@ -1,6 +1,7 @@
 <?php
 
 $title = "AEM X-Series Wideband UEGO Gauge Kit";
+$basePath = '../';
 $whiteHeader = true;
 $basePath = '../';
 include('../includes/header.php');

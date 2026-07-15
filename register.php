@@ -1,6 +1,7 @@
 <?php 
 
 $title = "Register";
+$basePath = '';
 $hideHeader = true;
 $hideFooter = true;
 include 'includes/header.php';

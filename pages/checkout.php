@@ -1,6 +1,7 @@
 <?php 
 
 $title = "Checkout";
+$basePath = '../';
 $whiteHeader = true;
 $basePath = '../';
 include('../includes/header.php');
