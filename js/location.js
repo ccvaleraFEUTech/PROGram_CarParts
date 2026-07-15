@@ -33,3 +33,27 @@ function populateRegions() {
     }
 }
 
+function populateProvinces(regionCode) {
+    const provinceSelect = document.getElementById('province');
+    const citySelect = document.getElementById('city');
+    const barangaySelect = document.getElementById('barangay');
+    
+    if (!provinceSelect || !locationData || !regionCode) return;
+
+    provinceSelect.innerHTML = '<option value="">Select Province</option>';
+    citySelect.innerHTML = '<option value="">Select City/Municipality</option>';
+    if (barangaySelect) {
+        barangaySelect.innerHTML = '<option value="">Select Barangay</option>';
+    }
+
+    const region = locationData[regionCode];
+    if (!region || !region.province_list) return;
+
+    for (const provinceName in region.province_list) {
+        const option = document.createElement('option');
+        option.value = provinceName;
+        option.textContent = provinceName;
+        provinceSelect.appendChild(option);
+    }
+}
+
