@@ -1,4 +1,3 @@
-import { validateName, validateSubject, validateConcern, clearNameError, clearSubjectError, clearConcernError } from './field_validation.js';
 import { validateEmail, clearEmailError } from './authentication.js';
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -54,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-export function validateName(nameInput) {
+function validateName(nameInput) {
     const name = nameInput.value.trim();
     
     if (!name) {
@@ -70,7 +69,7 @@ export function validateName(nameInput) {
     return true;
 }
 
-export function showNameError(nameInput, message) {
+function showNameError(nameInput, message) {
     clearNameError(nameInput);
     
     let nameErrorMessage = document.getElementById('name-error-message');
@@ -78,13 +77,13 @@ export function showNameError(nameInput, message) {
     nameErrorMessage.textContent = message;
 }
 
-export function clearNameError(nameInput) {
+function clearNameError(nameInput) {
     let nameErrorMessage = document.getElementById('name-error-message');
     nameErrorMessage.style.display = 'none';
     nameInput.classList.remove('error');
 }
 
-export function validateSubject(subjectInput) {
+function validateSubject(subjectInput) {
     const subject = subjectInput.value.trim();
     
     if (!subject) {
@@ -100,7 +99,7 @@ export function validateSubject(subjectInput) {
     return true;
 }
 
-export function showSubjectError(subjectInput, message) {
+function showSubjectError(subjectInput, message) {
     clearSubjectError(subjectInput);
     
     let subjectErrorMessage = document.getElementById('subject-error-message');
@@ -108,13 +107,13 @@ export function showSubjectError(subjectInput, message) {
     subjectErrorMessage.textContent = message;
 }
 
-export function clearSubjectError(subjectInput) {
+function clearSubjectError(subjectInput) {
     let subjectErrorMessage = document.getElementById('subject-error-message');
     subjectErrorMessage.style.display = 'none';
     subjectInput.classList.remove('error');
 }
 
-export function validateConcern(concernInput) {
+function validateConcern(concernInput) {
     const concern = concernInput.value.trim();
     
     if (!concern) {
@@ -130,7 +129,7 @@ export function validateConcern(concernInput) {
     return true;
 }
 
-export function showConcernError(concernInput, message) {
+function showConcernError(concernInput, message) {
     clearConcernError(concernInput);
     
     let concernErrorMessage = document.getElementById('concern-error-message');
@@ -138,7 +137,7 @@ export function showConcernError(concernInput, message) {
     concernErrorMessage.textContent = message;
 }
 
-export function clearConcernError(concernInput) {
+function clearConcernError(concernInput) {
     let concernErrorMessage = document.getElementById('concern-error-message');
     concernErrorMessage.style.display = 'none';
     concernInput.classList.remove('error');
