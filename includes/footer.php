@@ -39,8 +39,5 @@ if (!isset($basePath)) {
 <script src="<?php echo $basePath; ?>js/main.js"></script>
 <script src="<?php echo $basePath; ?>js/location.js"></script>
 <script src="<?php echo $basePath; ?>js/registration.js"></script>
-<script src="<?php echo $basePath; ?>js/cart.js"></script>
-<script src="<?php echo $basePath; ?>js/products.js"></script>
-<script src="<?php echo $basePath; ?>js/checkout.js"></script>
 </body>
 </html>
