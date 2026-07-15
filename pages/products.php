@@ -31,7 +31,7 @@ include('../includes/header.php');
     <div class="products-right">
          <input type="text" name="search" placeholder="Search for products" class="search">
          <div class="grid">
-            <a href="../pages/product-info.php" class="product-link">
+            <a href="<?php echo $basePath; ?>pages/product-info.php" class="product-link">
                 <div class="card-product" style="background-image: url('../assets/images/products/aem-x-series-uego.jpg');">
                     <button class="add-cart-btn" title="Add to Cart">+</button>
                     <div class="product-body">

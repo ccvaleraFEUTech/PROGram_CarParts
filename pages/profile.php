@@ -122,7 +122,7 @@ $addresses = [
                 <div class="seller-cta">
                     <h3>Sell on PROGram</h3>
                     <p>Have genuine car parts to offer? Apply for seller access and manage your own stock, pricing, and orders from the seller panel.</p>
-                    <a href="/PROGram/seller/dashboard.php" class="btn-outline-pill" style="background-color:#ffffff;">Go to Seller Panel</a>
+                    <a href="<?php echo $basePath; ?>seller/dashboard.php" class="btn-outline-pill" style="background-color:#ffffff;">Go to Seller Panel</a>
                 </div>
 
                 <div class="profile-card" style="margin-top: 30px;">

@@ -17,7 +17,7 @@ if (!isset($basePath)){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="<?php echo $basePath; ?>assets/images/favicon.ico">
      <link rel="stylesheet" href="<?php echo $basePath; ?>assets/css/style.css">
     <title><?php echo $title?> || PROGram</title>
 </head>
@@ -29,7 +29,7 @@ if (!isset($basePath)){
         } 
         ?>">
         <div class="logo">
-            <a href="index.php"><img src="assets/images/logo.png" alt="logo"></a>
+            <a href="<?php echo $basePath; ?>index.php"><img src="<?php echo $basePath; ?>assets/images/logo.png" alt="logo"></a>
         </div>
         <button type="button" id="ham-toggle" class="ham-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="main-menu">
             <span></span>
@@ -38,18 +38,19 @@ if (!isset($basePath)){
         </button>
         <nav id="main-menu">
             <ul class="navigation">
-                <li><a href="../index.php">Home</a></li>
-                <li><a href="../pages/products.php">Products</a></li>
-                <li><a href="../pages/contact.php">Contacts</a></li>
-                <li><a href="../pages/cart.php">Cart</a></li>
+                <li><a href="<?php echo $basePath; ?>index.php">Home</a></li>
+                <li><a href="<?php echo $basePath; ?>pages/about.php">About</a></li>
+                <li><a href="<?php echo $basePath; ?>pages/products.php">Products</a></li>
+                <li><a href="<?php echo $basePath; ?>pages/contact.php">Contacts</a></li>
+                <li><a href="<?php echo $basePath; ?>pages/cart.php">Cart</a></li>
             </ul>
 
             <div class="auth-group">
                 <?php if ($isLogged): ?>
                    <a href="#" class="auth-btn"><button class="authentication">Logout</button></a>
                 <?php else: ?>
-                    <a href="login.php" class="auth-btn"><button class="authentication">Login</button></a>
-                    <a href="register.php" class="auth-btn"><button class="authentication">Register</button></a>
+                    <a href="<?php echo $basePath; ?>login.php" class="auth-btn"><button class="authentication">Login</button></a>
+                    <a href="<?php echo $basePath; ?>register.php" class="auth-btn"><button class="authentication">Register</button></a>
                 <?php endif; ?>
             </div>
         </nav>

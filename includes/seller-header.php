@@ -22,7 +22,7 @@ if (!isset($activePage)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="<?php echo $basePath; ?>assets/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
     <link rel="stylesheet" href="<?php echo $basePath; ?>assets/css/admin.css">
     <title><?php echo $title ?> || PROGram Seller</title>
 </head>
@@ -34,21 +34,21 @@ if (!isset($activePage)) {
     <div class="admin-shell">
         <aside id="admin-sidebar" class="admin-sidebar">
             <div class="admin-brand">
-                <a href="/PROGram/index.php"><img src="/PROGram/assets/images/logo.png" alt="logo"></a>
+                <a href="<?php echo $basePath; ?>index.php"><img src="<?php echo $basePath; ?>assets/images/logo.png" alt="logo"></a>
                 <span>PROGram<br>Seller Panel</span>
             </div>
 
             <nav class="admin-nav">
                 <ul>
-                    <li><a href="/PROGram/seller/dashboard.php" class="<?php echo $activePage == 'dashboard' ? 'active' : ''; ?>">Dashboard</a></li>
-                    <li><a href="/PROGram/seller/users.php" class="<?php echo $activePage == 'users' ? 'active' : ''; ?>">Admin Users</a></li>
-                    <li><a href="/PROGram/seller/inventory.php" class="<?php echo $activePage == 'inventory' ? 'active' : ''; ?>">Inventory & Pricing</a></li>
-                    <li><a href="/PROGram/seller/reports.php" class="<?php echo $activePage == 'reports' ? 'active' : ''; ?>">Reports</a></li>
+                    <li><a href="<?php echo $basePath; ?>seller/dashboard.php" class="<?php echo $activePage == 'dashboard' ? 'active' : ''; ?>">Dashboard</a></li>
+                    <li><a href="<?php echo $basePath; ?>seller/users.php" class="<?php echo $activePage == 'users' ? 'active' : ''; ?>">Admin Users</a></li>
+                    <li><a href="<?php echo $basePath; ?>seller/inventory.php" class="<?php echo $activePage == 'inventory' ? 'active' : ''; ?>">Inventory & Pricing</a></li>
+                    <li><a href="<?php echo $basePath; ?>seller/reports.php" class="<?php echo $activePage == 'reports' ? 'active' : ''; ?>">Reports</a></li>
                 </ul>
             </nav>
 
             <div class="admin-sidebar-footer">
-                <a href="/PROGram/index.php">&larr; Back to Store</a>
+                <a href="<?php echo $basePath; ?>index.php">&larr; Back to Store</a>
                 <a href="#" class="logout-link">Logout</a>
             </div>
         </aside>

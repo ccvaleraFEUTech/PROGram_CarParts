@@ -7,7 +7,7 @@ include 'includes/header.php';
 ?>
 
 <div class="auth-page">
-    <a href="index.php" class="back">&larr;</a>
+    <a href="<?php echo $basePath; ?>index.php" class="back">&larr;</a>
     <div class="card wide">
         <div class="auth-card-body">
             <h3>Create an Account</h3>

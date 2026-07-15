@@ -8,7 +8,7 @@ include 'includes/header.php';
     <div class="container">
         <h1>Welcome to PROGram</h1>
         <p>Where high quality cars go pro mode.</p>
-        <a href="pages/products.php" class="brand">Shop Now</a>
+        <a href="<?php echo $basePath; ?>pages/products.php" class="brand">Shop Now</a>
     </div>
 </section>
 
