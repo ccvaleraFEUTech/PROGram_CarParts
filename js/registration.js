@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const emailInput = form.querySelector('input[name="email"]');
     const passwordInput = form.querySelector('input[name="password"]');
     const confirmPasswordInput = form.querySelector('input[name="confirm_password"]');
+    const phoneInput = form.querySelector('input[name="contact-number"]');
 
     // Email Format Validation
     if (emailInput) {
@@ -51,7 +52,68 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
         }
     });
+
+    // Phone number formatting and validation
+    if (phoneInput) {
+        phoneInput.addEventListener('input', () => {
+            formatPhoneNumber(phoneInput);
+        });
+        
+        phoneInput.addEventListener('blur', () => {
+            validatePhoneNumber(phoneInput);
+        });
+    }
 });
+
+function formatPhoneNumber(input) {
+    // Remove all non-numeric characters
+    let value = input.value.replace(/\D/g, '');
+    
+    // Format as 09XX XXX XXXX
+    if (value.length > 10) {
+        value = value.substring(0, 10);
+    }
+    
+    if (value.length > 6) {
+        value = value.replace(/(\d{4})(\d{3})(\d{3})/, '$1 $2 $3');
+    } else if (value.length > 3) {
+        value = value.replace(/(\d{4})(\d{3})/, '$1 $2');
+    }
+    
+    input.value = value;
+}
+
+function validatePhoneNumber(phoneInput) {
+    const phone = phoneInput.value.trim();
+    
+    if (!phone) {
+        showPhoneNumberError(phoneInput, 'Phone number is required');
+        return false;
+    }
+    
+    if (phone.length < 13) {
+        showPhoneNumberError(phoneInput, 'Please enter a valid phone number (e.g., 0912 345 6789)');
+        return false;
+    }
+    
+    return true;
+}
+
+function showPhoneNumberError(phoneInput, message) {
+    clearPhoneNumberError(phoneInput);
+    
+    let phoneErrorMessage = document.getElementById('phone-error-message');
+    phoneErrorMessage.style.display = 'block';
+    phoneErrorMessage.textContent = message;
+    
+    phoneInput.classList.add('error');
+}
+
+function clearPhoneNumberError(phoneInput) {
+    let phoneErrorMessage = document.getElementById('phone-error-message');
+    phoneErrorMessage.style.display = 'none';
+    phoneInput.classList.remove('error');
+}
 
 function validateEmail(emailInput) {
     const email = emailInput.value.trim();
