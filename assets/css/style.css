@@ -948,7 +948,7 @@ form.contact-form textarea{
     box-sizing: border-box;
 }
 
-.form-select option {
+select, select option {
     font-family: var(--font-body);
 }
 
