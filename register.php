@@ -2,13 +2,18 @@
 
 $title = "Register";
 $basePath = '';
+$basePath = '';
 $hideHeader = true;
 $hideFooter = true;
 include 'includes/header.php';
 ?>
 
 <div class="auth-page">
+<<<<<<< HEAD
+    <?php echo $basePath; ?>index.php class="back">&larr;</a>
+=======
     <a href="<?php echo $basePath; ?>index.php" class="back">&larr;</a>
+>>>>>>> 4e21e7943f7c1ac1e5cda51f36138960a59bc20a
     <div class="card wide">
         <div class="auth-card-body">
             <h3>Create an Account</h3>
@@ -17,6 +22,10 @@ include 'includes/header.php';
                     <label class="form-label">First Name <span class="required-symbol">*</span></label>
                     <input type="text" name="first" class="form-control" required>
                 </div>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 4e21e7943f7c1ac1e5cda51f36138960a59bc20a
                 <div class="field">
                     <label class="form-label">Middle Name <span class="required-symbol">*</span></label>
                     <input type="text" name="middle" class="form-control" required>
@@ -29,12 +38,16 @@ include 'includes/header.php';
                     <label class="form-label">Email Address <span class="required-symbol">*</span></label>
                     <input type="email" name="email" class="form-control" required>
                     <p id="email-error-message" style="display: none">Invalid email format.</p>
+                    <p id="email-error-message" style="display: none">Invalid email format.</p>
                 </div>
 
                 <div class="row">
                     <div class="column">
                         <label class="form-label">Password <span class="required-symbol">*</span></label>
+                        <label class="form-label">Password <span class="required-symbol">*</span></label>
                         <div class="password-wrapper">
+                            <input type="password" name="password" class="form-control" required>
+                            <i class="fa-solid fa-eye-slash password-toggle"></i>
                             <input type="password" name="password" class="form-control" required>
                             <i class="fa-solid fa-eye-slash password-toggle"></i>
                         </div>
@@ -60,7 +73,10 @@ include 'includes/header.php';
 
                     <div class="column">
                         <label class="form-label">Confirm Password <span class="required-symbol">*</span></label>
+                        <label class="form-label">Confirm Password <span class="required-symbol">*</span></label>
                         <div class="password-wrapper">
+                            <input type="password" name="confirm_password" class="form-control" required>
+                            <i class="fa-solid fa-eye-slash password-toggle"></i>
                             <input type="password" name="confirm_password" class="form-control" required>
                             <i class="fa-solid fa-eye-slash password-toggle"></i>
                         </div>
@@ -71,16 +87,36 @@ include 'includes/header.php';
                     <div class="column">
                         <label class="form-label">Region <span class="required-symbol">*</span></label>
                         <select name="region" id="region" class="form-select" required></select>
+                        <label class="form-label">Region <span class="required-symbol">*</span></label>
+                        <select name="region" id="region" class="form-select" required></select>
                     </div>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 4e21e7943f7c1ac1e5cda51f36138960a59bc20a
                     <div class="column">
                         <label class="form-label">Province <span class="required-symbol">*</span></label>
                         <select name="province" id="province" class="form-select" required></select>
+                        <label class="form-label">Province <span class="required-symbol">*</span></label>
+                        <select name="province" id="province" class="form-select" required></select>
                     </div>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 4e21e7943f7c1ac1e5cda51f36138960a59bc20a
                     <div class="column">
                         <label class="form-label">City/Municipality <span class="required-symbol">*</span></label>
                         <select name="city" id="city" class="form-select" required></select>
+                        <label class="form-label">City/Municipality <span class="required-symbol">*</span></label>
+                        <select name="city" id="city" class="form-select" required></select>
                     </div>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 4e21e7943f7c1ac1e5cda51f36138960a59bc20a
                     <div class="column">
+                        <label class="form-label">Barangay <span class="required-symbol">*</span></label>
+                        <select name="barangay" id="barangay" class="form-select" required></select>
                         <label class="form-label">Barangay <span class="required-symbol">*</span></label>
                         <select name="barangay" id="barangay" class="form-select" required></select>
                     </div>
@@ -89,13 +125,17 @@ include 'includes/header.php';
                 <div class="field">
                     <label class="form-label">Street / House No. <span class="required-symbol">*</span></label>
                     <input type="text" name="street-addy" class="form-control" required placeholder="e.g. 123 Juan Dela Cruz St., Brgy. Matibay">
+                    <label class="form-label">Street / House No. <span class="required-symbol">*</span></label>
+                    <input type="text" name="street-addy" class="form-control" required placeholder="e.g. 123 Juan Dela Cruz St., Brgy. Matibay">
                 </div>
 
                 <div class="field">
                     <label class="form-label">Contact Number <span class="required-symbol">*</span></label>
+                    <label class="form-label">Contact Number <span class="required-symbol">*</span></label>
                     <input type="text" name="contact-number" class="form-control" required placeholder="e.g. 0912 345 6789">
                 </div>
 
+                <button type="submit" class="submit-btn">Register</button>
                 <button type="submit" class="submit-btn">Register</button>
             </form>
 

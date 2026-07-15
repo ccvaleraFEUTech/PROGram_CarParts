@@ -11,7 +11,7 @@ include 'includes/header.php';
     <div class="card">
         <div class="auth-card-body">
             <h3>Login</h3>
-            <form action="" method="post">
+            <form action="login/login_handler.php" method="post">
                 <div class="field">
                     <label class="form-label">Email</label>
                     <input type="email" name="email" class="form-control" required>
