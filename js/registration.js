@@ -163,13 +163,16 @@ function validateConfirmPassword(passwordInput, confirmPasswordInput) {
     const password = passwordInput.value;
     const confirmPassword = confirmPasswordInput.value;
     
+    // Don't check confirm password if password is empty
     if (!password) return;
     
+    // If password is entered but confirm password is empty
     if (!confirmPassword) {
         showConfirmPasswordError(confirmPasswordInput, 'Please confirm your password');
         return false;
     }
     
+    // If password is not equal to confirm password
     if (password !== confirmPassword) {
         showConfirmPasswordError(confirmPasswordInput, 'Passwords do not match');
         return false;
@@ -218,6 +221,7 @@ function validateRegistrationForm(form) {
     const emailInput = form.querySelector('input[name="email"]');
     const passwordInput = form.querySelector('input[name="password"]');
     const confirmPasswordInput = form.querySelector('input[name="confirm_password"]');
+    const phoneInput = form.querySelector('input[name="contact-number"]');
     
     let isValid = true;
     
@@ -226,6 +230,10 @@ function validateRegistrationForm(form) {
     }
     
     if (passwordInput && confirmPasswordInput && !validateConfirmPassword(passwordInput, confirmPasswordInput)) {
+        isValid = false;
+    }
+
+    if (phoneInput && !validatePhoneNumber(phoneInput)) {
         isValid = false;
     }
     
