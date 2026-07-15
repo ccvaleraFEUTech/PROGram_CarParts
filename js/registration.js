@@ -126,38 +126,6 @@ function clearPhoneNumberError(phoneInput) {
     phoneInput.classList.remove('error');
 }
 
-function validateEmail(emailInput) {
-    const email = emailInput.value.trim();
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    
-    if (!email) {
-        showEmailError(emailInput, 'Email is required');
-        return false;
-    }
-    
-    if (!emailRegex.test(email)) {
-        showEmailError(emailInput, 'Please enter a valid email address');
-        return false;
-    }
-    
-    return true;
-}
-
-function showEmailError(emailInput, message) {
-    clearEmailError(emailInput);
-    
-    let emailErrorMessage = document.getElementById('email-error-message');
-    emailErrorMessage.style.display = 'block';
-    emailErrorMessage.textContent = message;
-}
-
-function clearEmailError(emailInput) {
-    let emailErrorMessage = document.getElementById('email-error-message');
-    emailErrorMessage.style.display = 'none';
-    emailInput.classList.remove('error');
-}
-
-
 function validateConfirmPassword(passwordInput, confirmPasswordInput) {
     const password = passwordInput.value;
     const confirmPassword = confirmPasswordInput.value;
