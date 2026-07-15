@@ -15,24 +15,25 @@ include 'includes/header.php';
 
             <form action="login/register_handler.php" method="post">
                 <div class="field">
-                    <label class="form-label">Complete Name</label>
+                    <label class="form-label">Complete Name <span class="required-symbol">*</span></label>
                     <input type="text" name="full-name" class="form-control" required>
                 </div>
                 <div class="field">
-                    <label class="form-label">Email Address</label>
+                    <label class="form-label">Email Address <span class="required-symbol">*</span></label>
                     <input type="email" name="email" class="form-control" required>
+                    <p id="email-error-message" style="display: none">Invalid email format.</p>
                 </div>
 
                 <div class="row">
                     <div class="column">
-                        <label class="form-label">Password</label>
+                        <label class="form-label">Password <span class="required-symbol">*</span></label>
                         <div class="password-wrapper">
                             <input type="password" name="password" class="form-control" required>
                             <i class="fa-solid fa-eye-slash password-toggle"></i>
                         </div>
                     </div>
                     <div class="column">
-                        <label class="form-label">Confirm Password</label>
+                        <label class="form-label">Confirm Password <span class="required-symbol">*</span></label>
                         <div class="password-wrapper">
                             <input type="password" name="confirm_password" class="form-control" required>
                             <i class="fa-solid fa-eye-slash password-toggle"></i>
@@ -42,30 +43,30 @@ include 'includes/header.php';
 
                 <div class="row three">
                     <div class="column">
-                        <label class="form-label">Region</label>
+                        <label class="form-label">Region <span class="required-symbol">*</span></label>
                         <select name="region" id="region" class="form-select" required></select>
                     </div>
                     <div class="column">
-                        <label class="form-label">Province</label>
+                        <label class="form-label">Province <span class="required-symbol">*</span></label>
                         <select name="province" id="province" class="form-select" required></select>
                     </div>
                     <div class="column">
-                        <label class="form-label">City/Municipality</label>
+                        <label class="form-label">City/Municipality <span class="required-symbol">*</span></label>
                         <select name="city" id="city" class="form-select" required></select>
                     </div>
                     <div class="column">
-                        <label class="form-label">Barangay</label>
+                        <label class="form-label">Barangay <span class="required-symbol">*</span></label>
                         <select name="barangay" id="barangay" class="form-select" required></select>
                     </div>
                 </div>
 
                 <div class="field">
-                    <label class="form-label">Street / House No.</label>
+                    <label class="form-label">Street / House No. <span class="required-symbol">*</span></label>
                     <input type="text" name="street-addy" class="form-control" required placeholder="e.g. 123 Juan Dela Cruz St., Brgy. Matibay">
                 </div>
 
                 <div class="field">
-                    <label class="form-label">Contact Number</label>
+                    <label class="form-label">Contact Number <span class="required-symbol">*</span></label>
                     <input type="text" name="contact-number" class="form-control" required placeholder="e.g. 0912 345 6789">
                 </div>
 

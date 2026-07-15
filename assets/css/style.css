@@ -940,6 +940,14 @@ form.contact-form textarea{
     font-weight: 600;
 }
 
+#email-error-message {
+    color: red;
+}
+
+.required-symbol {
+    color: red;
+}
+
 .form-control, .form-select{
     border: 1px solid #CCCCCC;
     padding: 12px 15px;
