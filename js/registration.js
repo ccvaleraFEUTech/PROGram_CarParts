@@ -78,3 +78,20 @@ function addPasswordToggle(passwordInput) {
     });
 }
 
+function validateRegistrationForm(form) {
+    const emailInput = form.querySelector('input[name="email"]');
+    const passwordInput = form.querySelector('input[name="password"]');
+    const confirmPasswordInput = form.querySelector('input[name="confirm_password"]');
+    
+    let isValid = true;
+    
+    if (emailInput && !validateEmail(emailInput)) {
+        isValid = false;
+    }
+    
+    if (passwordInput && confirmPasswordInput && !validateConfirmPassword(passwordInput, confirmPasswordInput)) {
+        isValid = false;
+    }
+    
+    return isValid;
+}
