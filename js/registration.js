@@ -78,18 +78,9 @@ document.addEventListener('DOMContentLoaded', () => {
 function formatPhoneNumber(input) {
     // Remove all non-numeric characters
     let value = input.value.replace(/\D/g, '');
-    
-    const phoneMaxLength = 11;
 
-    // Format as 09XX XXX XXXX
-    if (value.length > phoneMaxLength) {
-        value = value.substring(0, phoneMaxLength);
-    }
-    
-    if (value.length > 6) {
-        value = value.replace(/(\d{4})(\d{0,3})(\d{0,4})/, '$1 $2 $3');
-    } else if (value.length >= 4) {
-        value = value.replace(/(\d{4})(\d{0,3})/, '$1 $2');
+    if (value.length > PHONE_MAX_LENGTH) {
+        value = value.substring(0, PHONE_MAX_LENGTH);
     }
     
     input.value = value;
