@@ -90,7 +90,7 @@ function validatePhoneNumber(phoneInput) {
     const phone = phoneInput.value.trim();
     
     if (!phone) {
-        showPhoneNumberError(phoneInput, 'Phone number is required');
+        showPhoneNumberError(phoneInput, ERROR_MESSAGE_PHONE_REQUIRED);
         return false;
     }
     
@@ -99,13 +99,13 @@ function validatePhoneNumber(phoneInput) {
     
     // Check if it starts with 09 and is exactly 11 digits
     if (!/^09\d{9}$/.test(phoneDigits)) {
-        showPhoneNumberError(phoneInput, 'Please enter a valid phone number (e.g., 0912 345 6789)');
+        showPhoneNumberError(phoneInput, ERROR_MESSAGE_PHONE_INVALID);
         return false;
     }
     
     // Check length
     if (phoneDigits.length !== 11) {
-        showPhoneNumberError(phoneInput, 'Please enter a valid phone number (e.g., 0912 345 6789)');
+        showPhoneNumberError(phoneInput, ERROR_MESSAGE_PHONE_INVALID);
         return false;
     }
     
@@ -167,13 +167,13 @@ function validateConfirmPassword(passwordInput, confirmPasswordInput) {
     
     // If password is entered but confirm password is empty
     if (!confirmPassword) {
-        showConfirmPasswordError(confirmPasswordInput, 'Please confirm your password');
+        showConfirmPasswordError(confirmPasswordInput, ERROR_MESSAGE_CONFIRM_PASSWORD_REQUIRED);
         return false;
     }
     
     // If password is not equal to confirm password
     if (password !== confirmPassword) {
-        showConfirmPasswordError(confirmPasswordInput, 'Passwords do not match');
+        showConfirmPasswordError(confirmPasswordInput, ERROR_MESSAGE_PASSWORDS_DO_NOT_MATCH);
         return false;
     }
     
