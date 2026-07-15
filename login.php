@@ -18,10 +18,12 @@ $isLogged = isset($_SESSION['user_id']);
     <title><?php echo $title; ?></title>
 </head>
 <body>
+    <!-- HEADER -->
     <?php if(!isset($hideHeader) || !$hideHeader): ?>
         <?php include 'includes/header.php'; ?>
     <?php endif; ?>
 
+    <!-- MAIN -->
     <main>
         <div class="auth-page">
             <a href="<?php echo $basePath; ?>index.php" class="back">&larr;</a>
@@ -54,10 +56,12 @@ $isLogged = isset($_SESSION['user_id']);
         </div>
     </main>
 
+    <!-- FOOTER -->
     <?php if(!isset($hideFooter) || !$hideFooter): ?>
         <?php include 'includes/footer.php'; ?>
     <?php endif; ?>
 
+    <!-- JAVASCRIPT -->
     <script src="<?php echo $basePath; ?>js/main.js"></script>
 </body>
 </html>
