@@ -73,7 +73,9 @@ function validateEmail(emailInput) {
 function showEmailError(emailInput, message) {
     clearEmailError(emailInput);
     
-    // TODO: Make the email error message visible and set text
+    let emailErrorMessage = document.getElementById('email-error-message');
+    emailErrorMessage.style.display = 'block';
+    emailErrorMessage.textContent = message;
 }
 
 function clearEmailError(emailInput) {
