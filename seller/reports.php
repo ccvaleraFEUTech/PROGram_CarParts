@@ -1,9 +1,9 @@
-<?php
+<?php 
+session_start();
 
 $title = "Reports";
 $basePath = '../';
 $activePage = 'reports';
-include('../includes/seller-header.php');
 
 $inventoryReport = [
     ['name' => 'AEM X-Series Wideband UEGO Gauge Kit', 'sku' => 'AEM-UEGO-001', 'category' => 'Gauges',       'remaining' => 34, 'reorder' => 10, 'status' => 'Healthy'],
@@ -23,105 +23,120 @@ $auditLog = [
     ['time' => 'Jul 12, 2026 - 3:18 PM',  'user' => 'Jade Carlos Castillo', 'action' => 'Added Admin',        'module' => 'User Mgmt.',  'details' => 'Created account for Carla Reyes (Support Staff)'],
 ];
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <link rel="stylesheet" href="<?php echo $basePath; ?>assets/css/admin.css">
+    <title><?php echo $title ?> || PROGram Seller</title>
+</head>
+<body class="admin-body">
+    <?php include '../includes/seller-header.php'; ?>
 
-<div class="admin-panel">
-    <div class="admin-panel-header">
-        <div>
-            <h2>Inventory Report</h2>
-            <p class="panel-sub">Remaining items per product against their reorder level</p>
+    <main>
+        <div class="admin-panel">
+            <div class="admin-panel-header">
+                <div>
+                    <h2>Inventory Report</h2>
+                    <p class="panel-sub">Remaining items per product against their reorder level</p>
+                </div>
+                <a href="#" class="btn-outline-pill">Export CSV</a>
+            </div>
+
+            <div class="admin-table-wrap">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>SKU</th>
+                            <th>Category</th>
+                            <th>Remaining</th>
+                            <th>Reorder Level</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($inventoryReport as $item): ?>
+                            <tr>
+                                <td class="cell-main"><?php echo htmlspecialchars($item['name']); ?></td>
+                                <td><?php echo htmlspecialchars($item['sku']); ?></td>
+                                <td><?php echo htmlspecialchars($item['category']); ?></td>
+                                <td><?php echo htmlspecialchars($item['remaining']); ?></td>
+                                <td><?php echo htmlspecialchars($item['reorder']); ?></td>
+                                <td>
+                                    <?php
+                                        $badgeClass = 'badge-success';
+                                        if ($item['status'] === 'Low Stock') $badgeClass = 'badge-warning';
+                                        if ($item['status'] === 'Out of Stock') $badgeClass = 'badge-danger';
+                                    ?>
+                                    <span class="badge <?php echo $badgeClass; ?>"><?php echo htmlspecialchars($item['status']); ?></span>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <a href="#" class="btn-outline-pill">Export CSV</a>
-    </div>
 
-    <div class="admin-table-wrap">
-        <table class="admin-table">
-            <thead>
-                <tr>
-                    <th>Product</th>
-                    <th>SKU</th>
-                    <th>Category</th>
-                    <th>Remaining</th>
-                    <th>Reorder Level</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($inventoryReport as $item): ?>
-                    <tr>
-                        <td class="cell-main"><?php echo htmlspecialchars($item['name']); ?></td>
-                        <td><?php echo htmlspecialchars($item['sku']); ?></td>
-                        <td><?php echo htmlspecialchars($item['category']); ?></td>
-                        <td><?php echo htmlspecialchars($item['remaining']); ?></td>
-                        <td><?php echo htmlspecialchars($item['reorder']); ?></td>
-                        <td>
-                            <?php
-                                $badgeClass = 'badge-success';
-                                if ($item['status'] === 'Low Stock') $badgeClass = 'badge-warning';
-                                if ($item['status'] === 'Out of Stock') $badgeClass = 'badge-danger';
-                            ?>
-                            <span class="badge <?php echo $badgeClass; ?>"><?php echo htmlspecialchars($item['status']); ?></span>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    </div>
-</div>
+        <div class="admin-panel">
+            <div class="admin-panel-header">
+                <div>
+                    <h2>Audit Log Report</h2>
+                    <p class="panel-sub">All recorded activity for the account currently logged in</p>
+                </div>
+                <a href="#" class="btn-outline-pill">Export CSV</a>
+            </div>
 
-<div class="admin-panel">
-    <div class="admin-panel-header">
-        <div>
-            <h2>Audit Log Report</h2>
-            <p class="panel-sub">All recorded activity for the account currently logged in</p>
+            <div class="filter-bar">
+                <div class="group-input">
+                    <label class="form-label">From</label>
+                    <input type="date" class="form-control">
+                </div>
+                <div class="group-input">
+                    <label class="form-label">To</label>
+                    <input type="date" class="form-control">
+                </div>
+                <div class="group-input">
+                    <label class="form-label">Module</label>
+                    <select class="form-select">
+                        <option value="">All Modules</option>
+                        <option>Inventory</option>
+                        <option>User Mgmt.</option>
+                        <option>Auth</option>
+                    </select>
+                </div>
+                <button type="button" class="btn-dark-pill">Filter</button>
+            </div>
+
+            <div class="admin-table-wrap">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Date & Time</th>
+                            <th>User</th>
+                            <th>Action</th>
+                            <th>Module</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($auditLog as $log): ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($log['time']); ?></td>
+                                <td><?php echo htmlspecialchars($log['user']); ?></td>
+                                <td><?php echo htmlspecialchars($log['action']); ?></td>
+                                <td><span class="badge badge-info"><?php echo htmlspecialchars($log['module']); ?></span></td>
+                                <td><?php echo htmlspecialchars($log['details']); ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <a href="#" class="btn-outline-pill">Export CSV</a>
-    </div>
+    </main>
 
-    <div class="filter-bar">
-        <div class="group-input">
-            <label class="form-label">From</label>
-            <input type="date" class="form-control">
-        </div>
-        <div class="group-input">
-            <label class="form-label">To</label>
-            <input type="date" class="form-control">
-        </div>
-        <div class="group-input">
-            <label class="form-label">Module</label>
-            <select class="form-select">
-                <option value="">All Modules</option>
-                <option>Inventory</option>
-                <option>User Mgmt.</option>
-                <option>Auth</option>
-            </select>
-        </div>
-        <button type="button" class="btn-dark-pill">Filter</button>
-    </div>
-
-    <div class="admin-table-wrap">
-        <table class="admin-table">
-            <thead>
-                <tr>
-                    <th>Date & Time</th>
-                    <th>User</th>
-                    <th>Action</th>
-                    <th>Module</th>
-                    <th>Details</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($auditLog as $log): ?>
-                    <tr>
-                        <td><?php echo htmlspecialchars($log['time']); ?></td>
-                        <td><?php echo htmlspecialchars($log['user']); ?></td>
-                        <td><?php echo htmlspecialchars($log['action']); ?></td>
-                        <td><span class="badge badge-info"><?php echo htmlspecialchars($log['module']); ?></span></td>
-                        <td><?php echo htmlspecialchars($log['details']); ?></td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    </div>
-</div>
-
-<?php include('../includes/seller-footer.php'); ?>
+    <?php include '../includes/seller-footer.php'; ?>
+</body>
+</html>

@@ -1,15 +1,3 @@
-// Implement the following:
-// 1. Product filtering functionality
-// 2. Product search functionality
-// 3. Product sorting functionality
-// 4. Product pagination functionality
-// 5. Product details modal functionality
-// 6. Product cart functionality
-// 7. Product wishlist functionality
-// 8. Product reviews functionality
-// 9. Product ratings functionality
-// 10. Product images functionality
-
 document.querySelectorAll('.category a').forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
