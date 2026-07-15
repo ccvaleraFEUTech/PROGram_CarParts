@@ -1,3 +1,4 @@
+// Add event listeners to category filters
 document.querySelectorAll('.category a').forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
@@ -6,8 +7,9 @@ document.querySelectorAll('.category a').forEach(link => {
     });
 });
 
+// Filter products by category
 function filterProducts(category) {
-    const products = document.querySelectorAll('.card-product');
+    const products = document.querySelectorAll('.product-card');
     products.forEach(product => {
         if (category === 'all' || product.dataset.category === category) {
             product.style.display = 'block';
@@ -17,6 +19,7 @@ function filterProducts(category) {
     });
 }
 
+// Search products by title
 const searchInput = document.querySelector('.search');
 searchInput.addEventListener('input', (e) => {
     const searchTerm = e.target.value.toLowerCase();
@@ -24,7 +27,7 @@ searchInput.addEventListener('input', (e) => {
 });
 
 function searchProducts(searchTerm) {
-    const products = document.querySelectorAll('.card-product');
+    const products = document.querySelectorAll('.product-card');
     products.forEach(product => {
         const title = product.querySelector('.card-title').textContent.toLowerCase();
         if (title.includes(searchTerm)) {
