@@ -13,8 +13,8 @@ if (!isset($title)){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="/PROGram/assets/images/favicon.ico">
-    <link rel="stylesheet" href="/PROGram/assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="stylesheet" href="assets/css/style.css">
     <title><?php echo $title?> || PROGram</title>
 </head>
 <body class="<?php echo (isset($hideHeader) && $hideHeader) ? 'auth-body' : ''; ?>">
@@ -25,7 +25,7 @@ if (!isset($title)){
         } 
         ?>">
         <div class="logo">
-            <a href="/PROGram/index.php"><img src="/PROGram/assets/images/logo.png" alt="logo"></a>
+            <a href="index.php"><img src="assets/images/logo.png" alt="logo"></a>
         </div>
         <button type="button" id="ham-toggle" class="ham-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="main-menu">
             <span></span>
@@ -34,18 +34,18 @@ if (!isset($title)){
         </button>
         <nav id="main-menu">
             <ul class="navigation">
-                <li><a href="/PROGram/index.php">Home</a></li>
-                <li><a href="/PROGram/pages/products.php">Products</a></li>
-                <li><a href="/PROGram/pages/contact.php">Contacts</a></li>
-                <li><a href="/PROGram/pages/cart.php">Cart</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="pages/products.php">Products</a></li>
+                <li><a href="pages/contact.php">Contacts</a></li>
+                <li><a href="pages/cart.php">Cart</a></li>
             </ul>
 
             <div class="auth-group">
                 <?php if ($isLogged): ?>
                    <a href="#" class="auth-btn"><button class="authentication">Logout</button></a>
                 <?php else: ?>
-                    <a href="/PROGRAM/login.php" class="auth-btn"><button class="authentication">Login</button></a>
-                    <a href="/PROGRAM/register.php" class="auth-btn"><button class="authentication">Register</button></a>
+                    <a href="login.php" class="auth-btn"><button class="authentication">Login</button></a>
+                    <a href="register.php" class="auth-btn"><button class="authentication">Register</button></a>
                 <?php endif; ?>
             </div>
         </nav>
