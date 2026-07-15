@@ -104,7 +104,7 @@ function validatePhoneNumber(phoneInput) {
         return false;
     }
     
-    // Check formatted length (11 digits + 2 spaces = 13 characters)
+    // Check length
     if (phoneDigits.length !== 11) {
         showPhoneNumberError(phoneInput, 'Please enter a valid phone number (e.g., 0912 345 6789)');
         return false;
@@ -162,6 +162,8 @@ function clearEmailError(emailInput) {
 function validateConfirmPassword(passwordInput, confirmPasswordInput) {
     const password = passwordInput.value;
     const confirmPassword = confirmPasswordInput.value;
+    
+    if (!password) return;
     
     if (!confirmPassword) {
         showConfirmPasswordError(confirmPasswordInput, 'Please confirm your password');
