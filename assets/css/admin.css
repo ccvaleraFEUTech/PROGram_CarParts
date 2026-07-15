@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Cal+Sans&family=Kumbh+Sans:wght,YOPQ@100..900,300&display=swap');
 
+:root {
+    --font-heading: 'Cal Sans', sans-serif;
+    --font-body: 'Kumbh Sans', sans-serif;
+    --font-ui: 'Cal Sans', sans-serif;
+}
+
 *{
     box-sizing: border-box;
     margin: 0;
@@ -7,22 +13,22 @@
 }
 
 body{
-    font-family: 'Kumbh Sans', sans-serif;
+    font-family: var(--font-body);
     background-color: #f4f4f4;
 }
 
 h1, h2, h3, h4, h5{
-    font-family: 'Cal Sans', sans-serif;
+    font-family: var(--font-heading);
     color: #1a1a1a;
 }
 
 p{
-    font-family: 'Kumbh Sans', sans-serif;
+    font-family: var(--font-body);
     color: #333333;
 }
 
 a{
-    font-family: 'Kumbh Sans', sans-serif;
+    font-family: var(--font-body);
     text-decoration: none;
     color: inherit;
 }
