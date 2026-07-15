@@ -43,3 +43,8 @@ function validateConfirmPassword(passwordInput, confirmPasswordInput) {
     return true;
 }
 
+function showConfirmPasswordError(confirmPasswordInput, message) {
+    clearConfirmPasswordError(confirmPasswordInput);
+
+}
+
