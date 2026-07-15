@@ -18,6 +18,7 @@ $isLogged = isset($_SESSION['user_id']);
     <title><?php echo $title; ?></title>
 </head>
 <body>
+<body data-base-path="<?php echo $basePath; ?>">
     <?php if(!isset($hideHeader) || !$hideHeader): ?>
         <?php include 'includes/header.php'; ?>
     <?php endif; ?>
