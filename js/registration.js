@@ -1,4 +1,3 @@
-// Registration Form Enhancements
 import { validateEmail, clearEmailError, addPasswordToggle } from './authentication.js';
 
 const ERROR_MESSAGE_CONFIRM_PASSWORD_REQUIRED = 'Please confirm your password.';
