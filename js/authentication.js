@@ -1,8 +1,3 @@
-/*
-    [Documentation]
-    This file contains functions for email validation and password toggle.
-*/
-
 const ERROR_MESSAGE_EMAIL_REQUIRED = 'Email is required.';
 const ERROR_MESSAGE_EMAIL_INVALID = 'Please enter a valid email address.';
 
