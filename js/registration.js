@@ -26,3 +26,20 @@ function clearEmailError(emailInput) {
 }
 
 
+function validateConfirmPassword(passwordInput, confirmPasswordInput) {
+    const password = passwordInput.value;
+    const confirmPassword = confirmPasswordInput.value;
+    
+    if (!confirmPassword) {
+        showConfirmPasswordError(confirmPasswordInput, 'Please confirm your password');
+        return false;
+    }
+    
+    if (password !== confirmPassword) {
+        showConfirmPasswordError(confirmPasswordInput, 'Passwords do not match');
+        return false;
+    }
+    
+    return true;
+}
+
