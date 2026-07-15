@@ -1,94 +1,73 @@
-<?php
-// register.php
-$pageTitle = "Register";
+<?php 
+
+$title = "Register";
+$hideHeader = true;
+$hideFooter = true;
 include 'includes/header.php';
 ?>
 
-<!-- ==========================================================
-     REGISTRATION FORM
-     Fields required by the brief: full name, email, password,
-     confirm password, complete address, contact number.
+<div class="auth-page">
+    <a href="/PROGram/index.php" class="back">&larr;</a>
+    <div class="card wide">
+        <div class="auth-card-body">
+            <h3>Create an Account</h3>
 
-     OPTION A: single-column stacked form inside a centered card
-               (matches login.php for a consistent look)
-     OPTION B: two-column layout (name/email left, address/contact
-               right) since this form has more fields than login
-     ========================================================== -->
-<div class="container my-5">
-    <div class="auth-form" style="max-width: 600px;">
-        <div class="card shadow-sm">
-            <div class="card-body p-4">
-                <h3 class="text-center mb-4">Create an Account</h3>
+            <form action="login/register_handler.php" method="post">
+                <div class="field">
+                    <label class="form-label">Complete Name</label>
+                    <input type="text" name="full-name" class="form-control" required>
+                </div>
+                <div class="field">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" name="email" class="form-control" required>
+                </div>
 
-                <!-- Backend teammate will point this to login/register_handler.php -->
-                <form action="login/register_handler.php" method="post">
-                    <div class="mb-3">
-                        <label class="form-label">Complete Name</label>
-                        <input type="text" class="form-control" name="full_name" required>
+                <div class="row">
+                    <div class="column">
+                        <label class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" required>
                     </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Email Address</label>
-                        <input type="email" class="form-control" name="email" required>
-                        <!-- HTML5 type="email" already validates the format
-                             (Module topic: Form Validation) -->
+                    <div class="column">
+                        <label class="form-label">Confirm Password</label>
+                        <input type="password" name="password" class="form-control" required>
                     </div>
+                </div>
 
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label">Password</label>
-                            <input type="password" class="form-control" name="password" required>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label">Confirm Password</label>
-                            <input type="password" class="form-control" name="confirm_password" required>
-                        </div>
+                <div class="row three">
+                    <div class="column">
+                        <label class="form-label">Region</label>
+                        <select name="region" id="region" class="form-select" required></select>
                     </div>
-
-                    <!-- Region -> Province -> City dropdowns, powered by
-                         assets/js/location-dropdowns.js + the embedded
-                         PH location data in assets/js/ph-locations-data.js.
-                         Picking a Region fills Province; picking a Province
-                         fills City/Municipality. -->
-                    <div class="row">
-                        <div class="col-md-4 mb-3">
-                            <label class="form-label">Region</label>
-                            <select class="form-select" id="region" name="region" required></select>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label class="form-label">Province</label>
-                            <select class="form-select" id="province" name="province" required></select>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label class="form-label">City/Municipality</label>
-                            <select class="form-select" id="city" name="city" required></select>
-                        </div>
+                    <div class="column">
+                        <label class="form-label">Province</label>
+                        <select name="province" id="province" class="form-select" required></select>
                     </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Street / House No. / Barangay</label>
-                        <input type="text" class="form-control" name="street_address" required
-                               placeholder="e.g. 123 Sampaguita St., Brgy. San Isidro">
-                        <!-- Combined with Region/Province/City above, this
-                             makes up the "Complete Address" the brief asks for. -->
+                    <div class="column">
+                        <label class="form-label">City/Municipality</label>
+                        <select name="city" id="city" class="form-select" required></select>
                     </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Contact Number</label>
-                        <input type="text" class="form-control" name="contact_number" required>
+                    <div class="column">
+                        <label class="form-label">Barangay</label>
+                        <select name="city" id="barangay" class="form-select" required></select>
                     </div>
+                </div>
 
-                    <!-- Placeholder for validation error messages
-                         (e.g. "Passwords do not match") -->
-                    <!-- <div class="alert alert-danger">Passwords do not match.</div> -->
+                <div class="field">
+                    <label class="form-label">Street / House No.</label>
+                    <input type="text" name="street-addy" class="form-control" required placeholder="e.g. 123 Juan Dela Cruz St., Brgy. Matibay">
+                </div>
 
-                    <button type="submit" class="btn btn-brand w-100">Register</button>
-                </form>
+                <div class="field">
+                    <label class="form-label">Contact Number</label>
+                    <input type="text" name="contact-number" class="form-control" required placeholder="e.g. 0912 345 6789">
+                </div>
 
-                <p class="text-center mt-3">
-                    Already have an account? <a href="login.php">Login here</a>
-                </p>
-            </div>
+                <button type="submit" class="submit-btn">Register</button>
+            </form>
+
+            <p class="forgot">
+                Already have an account? <a href="login.php">Login Here</a>
+            </p>
         </div>
     </div>
 </div>

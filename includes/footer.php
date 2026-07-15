@@ -1,43 +1,83 @@
-<!-- ============================================
-     FOOTER (shared across all pages)
-     ============================================ -->
-<footer class="site-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <!-- Group logo + name again, footer style -->
-                <h5>PK Auto Parts</h5>
-                <p>Group members: Member 1, Member 2, Member 3...</p>
+<?php if (!isset($hideFooter) || !$hideFooter): ?>
+<footer class="webfoot">
+    <div class="footcont">
+        <div class="footrow">
+            <div class="footcol">
+                <img src="/PROGram/assets/images/logo.png" alt="logo">
+                <h5>PROGram</h5>
+                <p>Group members: </p>
+                <div class="members">
+                    <p>Jade Carlos Castillo</p>
+                    <p>James Ivan Frondarina</p>
+                    <p>Gene Andrei Manacop</p>
+                    <p>Cedrick Nicolas Valera</p>
+                </div>
             </div>
-            <div class="col-md-4">
-                <h6>Quick Links</h6>
-                <ul class="list-unstyled">
-                    <li><a href="about.php">About</a></li>
-                    <li><a href="contact.php">Contact</a></li>
-                    <li><a href="products.php">Products</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4">
+            <div class="footcol second">
                 <h6>Contact Info</h6>
-                <p>Placeholder address / phone / email</p>
+                <p>Email: program@gmail.com</p>
+                <p>Contact Number: (+632) 912-3456</p>
             </div>
         </div>
 
-        <!-- REQUIRED disclaimer for the school project -->
-        <p class="disclaimer text-center">
-            This website is a student project for CCS0043 and is for
+        <p class="disclaimer">
+            This website is a student project from FEU Tech, subject CCS0043/L, which is for
             educational purposes only. No real transactions take place.
         </p>
     </div>
 </footer>
 
-<!-- JS at the bottom so pages load faster -->
-<script src="assets/js/bootstrap.bundle.min.js"></script>
+<?php endif; ?>
 
-<!-- Philippine Region/Province/City data + cascading dropdown behavior.
-     Only pages that have <select id="region/province/city"> will actually
-     use these; on other pages they just load and do nothing. -->
-<script src="assets/js/ph-locations-data.js"></script>
-<script src="assets/js/location-dropdowns.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const header = document.querySelector('.webhead');
+
+        const toggleHead = () => {
+            const scrollpos = window.scrollY || document.documentElement.scrollTop;
+
+            if (scrollpos > 10){
+                header.classList.add('scrolled')
+            } else {
+                header.classList.remove('scrolled')
+            }
+        };
+
+        window.addEventListener('scroll', toggleHead);
+        toggleHead();
+    });
+
+     const buttonToggle = document.getElementById('ham-toggle')
+    const nav = document.getElementById('main-menu')
+    if(buttonToggle && nav){
+        const closeMenu = () => {
+            nav.classList.remove('open')
+            buttonToggle.classList.remove('active')
+            buttonToggle.setAttribute('aria-expanded', 'false')
+            document.body.classList.remove('menu-open')
+        };
+
+        buttonToggle.addEventListener('click', () => {
+            const isOpen = nav.classList.toggle('open')
+            buttonToggle.classList.toggle('active', isOpen)
+            buttonToggle.setAttribute('aria-expanded', isOpen)
+            document.body.classList.toggle('menu-open', isOpen)
+        });
+
+        nav.querySelectorAll('a, button').forEach((el) => {
+            el.addEventListener('click', closeMenu);
+        });
+
+        document.addEventListener('click', (e) => {
+            if (nav.classList.contains('open') && !nav.contains(e.target) && !buttonToggle.contains(e.target)) {
+                closeMenu();
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 991) closeMenu();
+        });
+    }
+</script>
 </body>
 </html>

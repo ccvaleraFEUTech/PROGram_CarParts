@@ -1,32 +1,53 @@
-<?php
-// header.php
-// This file is included at the TOP of every page (index.php, products.php, etc.)
-// so we only write the <head> and opening tags ONCE.
-// $pageTitle is set by each page BEFORE including this file, e.g.:
-//   $pageTitle = "Home";
-//   include 'includes/header.php';
-if (!isset($pageTitle)) {
-    $pageTitle = "PK Auto Parts";
+<?php 
+session_start();
+
+$isLogged = isset($_SESSION['user_id']);
+
+if (!isset($title)){
+    $title = "Header";
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $pageTitle; ?> | PK Auto Parts</title>
-
-    <!-- Bootstrap 5 CSS (already in the project's assets/css folder) -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-
-    <!-- Our own stylesheet — this is where the color palette / theme lives -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="/PROGram/assets/images/favicon.ico">
+    <link rel="stylesheet" href="/PROGram/assets/css/style.css">
+    <title><?php echo $title?> || PROGram</title>
 </head>
-<body>
+<body class="<?php echo (isset($hideHeader) && $hideHeader) ? 'auth-body' : ''; ?>">
+    <?php if(!isset($hideHeader) || !$hideHeader): ?>
+    <header class="webhead <?php 
+        if ((isset($title) && ($title == 'Products' || $title == 'Contacts')) || (isset($whiteHeader) && $whiteHeader)) { 
+            echo 'products-header'; 
+        } 
+        ?>">
+        <div class="logo">
+            <a href="/PROGram/index.php"><img src="/PROGram/assets/images/logo.png" alt="logo"></a>
+        </div>
+        <button type="button" id="ham-toggle" class="ham-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="main-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav id="main-menu">
+            <ul class="navigation">
+                <li><a href="/PROGram/index.php">Home</a></li>
+                <li><a href="/PROGram/pages/products.php">Products</a></li>
+                <li><a href="/PROGram/pages/contact.php">Contacts</a></li>
+                <li><a href="/PROGram/pages/cart.php">Cart</a></li>
+            </ul>
 
-<!-- ============================================
-     NAVBAR (shared across all pages)
-     ============================================ -->
-<?php include 'includes/navbar.php'; ?>
-
-<!-- Page content starts below this line in each individual page file -->
+            <div class="auth-group">
+                <?php if ($isLogged): ?>
+                   <a href="#" class="auth-btn"><button class="authentication">Logout</button></a>
+                <?php else: ?>
+                    <a href="/PROGRAM/login.php" class="auth-btn"><button class="authentication">Login</button></a>
+                    <a href="/PROGRAM/register.php" class="auth-btn"><button class="authentication">Register</button></a>
+                <?php endif; ?>
+            </div>
+        </nav>
+    </header>
+    <?php endif; ?>
