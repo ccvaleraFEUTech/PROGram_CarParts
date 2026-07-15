@@ -14,3 +14,10 @@ function validateEmail(emailInput) {
     
     return true;
 }
+
+function showEmailError(emailInput, message) {
+    clearEmailError(emailInput);
+    
+    // TODO: Make the email error message visible and set text
+}
+
