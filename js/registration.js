@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Password Re
 
     // Confirm Password Validation
     if (confirmPasswordInput && passwordInput) {
@@ -56,7 +55,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Phone number formatting and validation
     if (phoneInput) {
+
         phoneInput.addEventListener('input', () => {
+            clearPhoneNumberError(phoneInput);
             formatPhoneNumber(phoneInput);
         });
         
@@ -70,15 +71,17 @@ function formatPhoneNumber(input) {
     // Remove all non-numeric characters
     let value = input.value.replace(/\D/g, '');
     
+    const phoneMaxLength = 11;
+
     // Format as 09XX XXX XXXX
-    if (value.length > 11) {
-        value = value.substring(0, 11);
+    if (value.length > phoneMaxLength) {
+        value = value.substring(0, phoneMaxLength);
     }
     
-    if (value.length > 4) {
-        value = value.replace(/(\d{4})(\d{3})(\d{3})/, '$1 $2 $3');
-    } else if (value.length > 4) {
-        value = value.replace(/(\d{4})(\d{3})/, '$1 $2');
+    if (value.length > 6) {
+        value = value.replace(/(\d{4})(\d{0,3})(\d{0,4})/, '$1 $2 $3');
+    } else if (value.length >= 4) {
+        value = value.replace(/(\d{4})(\d{0,3})/, '$1 $2');
     }
     
     input.value = value;
@@ -92,7 +95,17 @@ function validatePhoneNumber(phoneInput) {
         return false;
     }
     
-    if (phone.length < 13) {
+    // Remove spaces for validation
+    const phoneDigits = phone.replace(/\s/g, '');
+    
+    // Check if it starts with 09 and is exactly 11 digits
+    if (!/^09\d{9}$/.test(phoneDigits)) {
+        showPhoneNumberError(phoneInput, 'Please enter a valid phone number (e.g., 0912 345 6789)');
+        return false;
+    }
+    
+    // Check formatted length (11 digits + 2 spaces = 13 characters)
+    if (phoneDigits.length !== 11) {
         showPhoneNumberError(phoneInput, 'Please enter a valid phone number (e.g., 0912 345 6789)');
         return false;
     }
@@ -106,8 +119,6 @@ function showPhoneNumberError(phoneInput, message) {
     let phoneErrorMessage = document.getElementById('phone-error-message');
     phoneErrorMessage.style.display = 'block';
     phoneErrorMessage.textContent = message;
-    
-    phoneInput.classList.add('error');
 }
 
 function clearPhoneNumberError(phoneInput) {
@@ -119,6 +130,7 @@ function clearPhoneNumberError(phoneInput) {
 function validateEmail(emailInput) {
     const email = emailInput.value.trim();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
     if (!email) {
         showEmailError(emailInput, 'Email is required');
         return false;
@@ -134,10 +146,8 @@ function validateEmail(emailInput) {
 
 function showEmailError(emailInput, message) {
     clearEmailError(emailInput);
-
+    
     let emailErrorMessage = document.getElementById('email-error-message');
-    if (!emailErrorMessage) return;
-
     emailErrorMessage.style.display = 'block';
     emailErrorMessage.textContent = message;
 }
@@ -145,6 +155,7 @@ function showEmailError(emailInput, message) {
 function clearEmailError(emailInput) {
     let emailErrorMessage = document.getElementById('email-error-message');
     emailErrorMessage.style.display = 'none';
+    emailInput.classList.remove('error');
 }
 
 
@@ -168,27 +179,28 @@ function validateConfirmPassword(passwordInput, confirmPasswordInput) {
 function showConfirmPasswordError(confirmPasswordInput, message) {
     clearConfirmPasswordError(confirmPasswordInput);
 
+    let confirmPasswordErrorMessage = document.getElementById('confirm-password-error-message');
+    confirmPasswordErrorMessage.style.display = 'block';
+    confirmPasswordErrorMessage.textContent = message;
 }
 
 function clearConfirmPasswordError(confirmPasswordInput) {
-    const existingError = confirmPasswordInput.parentNode.nextElementSibling;
-    if (existingError && existingError.className === 'confirm-password-error') {
-        existingError.remove();
-    }
-    confirmPasswordInput.style.borderColor = '';
+    let confirmPasswordErrorMessage = document.getElementById('confirm-password-error-message');
+    confirmPasswordErrorMessage.style.display = 'none';
+    confirmPasswordInput.classList.remove('error');
 }
 
 function addPasswordToggle(passwordInput) {
     const wrapper = passwordInput.closest('.password-wrapper');
     if (!wrapper) return;
-
+    
     const toggleIcon = wrapper.querySelector('.password-toggle');
     if (!toggleIcon) return;
-
+    
     toggleIcon.addEventListener('click', () => {
         const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
         passwordInput.setAttribute('type', type);
-
+        
         // Toggle between fa-eye and fa-eye-slash
         if (type === 'password') {
             toggleIcon.classList.remove('fa-eye');
@@ -204,23 +216,16 @@ function validateRegistrationForm(form) {
     const emailInput = form.querySelector('input[name="email"]');
     const passwordInput = form.querySelector('input[name="password"]');
     const confirmPasswordInput = form.querySelector('input[name="confirm_password"]');
-
+    
     let isValid = true;
-
+    
     if (emailInput && !validateEmail(emailInput)) {
         isValid = false;
     }
-
-    if (passwordInput) {
-        updatePasswordRequirements(passwordInput);
-        if (!validatePassword(passwordInput)) {
-            isValid = false;
-        }
-    }
-
+    
     if (passwordInput && confirmPasswordInput && !validateConfirmPassword(passwordInput, confirmPasswordInput)) {
         isValid = false;
     }
-
+    
     return isValid;
 }
