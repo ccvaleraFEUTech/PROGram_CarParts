@@ -26,11 +26,17 @@ include 'includes/header.php';
                 <div class="row">
                     <div class="column">
                         <label class="form-label">Password</label>
-                        <input type="password" name="password" class="form-control" required>
+                        <div class="password-wrapper">
+                            <input type="password" name="password" class="form-control" required>
+                            <i class="fa-solid fa-eye-slash password-toggle"></i>
+                        </div>
                     </div>
                     <div class="column">
                         <label class="form-label">Confirm Password</label>
-                        <input type="password" name="password" class="form-control" required>
+                        <div class="password-wrapper">
+                            <input type="password" name="confirm_password" class="form-control" required>
+                            <i class="fa-solid fa-eye-slash password-toggle"></i>
+                        </div>
                     </div>
                 </div>
 
