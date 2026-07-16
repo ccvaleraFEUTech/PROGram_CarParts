@@ -4,6 +4,10 @@
     2. contact number
     3. current password, new password, confirm new password
 */
+
+import { validatePhoneNumber, formatPhoneNumber, validateConfirmPassword, hideConfirmPasswordError } from './field_validation.js';
+import { validateEmail } from './authentication.js';
+
 function validateUpdateForm(form) {
     // email, phone, and region name
     
