@@ -55,7 +55,7 @@ $buyer['name'] = "{$buyer['first']} {$buyer['middle']} {$buyer['surn']}";
 
                         <div class="profile-card">
                             <h3>Account Information</h3>
-                            <form action="#" method="post">
+                            <form id="update-profile-form" action="<?php echo $basePath; ?>pages/update_profile.php" method="post">
                                 <div class="form-grid">
                                     <div class="group-input">
                                         <label class="form-label">First Name</label>
@@ -90,7 +90,7 @@ $buyer['name'] = "{$buyer['first']} {$buyer['middle']} {$buyer['surn']}";
 
                         <div class="profile-card">
                             <h3>Change Password</h3>
-                            <form action="#" method="post">
+                            <form id="change-password-form" action="<?php echo $basePath; ?>pages/change_password.php" method="post">
                                 <div class="form-grid">
                                     <div class="group-input full-width">
                                         <label class="form-label">Current Password</label>
