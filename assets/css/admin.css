@@ -17,6 +17,18 @@ body{
     background-color: #f4f4f4;
 }
 
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+  margin: 0;
+}
+
 h1, h2, h3, h4, h5{
     font-family: var(--font-heading);
     color: #1a1a1a;
@@ -380,25 +392,74 @@ img{
     font-size: 15px;
 }
 
+.admin-table td:last-child{
+    white-space: nowrap;
+    min-width: 280px;
+    width: 280px;
+}
+
+.actions-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.actions-wrapper .inline-admin-form{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-row{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-row label{
+    font-size: 12px;
+    font-weight: 600;
+    min-width: 60px;
+    color: #666;
+}
+
+.form-row .form-control{
+    width: 70px;
+    padding: 4px 8px;
+    font-size: 13px;
+}
+
+.form-row .form-control[name="price"]{
+    width: 100px !important;
+}
+
+.button-row{
+    display: flex;
+    gap: 8px;
+    justify-content: flex-start;
+}
+
 .admin-table tbody tr:hover{
     background-color: #fafafa;
 }
 
-.admin-table .cell-main{
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: #000000;
-    font-weight: 600;
-}
-
-.admin-table .cell-main img{
+.admin-table .product-thumb{
     width: 46px;
     height: 46px;
     border-radius: 8px;
     object-fit: cover;
     border: 1px solid #eaeaea;
     background-color: #eeeeee;
+    vertical-align: middle;
+    margin-right: 12px;
+}
+
+.admin-table .product-name{
+    display: inline-block;
+    vertical-align: middle;
+    color: #000000;
+    font-weight: 600;
 }
 
 .admin-table .cell-sub{
@@ -430,6 +491,28 @@ img{
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
+}
+
+.inline-admin-form,
+.inline-form{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: nowrap;
+}
+
+.inline-admin-form .form-control{
+    width: 70px;
+    padding: 6px 10px;
+    font-size: 13px;
+}
+
+.inline-admin-form .form-control[title="Price"]{
+    width: 80px;
+}
+
+.inline-form{
+    margin-left: 8px;
 }
 
 .action-btn{
