@@ -1559,6 +1559,38 @@ img{
     transition: all 0.3s ease;
 }
 
+.password-requirements {
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.requirement {
+    margin: 2px 0;
+    padding-left: 15px;
+    position: relative;
+}
+
+p.requirement {
+    color: #666;
+}
+
+.requirement::before {
+    content: '○';
+    position: absolute;
+    left: 0;
+    color: #999;
+}
+
+.requirement.valid::before {
+    content: '✓';
+    color: #28a745;
+}
+
+.requirement.valid {
+    color: #28a745;
+}
+
 @media (max-width: 991px){
     .ham-toggle{
         display: flex;

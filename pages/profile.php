@@ -90,6 +90,12 @@ $addresses = [
                                         <label class="form-label">New Password</label>
                                         <input type="password" name="new-password" class="form-control">
                                         <p id="new-password-error-message" style="display: none"></p>
+                                        <div class="password-requirements" style="display: none">
+                                            <p class="requirement" id="req-length">At least 8 characters</p>
+                                            <p class="requirement" id="req-uppercase">At least 1 uppercase letter</p>
+                                            <p class="requirement" id="req-lowercase">At least 1 lowercase letter</p>
+                                            <p class="requirement" id="req-number">At least 1 number</p>
+                                        </div>
                                     </div>
                                     <div class="group-input">
                                         <label class="form-label">Confirm New Password</label>
