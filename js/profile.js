@@ -8,6 +8,56 @@
 import { validatePhoneNumber, formatPhoneNumber, validateConfirmPassword, hideConfirmPasswordError } from './field_validation.js';
 import { validateEmail } from './authentication.js';
 
+document.addEventListener('DOMContentLoaded', () => {
+    const updateProfileForm = document.querySelector('form[action="update_profile.php"]');
+    const changePasswordForm = document.querySelector('form[action="change_password.php"]');
+    
+    // Phone number validation
+    const phoneInput = document.querySelector('input[name="contact-number"]');
+    if (phoneInput) {
+        phoneInput.addEventListener('input', () => {
+            formatPhoneNumber(phoneInput);
+        });
+        
+        phoneInput.addEventListener('blur', () => {
+            validatePhoneNumber(phoneInput);
+        });
+    }
+    
+    // Email validation
+    const emailInput = document.querySelector('input[name="email"]');
+    if (emailInput) {
+        emailInput.addEventListener('blur', () => {
+            validateEmail(emailInput);
+        });
+    }
+
+    // New Password and Confirm Password validation
+    const newPasswordInput = document.querySelector('input[name="new-password"]');
+    const confirmPasswordInput = document.querySelector('input[name="confirm-new-password"]');
+    if (newPasswordInput && confirmPasswordInput) {
+        newPasswordInput.addEventListener('blur', () => {
+            // TODO: Add password validation
+        });
+        confirmPasswordInput.addEventListener('blur', () => {
+            validateConfirmPassword(newPasswordInput, confirmPasswordInput);
+        });
+        confirmPasswordInput.addEventListener('input', () => {
+            hideConfirmPasswordError();
+        });
+    }
+
+    updateProfileForm.addEventListener('submit', (e) => {
+        if (!validateUpdateForm(updateProfileForm)) {
+            e.preventDefault();
+        }
+    });
+
+    changePasswordForm.addEventListener('submit', (e) => {
+        // TODO: Add form validation
+    });
+});
+
 function validateUpdateForm(form) {
     // email, phone, and region name
     
