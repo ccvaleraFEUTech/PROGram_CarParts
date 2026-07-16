@@ -117,3 +117,15 @@ function validateChangePasswordForm(form) {
     return isValid;
 }
 
+function updatePasswordRequirements(password) {
+    const requirements = validatePasswordRequirements(password);
+
+    Object.keys(requirements).forEach(key => {
+        const element = document.getElementById(`req-${key}`);
+        if (requirements[key]) {
+            element.classList.add('valid');
+        } else {
+            element.classList.remove('valid');
+        }
+    });
+}
