@@ -16,6 +16,12 @@ document.addEventListener('DOMContentLoaded', () => {
             validatePhoneNumber(phoneInput);
         });
     }
+
+    // Show/Hide Password Toggle
+    const passwordInputs = document.querySelectorAll('.password-wrapper input[type="password"]');
+    passwordInputs.forEach(input => {
+        addPasswordToggle(input);
+    });
     
     // Email validation
     const emailInput = document.querySelector('input[name="email"]');
