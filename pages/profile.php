@@ -7,7 +7,9 @@ $whiteHeader = true;
 $isLogged = isset($_SESSION['user_id']);
 
 $buyer = [
-    'name' => 'Juan Dela Cruz',
+    'first' => 'Juan',
+    'middle' => 'Dela',
+    'surn' => 'Cruz',
     'email' => 'juan.delacruz@email.com',
     'contact' => '0912 345 6789',
     'joined' => 'March 2026',
@@ -18,6 +20,8 @@ $addresses = [
     ['tag' => 'Default', 'details' => '123 Juan Dela Cruz St., Brgy. Matibay, Marikina City, Metro Manila'],
     ['tag' => 'Work',    'details' => '45 Shaw Blvd., Brgy. Wack-Wack, Mandaluyong City, Metro Manila'],
 ];
+
+$buyer['name'] = "{$buyer['first']} {$buyer['middle']} {$buyer['surn']}";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,21 +55,27 @@ $addresses = [
 
                         <div class="profile-card">
                             <h3>Account Information</h3>
-                            <form action="update_profile.php" method="post">
+                            <form action="#" method="post">
                                 <div class="form-grid">
                                     <div class="group-input">
-                                        <label class="form-label">Complete Name</label>
-                                        <input type="text" name="full-name" class="form-control" value="<?php echo htmlspecialchars($buyer['name']); ?>">
+                                        <label class="form-label">First Name</label>
+                                        <input type="text" name="first" class="form-control" value="<?php echo htmlspecialchars($buyer['first']); ?>">
+                                    </div>
+                                    <div class="group-input">
+                                        <label class="form-label">Middle Name</label>
+                                        <input type="text" name="middle" class="form-control" value="<?php echo htmlspecialchars($buyer['middle']); ?>">
+                                    </div>
+                                    <div class="group-input">
+                                        <label class="form-label">Surname</label>
+                                        <input type="text" name="surn" class="form-control" value="<?php echo htmlspecialchars($buyer['surn']); ?>">
                                     </div>
                                     <div class="group-input">
                                         <label class="form-label">Email Address</label>
                                         <input type="email" name="email" class="form-control" value="<?php echo htmlspecialchars($buyer['email']); ?>">
-                                        <p id="email-error-message" style="display: none"></p>
                                     </div>
                                     <div class="group-input">
                                         <label class="form-label">Contact Number</label>
                                         <input type="text" name="contact-number" class="form-control" value="<?php echo htmlspecialchars($buyer['contact']); ?>">
-                                        <p id="phone-error-message" style="display: none"></p>
                                     </div>
                                     <div class="group-input">
                                         <label class="form-label">Region</label>
@@ -80,7 +90,7 @@ $addresses = [
 
                         <div class="profile-card">
                             <h3>Change Password</h3>
-                            <form action="change_password.php" method="post">
+                            <form action="#" method="post">
                                 <div class="form-grid">
                                     <div class="group-input full-width">
                                         <label class="form-label">Current Password</label>
@@ -100,7 +110,6 @@ $addresses = [
                                     <div class="group-input">
                                         <label class="form-label">Confirm New Password</label>
                                         <input type="password" name="confirm-new-password" class="form-control">
-                                        <p id="confirm-password-error-message" style="display: none"></p>
                                     </div>
                                 </div>
                                 <button type="submit" class="submit-btn" style="margin-top: 20px;">Update Password</button>
@@ -169,6 +178,5 @@ $addresses = [
     <?php endif; ?>
 
     <script src="<?php echo $basePath; ?>js/main.js"></script>
-    <script type="module" src="<?php echo $basePath; ?>js/profile.js"></script>
 </body>
 </html>
