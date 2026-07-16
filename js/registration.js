@@ -1,5 +1,5 @@
 import { formatPhoneNumber, validatePhoneNumber, 
-    validateConfirmPassword, showConfirmPasswordError, hideFieldError } from './field_validation.js';
+    validateConfirmPassword } from './field_validation.js';
 import { validateEmail, addPasswordToggle } from './authentication.js';
 
 document.addEventListener('DOMContentLoaded', () => {
