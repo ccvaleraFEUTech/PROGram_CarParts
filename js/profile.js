@@ -35,12 +35,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const newPasswordInput = document.querySelector('input[name="new-password"]');
     const confirmPasswordInput = document.querySelector('input[name="confirm-new-password"]');
     if (newPasswordInput && confirmPasswordInput) {
+        
+        // -- New password events --
+        // Validate new password with password requirements
         newPasswordInput.addEventListener('blur', () => {
-            // TODO: Add password validation
+            validatePasswordRequirements(newPasswordInput);
         });
+        // Display password requirements when user is typing something in field
+        newPasswordInput.addEventListener('input', () => {
+            const requirements = document.querySelector('.password-requirements');
+            if (newPasswordInput.value) {
+                requirements.style.display = 'block';
+            } else {
+                requirements.style.display = 'none';
+            }
+            
+            updatePasswordRequirements(newPasswordInput.value);
+        });
+
+        // -- Confirm password events --
+        // Validate confirm password on blur
         confirmPasswordInput.addEventListener('blur', () => {
             validateConfirmPassword(newPasswordInput, confirmPasswordInput);
         });
+        // Hide confirm password error when user is typing
         confirmPasswordInput.addEventListener('input', () => {
             hideConfirmPasswordError();
         });
@@ -58,21 +76,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    newPasswordInput.addEventListener('input', () => {
-        const requirements = document.querySelector('.password-requirements');
-        if (newPasswordInput.value) {
-            requirements.style.display = 'block';
-        } else {
-            requirements.style.display = 'none';
-        }
-        
-        updatePasswordRequirements(newPasswordInput.value);
-    });
+    
 });
 
 function validateUpdateForm(form) {
-    // email, phone, and region name
-    
     const emailInput = form.querySelector('input[name="email"]');
     const phoneInput = form.querySelector('input[name="contact-number"]');
     const regionInput = form.querySelector('input[name="region-name"]');
@@ -88,7 +95,7 @@ function validateUpdateForm(form) {
     }
 
     if (regionInput) {
-        // TODO: Add region validation
+        
     }
 
     return isValid;
@@ -96,7 +103,6 @@ function validateUpdateForm(form) {
 
 function validateChangePasswordForm(form) {
     let isValid = true;
-    // TODO: Add form validation
 
     const currentPasswordInput = form.querySelector('input[name="current-password"]');
     const newPasswordInput = form.querySelector('input[name="new-password"]');
