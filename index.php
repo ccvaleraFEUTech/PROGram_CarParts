@@ -36,35 +36,26 @@ $featuredProducts = mysqli_query($connection, "SELECT * FROM products WHERE acti
         <section class="container">
             <h2>Featured Products</h2>
             <div class="row">
-                <div class="col">
-                    <div class="product-card" style="background-image: url('assets/images/index/hks-hi-power.jpg')">
-                        <button class="add-cart-btn" title="Add to Cart">+</button>
-                        <div class="product-body">
-                            <h5 class="card-title">HKS Hi-Power Exhaust</h5>
-                            <p class="price">₱130,267.94</p>
+                <?php while ($product = mysqli_fetch_assoc($featuredProducts)): ?>
+                    <div class="col">
+                        <div class="product-card" style="background-image: url('<?php echo htmlspecialchars($product['image']); ?>')">
+                            <?php if ($product['stock'] > 0): ?>
+                                <form action="actions/cart_action.php" method="post">
+                                    <input type="hidden" name="action" value="add">
+                                    <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <button type="submit" class="add-cart-btn" title="Add to Cart">+</button>
+                                </form>
+                            <?php endif; ?>
+                            <a href="pages/product-info.php?id=<?php echo $product['id']; ?>" class="product-card-link">
+                                <div class="product-body">
+                                    <h5 class="card-title"><?php echo htmlspecialchars($product['name']); ?></h5>
+                                    <p class="price">&#8369;<?php echo number_format($product['price'], 2); ?></p>
+                                </div>
+                            </a>
                         </div>
                     </div>
-                </div>
-
-                <div class="col">
-                    <div class="product-card" style="background-image: url('assets/images/index/tein-flex-z.jpg')">
-                        <button class="add-cart-btn" title="Add to Cart">+</button>
-                        <div class="product-body">
-                            <h5 class="card-title">Tein Flex Z Coilover Suspension Kit</h5>
-                            <p class="price">₱50,130.60</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="product-card" style="background-image: url('assets/images/index/brembo-4-piston.jpg')">
-                        <button class="add-cart-btn" title="Add to Cart">+</button>
-                        <div class="product-body">
-                            <h5 class="card-title">Brembo GT Systems 4 Piston Front Big Brake Kit Red Sl</h5>
-                            <p class="price">₱80,632.42</p>
-                        </div>
-                    </div>
-                </div>
+                <?php endwhile; ?>
             </div>
         </section>
 
