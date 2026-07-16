@@ -57,6 +57,16 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
         }
     });
+
+    newPasswordInput.addEventListener('input', () => {
+        const requirements = document.querySelector('.password-requirements');
+        if (newPasswordInput.value) {
+            requirements.style.display = 'block';
+        } else {
+            requirements.style.display = 'none';
+        }
+        
+        updatePasswordRequirements(newPasswordInput.value);
     });
 });
 
