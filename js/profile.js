@@ -53,7 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     changePasswordForm.addEventListener('submit', (e) => {
-        // TODO: Add form validation
+        if (!validateChangePasswordForm(changePasswordForm)) {
+            e.preventDefault();
+        }
+    });
     });
 });
 
