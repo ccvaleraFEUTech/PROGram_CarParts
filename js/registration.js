@@ -1,10 +1,6 @@
-import { validateEmail, hideEmailError, addPasswordToggle } from './authentication.js';
-
-const ERROR_MESSAGE_CONFIRM_PASSWORD_REQUIRED = 'Please confirm your password.';
-const ERROR_MESSAGE_PASSWORDS_DO_NOT_MATCH = 'Passwords do not match.';
-const ERROR_MESSAGE_PHONE_INVALID = 'Please enter a valid phone number (e.g., 0912 345 6789)';
-const ERROR_MESSAGE_PHONE_REQUIRED = 'Phone number is required.';
-const PHONE_MAX_LENGTH = 11;
+import { formatPhoneNumber, validatePhoneNumber, 
+    validateConfirmPassword, showConfirmPasswordError, hideFieldError } from './field_validation.js';
+import { validateEmail, addPasswordToggle } from './authentication.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('form[action="login/register_handler.php"]');
@@ -22,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         emailInput.addEventListener('input', () => {
-            hideEmailError(emailInput);
+            hideConfirmPasswordError();
         });
     }
 
@@ -34,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         confirmPasswordInput.addEventListener('input', () => {
-            clearConfirmPasswordError(confirmPasswordInput);
+            hideConfirmPasswordError();
         });
 
         passwordInput.addEventListener('input', () => {
@@ -64,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (phoneInput) {
 
         phoneInput.addEventListener('input', () => {
-            clearPhoneNumberError(phoneInput);
+            hidePhoneNumberError();
             formatPhoneNumber(phoneInput);
         });
         
@@ -74,98 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Properly formats an inputted phone number
-function formatPhoneNumber(input) {
-    // Remove all non-numeric characters
-    let value = input.value.replace(/\D/g, '');
-
-    // Format as 09XXXXXXXXX
-    if (value.length > PHONE_MAX_LENGTH) {
-        value = value.substring(0, PHONE_MAX_LENGTH);
-    }
-    
-    input.value = value;
-}
-
-// Validates the inputted phone number
-function validatePhoneNumber(phoneInput) {
-    const phone = phoneInput.value.trim();
-    
-    if (!phone) {
-        showPhoneNumberError(phoneInput, ERROR_MESSAGE_PHONE_REQUIRED);
-        return false;
-    }
-    
-    // Remove spaces for validation
-    const phoneDigits = phone.replace(/\s/g, '');
-    
-    // Check if it starts with 09 and is exactly 11 digits
-    if (!/^09\d{9}$/.test(phoneDigits)) {
-        showPhoneNumberError(phoneInput, ERROR_MESSAGE_PHONE_INVALID);
-        return false;
-    }
-    
-    // Check length
-    if (phoneDigits.length !== 11) {
-        showPhoneNumberError(phoneInput, ERROR_MESSAGE_PHONE_INVALID);
-        return false;
-    }
-    
-    return true;
-}
-
-// Displays a phone error message underneath the input field
-function showPhoneNumberError(phoneInput, message) {
-    clearPhoneNumberError(phoneInput);
-    
-    let phoneErrorMessage = document.getElementById('phone-error-message');
-    phoneErrorMessage.style.display = 'block';
-    phoneErrorMessage.textContent = message;
-}
-
-// Clears the phone error message underneath the input field
-function clearPhoneNumberError(phoneInput) {
-    let phoneErrorMessage = document.getElementById('phone-error-message');
-    phoneErrorMessage.style.display = 'none';
-    phoneInput.classList.remove('error');
-}
-
-// Validates the inputted confirm password
-function validateConfirmPassword(passwordInput, confirmPasswordInput) {
-    const password = passwordInput.value;
-    const confirmPassword = confirmPasswordInput.value;
-    
-    // Don't check confirm password if password is empty
-    if (!password) return;
-    
-    // If password is entered but confirm password is empty, display an error message
-    if (!confirmPassword) {
-        showConfirmPasswordError(confirmPasswordInput, ERROR_MESSAGE_CONFIRM_PASSWORD_REQUIRED);
-        return false;
-    }
-    
-    // If password is not equal to confirm password
-    if (password !== confirmPassword) {
-        showConfirmPasswordError(confirmPasswordInput, ERROR_MESSAGE_PASSWORDS_DO_NOT_MATCH);
-        return false;
-    }
-    
-    return true;
-}
-
-function showConfirmPasswordError(confirmPasswordInput, message) {
-    clearConfirmPasswordError(confirmPasswordInput);
-
-    let confirmPasswordErrorMessage = document.getElementById('confirm-password-error-message');
-    confirmPasswordErrorMessage.style.display = 'block';
-    confirmPasswordErrorMessage.textContent = message;
-}
-
-function clearConfirmPasswordError(confirmPasswordInput) {
-    let confirmPasswordErrorMessage = document.getElementById('confirm-password-error-message');
-    confirmPasswordErrorMessage.style.display = 'none';
-    confirmPasswordInput.classList.remove('error');
-}
 
 function validateRegistrationForm(form) {
     const emailInput = form.querySelector('input[name="email"]');
