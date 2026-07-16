@@ -1,4 +1,4 @@
-import { validateEmail, clearEmailError, addPasswordToggle } from './authentication.js';
+import { validateEmail, clearEmailError, addPasswordToggle, validatePassword } from './authentication.js';
 
 const ERROR_MESSAGE_PASSWORD_REQUIRED = 'Password is required.';
 
@@ -43,20 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-
-// Validates the inputted password when logging in
-// Only checks if there is an input
-// Password matching is done on the backend (PHP)
-function validatePassword(passwordInput) {
-    const password = passwordInput.value.trim();
-    
-    if (!password) {
-        showPasswordError(passwordInput, ERROR_MESSAGE_PASSWORD_REQUIRED);
-        return false;
-    }
-    
-    return true;
-}
 
 // Shows a password error message under the input field
 function showPasswordError(passwordInput, message) {

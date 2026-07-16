@@ -52,6 +52,20 @@ export function addPasswordToggle(passwordInput) {
     });
 }
 
+// Validates the inputted password when logging in
+// Only checks if there is an input
+// Password matching is done on the backend (PHP)
+export function validatePassword(passwordInput) {
+    const password = passwordInput.value.trim();
+    
+    if (!password) {
+        showPasswordError(passwordInput, ERROR_MESSAGE_PASSWORD_REQUIRED);
+        return false;
+    }
+    
+    return true;
+}
+
 // Function to validate password requirements
 export function validatePasswordRequirements(password) {
     const requirements = {
