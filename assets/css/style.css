@@ -857,6 +857,10 @@ form.contact-form textarea{
     gap: 8px;
 }
 
+.group-input .password-wrapper {
+    width: 100%;
+}
+
 .full-width{
     grid-column: span 2 !important;
 }
@@ -909,6 +913,7 @@ select, select option {
 }
 
 .password-wrapper .form-control {
+    width: 100%;
     padding-right: 45px;
 }
 
@@ -1427,7 +1432,7 @@ img{
     position: relative;
     display: inline-block;
     width: 46px;
-    height: 26px;
+    height: 29px;
     flex-shrink: 0;
 }
  
