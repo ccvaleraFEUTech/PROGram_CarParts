@@ -71,7 +71,12 @@ $adminUsers = mysqli_query($connection, "SELECT * FROM users WHERE role != 'Cust
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="../assets/css/admin.css"><title><?php echo $title; ?> || PROGram Seller</title></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="<?= $basePath ?>assets/css/admin.css">
+    <title><?php echo $title; ?> || PROGram Seller</title>
+</head>
 <body class="admin-body">
     <?php include '../includes/seller-header.php'; ?>
     <main>

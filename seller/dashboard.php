@@ -26,9 +26,9 @@ $recentActivity = mysqli_query($connection, "SELECT audit_logs.*, users.first_na
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
-    <link rel="stylesheet" href="<?php echo $basePath; ?>assets/css/admin.css">
-    <title><?php echo $title ?> || PROGram Seller</title>
+    <link rel="icon" type="image/x-icon" href="<?= $basePath; ?>assets/images/favicon.ico">
+    <link rel="stylesheet" href="<?= $basePath; ?>assets/css/admin.css">
+    <title><?= $title ?> || PROGram Seller</title>
 </head>
 <body class="admin-body">
     <?php include '../includes/seller-header.php'; ?>
@@ -49,6 +49,7 @@ $recentActivity = mysqli_query($connection, "SELECT audit_logs.*, users.first_na
             </tbody></table></div>
         </div>
     </main>
-    <?php include '../includes/seller-footer.php'; ?>
+    
+    <?php include $basePath . 'includes/seller-footer.php'; ?>
 </body>
 </html>

@@ -15,7 +15,7 @@ $orders = mysqli_query($connection, "SELECT * FROM orders WHERE user_id = $userI
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="<?php echo $basePath; ?>assets/css/style.css">
     <title><?php echo $title; ?></title>
 </head>
 <body>
@@ -49,6 +49,8 @@ $orders = mysqli_query($connection, "SELECT * FROM orders WHERE user_id = $userI
         </section>
     </main>
     <?php include '../includes/footer.php'; ?>
-    <script src="../js/main.js"></script>
+
+    <!-- JS -->
+    <script src="<?php echo $basePath; ?>js/main.js"></script>
 </body>
 </html>

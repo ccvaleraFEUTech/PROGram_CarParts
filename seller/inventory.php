@@ -3,6 +3,7 @@ session_start();
 require_once '../includes/database.php';
 require_once '../includes/functions.php';
 require_seller('../login.php');
+$basePath = "../";  
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = isset($_POST['action']) ? $_POST['action'] : '';
@@ -15,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stock = (int) $_POST['stock'];
         $reorderLevel = (int) $_POST['reorder_level'];
         $description = clean_input($_POST['description']);
-        $imagePath = 'assets/images/logo.png';
+        $imagePath = $basePath . 'assets/images/logo.png';
 
         if ($name === '' || $sku === '' || $categoryId < 1 || $price < 0 || $stock < 0 || $reorderLevel < 0) {
             set_message('Please enter valid product information.', 'error');
@@ -38,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
             $fileName = date('YmdHis') . '-' . rand(1000, 9999) . '.' . $extension;
-            if (move_uploaded_file($_FILES['product_image']['tmp_name'], '../assets/images/uploads/' . $fileName)) {
+            if (move_uploaded_file($_FILES['product_image']['tmp_name'], $basePath . 'assets/images/uploads/' . $fileName)) {
                 $imagePath = 'assets/images/uploads/' . $fileName;
             }
         }
@@ -76,7 +77,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $title = 'Inventory & Pricing';
-$basePath = '../';
 $activePage = 'inventory';
 $categories = mysqli_query($connection, "SELECT * FROM categories ORDER BY name");
 $products = mysqli_query($connection, "SELECT products.*, categories.name AS category_name
@@ -87,12 +87,12 @@ $products = mysqli_query($connection, "SELECT products.*, categories.name AS cat
 <html lang="en">
 <head>
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
-    <link rel="stylesheet" href="../assets/css/admin.css">
+    <link rel="icon" type="image/x-icon" href="<?= $basePath; ?>assets/images/favicon.ico">
+    <link rel="stylesheet" href="<?= $basePath; ?>assets/css/admin.css">
     <title><?php echo $title; ?> || PROGram Seller</title>
 </head>
 <body class="admin-body">
-    <?php include '../includes/seller-header.php'; ?>
+    <?php include $basePath . 'includes/seller-header.php'; ?>
     <main>
         <?php display_message(); ?>
         <div class="admin-form-card">
@@ -122,7 +122,7 @@ $products = mysqli_query($connection, "SELECT products.*, categories.name AS cat
                     <?php while ($product = mysqli_fetch_assoc($products)): ?>
                         <?php $stockStatus = product_stock_status($product['stock'], $product['reorder_level']); ?>
                         <tr>
-                            <td class="cell-main"><img src="../<?php echo htmlspecialchars($product['image']); ?>" alt="product"> <?php echo htmlspecialchars($product['name']); ?><span class="cell-sub">SKU: <?php echo htmlspecialchars($product['sku']); ?></span></td>
+                            <td><img src="<?php echo $basePath; ?><?php echo htmlspecialchars($product['image']); ?>" alt="product" class="product-thumb"> <span class="product-name"><?php echo htmlspecialchars($product['name']); ?><span class="cell-sub">SKU: <?php echo htmlspecialchars($product['sku']); ?></span></span></td>
                             <td><?php echo htmlspecialchars($product['category_name']); ?></td>
                             <td>&#8369;<?php echo number_format($product['price'], 2); ?></td>
                             <td><?php echo $product['stock']; ?> (reorder: <?php echo $product['reorder_level']; ?>)</td>
@@ -144,6 +144,6 @@ $products = mysqli_query($connection, "SELECT products.*, categories.name AS cat
             </div>
         </div>
     </main>
-    <?php include '../includes/seller-footer.php'; ?>
+    <?php include $basePath . 'includes/seller-footer.php'; ?>
 </body>
 </html>
