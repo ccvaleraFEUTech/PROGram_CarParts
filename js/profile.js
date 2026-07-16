@@ -2,8 +2,8 @@ import { validatePhoneNumber, formatPhoneNumber, validateConfirmPassword, hideCo
 import { validateEmail } from './authentication.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const updateProfileForm = document.querySelector('form[action="update_profile.php"]');
-    const changePasswordForm = document.querySelector('form[action="change_password.php"]');
+    const updateProfileForm = document.getElementById('update-profile-form');
+    const changePasswordForm = document.getElementById('change-password-form');
     
     // Phone number validation
     const phoneInput = document.querySelector('input[name="contact-number"]');
