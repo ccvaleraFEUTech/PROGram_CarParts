@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Validates the inputted password
+// Validates the inputted password when logging in
 // Only checks if there is an input
 // Password matching is done on the backend (PHP)
 function validatePassword(passwordInput) {

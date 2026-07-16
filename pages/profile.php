@@ -55,7 +55,7 @@ $buyer['name'] = "{$buyer['first']} {$buyer['middle']} {$buyer['surn']}";
 
                         <div class="profile-card">
                             <h3>Account Information</h3>
-                            <form action="#" method="post">
+                            <form action="update_profile.php" method="post">
                                 <div class="form-grid">
                                     <div class="group-input">
                                         <label class="form-label">First Name</label>
@@ -72,10 +72,12 @@ $buyer['name'] = "{$buyer['first']} {$buyer['middle']} {$buyer['surn']}";
                                     <div class="group-input">
                                         <label class="form-label">Email Address</label>
                                         <input type="email" name="email" class="form-control" value="<?php echo htmlspecialchars($buyer['email']); ?>">
+                                        <p id="email-error-message" style="display: none"></p>
                                     </div>
                                     <div class="group-input">
                                         <label class="form-label">Contact Number</label>
                                         <input type="text" name="contact-number" class="form-control" value="<?php echo htmlspecialchars($buyer['contact']); ?>">
+                                        <p id="phone-error-message" style="display: none"></p>
                                     </div>
                                     <div class="group-input">
                                         <label class="form-label">Region</label>
@@ -90,7 +92,7 @@ $buyer['name'] = "{$buyer['first']} {$buyer['middle']} {$buyer['surn']}";
 
                         <div class="profile-card">
                             <h3>Change Password</h3>
-                            <form action="#" method="post">
+                            <form action="change_password.php" method="post">
                                 <div class="form-grid">
                                     <div class="group-input full-width">
                                         <label class="form-label">Current Password</label>
@@ -99,10 +101,12 @@ $buyer['name'] = "{$buyer['first']} {$buyer['middle']} {$buyer['surn']}";
                                     <div class="group-input">
                                         <label class="form-label">New Password</label>
                                         <input type="password" name="new-password" class="form-control">
+                                        <p id="new-password-error-message" style="display: none"></p>
                                     </div>
                                     <div class="group-input">
                                         <label class="form-label">Confirm New Password</label>
                                         <input type="password" name="confirm-new-password" class="form-control">
+                                        <p id="confirm-password-error-message" style="display: none"></p>
                                     </div>
                                 </div>
                                 <button type="submit" class="submit-btn" style="margin-top: 20px;">Update Password</button>
@@ -171,5 +175,6 @@ $buyer['name'] = "{$buyer['first']} {$buyer['middle']} {$buyer['surn']}";
     <?php endif; ?>
 
     <script src="<?php echo $basePath; ?>js/main.js"></script>
+    <script type="module" src="<?php echo $basePath; ?>js/profile.js"></script>
 </body>
 </html>

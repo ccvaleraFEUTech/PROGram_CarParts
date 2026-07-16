@@ -1,19 +1,19 @@
+import { hideFieldError, showFieldError } from './field_validation.js';
+
 const ERROR_MESSAGE_EMAIL_REQUIRED = 'Email is required.';
 const ERROR_MESSAGE_EMAIL_INVALID = 'Please enter a valid email address.';
+const EMAIL_REGEX_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 // Email validation using standard regex pattern for user registration
 export function validateEmail(emailInput) {
     const email = emailInput.value.trim();
 
-    // Regex pattern for email validation
-    const emailRegexPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    
     if (!email) {
         displayEmailError(emailInput, ERROR_MESSAGE_EMAIL_REQUIRED);
         return false;
     }
     
-    if (!emailRegexPattern.test(email)) {
+    if (!EMAIL_REGEX_PATTERN.test(email)) {
         displayEmailError(emailInput, ERROR_MESSAGE_EMAIL_INVALID);
         return false;
     }
@@ -24,20 +24,10 @@ export function validateEmail(emailInput) {
 // Shows an email error message under the input field
 export function displayEmailError(emailInput, message) {
     // Clear any existing error
-    hideEmailError(emailInput);
+    hideFieldError('email-error-message');
     
     // Show the error message
-    let emailErrorMessage = document.getElementById('email-error-message');
-    emailErrorMessage.style.display = 'block';
-    emailErrorMessage.textContent = message;
-}
-
-// Hides the email error message under the input field
-export function hideEmailError(emailInput) {
-    let emailErrorMessage = document.getElementById('email-error-message');
-    emailErrorMessage.style.display = 'none';
-    
-    emailInput.classList.remove('error');
+    showFieldError('email-error-message', message);
 }
 
 // Enables password toggle to a password-related field, which toggles between showing and hiding the password
