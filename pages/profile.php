@@ -72,10 +72,12 @@ $buyer['name'] = "{$buyer['first']} {$buyer['middle']} {$buyer['surn']}";
                                     <div class="group-input">
                                         <label class="form-label">Email Address</label>
                                         <input type="email" name="email" class="form-control" value="<?php echo htmlspecialchars($buyer['email']); ?>">
+                                        <p id="email-error-message" style="display: none">Email is required.</p>
                                     </div>
                                     <div class="group-input">
                                         <label class="form-label">Contact Number</label>
                                         <input type="text" name="contact-number" class="form-control" value="<?php echo htmlspecialchars($buyer['contact']); ?>">
+                                        <p id="phone-error-message" style="display: none">Phone number is required.</p>
                                     </div>
                                     <div class="group-input">
                                         <label class="form-label">Region</label>
@@ -94,11 +96,18 @@ $buyer['name'] = "{$buyer['first']} {$buyer['middle']} {$buyer['surn']}";
                                 <div class="form-grid">
                                     <div class="group-input full-width">
                                         <label class="form-label">Current Password</label>
-                                        <input type="password" name="current-password" class="form-control">
+                                        <div class="password-wrapper">
+                                            <input type="password" name="current-password" class="form-control">
+                                            <i class="fa-solid fa-eye-slash password-toggle"></i>
+                                        </div>
                                     </div>
                                     <div class="group-input">
                                         <label class="form-label">New Password</label>
-                                        <input type="password" name="new-password" class="form-control">
+                                        <div class="password-wrapper">
+                                            <input type="password" name="new-password" class="form-control" required>
+                                            <i class="fa-solid fa-eye-slash password-toggle"></i>
+                                        </div>
+                                        
                                         <p id="new-password-error-message" style="display: none"></p>
                                         <div class="password-requirements" style="display: none">
                                             <p class="requirement" id="req-length">At least 8 characters</p>
@@ -109,7 +118,11 @@ $buyer['name'] = "{$buyer['first']} {$buyer['middle']} {$buyer['surn']}";
                                     </div>
                                     <div class="group-input">
                                         <label class="form-label">Confirm New Password</label>
-                                        <input type="password" name="confirm-new-password" class="form-control">
+                                        <div class="password-wrapper">
+                                            <input type="password" name="confirm-new-password" class="form-control">
+                                            <i class="fa-solid fa-eye-slash password-toggle"></i>
+                                        </div>
+                                        <p id="confirm-password-error-message" style="display: none">Passwords do not match.</p>
                                     </div>
                                 </div>
                                 <button type="submit" class="submit-btn" style="margin-top: 20px;">Update Password</button>
