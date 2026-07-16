@@ -40,6 +40,7 @@ $recentOrders = mysqli_query($connection, "SELECT * FROM orders WHERE user_id = 
                     <div>
                         <h1><?php echo htmlspecialchars(user_full_name($user)); ?></h1>
                         <p>Member since <?php echo date('F Y', strtotime($user['created_at'])); ?> &​middot; <?php echo htmlspecialchars($user['email']); ?></p>
+                        <p><span class="tag">Email Status: <?php echo htmlspecialchars($user['email_status']); ?></span></p>
                     </div>
                 </div>
 

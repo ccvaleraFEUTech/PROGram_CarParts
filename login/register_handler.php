@@ -2,6 +2,7 @@
 session_start();
 require_once '../includes/database.php';
 require_once '../includes/functions.php';
+require_once '../mailer.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     redirect_to('../register.php');
@@ -19,6 +20,7 @@ $city = clean_input($_POST['city']);
 $barangay = clean_input($_POST['barangay']);
 $streetAddress = clean_input($_POST['street-addy']);
 $contactNumber = str_replace(' ', '', clean_input($_POST['contact-number']));
+$fullName = trim($firstName . ' ' . $middleName . ' ' . $lastName);
 
 if (!preg_match('/^[A-Za-z .-]+$/', $firstName . $middleName . $lastName)) {
     set_message('Names may only contain letters, spaces, periods, and hyphens.', 'error');
@@ -53,9 +55,10 @@ $middleName = mysqli_real_escape_string($connection, $middleName);
 $lastName = mysqli_real_escape_string($connection, $lastName);
 $contactNumber = mysqli_real_escape_string($connection, $contactNumber);
 $hashedPassword = mysqli_real_escape_string($connection, password_hash($password, PASSWORD_DEFAULT));
+$token = bin2hex(random_bytes(32));
 
-$userQuery = "INSERT INTO users (first_name, middle_name, last_name, email, password, contact_number, role, status, created_at)
-              VALUES ('$firstName', '$middleName', '$lastName', '$safeEmail', '$hashedPassword', '$contactNumber', 'Customer', 'Active', NOW())";
+$userQuery = "INSERT INTO users (first_name, middle_name, last_name, email, password, contact_number, role, status, email_status, verification_token, verification_expires_at, created_at)
+              VALUES ('$firstName', '$middleName', '$lastName', '$safeEmail', '$hashedPassword', '$contactNumber', 'Customer', 'Active', 'Pending', '$token', DATE_ADD(NOW(), INTERVAL 24 HOUR), NOW())";
 
 if (!mysqli_query($connection, $userQuery)) {
     set_message('Registration failed. Please try again.', 'error');
@@ -72,6 +75,10 @@ $streetAddress = mysqli_real_escape_string($connection, $streetAddress);
 mysqli_query($connection, "INSERT INTO addresses (user_id, label, street_address, barangay, city, province, region, is_default)
                            VALUES ($userId, 'Default', '$streetAddress', '$barangay', '$city', '$province', '$region', 1)");
 
-set_message('Registration successful. You can now log in.');
+if (send_confirmation_email($email, $fullName, $token)) {
+    set_message('Registration successful. Check your email and confirm your account before logging in.');
+} else {
+    set_message('Registration successful, but the confirmation email could not be sent. Use Resend Confirmation on the login page.', 'error');
+}
 redirect_to('../login.php');
 ?>

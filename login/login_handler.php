@@ -31,7 +31,11 @@ $_SESSION['user_name'] = user_full_name($user);
 $_SESSION['user_role'] = $user['role'];
 
 add_audit_log($connection, 'Logged In', 'Auth', 'Signed in to the website');
-set_message('Welcome back, ' . $_SESSION['user_name'] . '!');
+if ($user['email_status'] === 'Pending') {
+    set_message('Welcome, ' . $_SESSION['user_name'] . '! Your email confirmation is still pending. Please check your email for the confirmation link.');
+} else {
+    set_message('Welcome back, ' . $_SESSION['user_name'] . '!');
+}
 
 if ($user['role'] !== 'Customer') {
     redirect_to('../seller/dashboard.php');

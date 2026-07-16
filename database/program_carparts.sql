@@ -13,6 +13,9 @@ CREATE TABLE IF NOT EXISTS users (
     status VARCHAR(20) NOT NULL DEFAULT 'Active',
     order_updates INT NOT NULL DEFAULT 1,
     promotions INT NOT NULL DEFAULT 0,
+    email_status VARCHAR(20) NOT NULL DEFAULT 'Pending',
+    verification_token VARCHAR(64),
+    verification_expires_at DATETIME,
     created_at DATETIME NOT NULL,
     PRIMARY KEY (id),
     UNIQUE KEY (email)
@@ -109,10 +112,10 @@ CREATE TABLE IF NOT EXISTS audit_logs (
 );
 
 INSERT IGNORE INTO users
-(id, first_name, middle_name, last_name, email, password, contact_number, role, status, order_updates, promotions, created_at)
+(id, first_name, middle_name, last_name, email, password, contact_number, role, status, order_updates, promotions, email_status, created_at)
 VALUES
-(1, 'Jade', 'Carlos', 'Castillo', 'admin@program.com', '$2y$10$3SST.Pm/l3iJqWrP94J0b.j2ZXDtp7UGOuZo68sMUzqBOwKlvjrsG', '09123456789', 'Super Admin', 'Active', 1, 0, NOW()),
-(2, 'Juan', 'Dela', 'Cruz', 'customer@program.com', '$2y$10$TlE/N4h6/BW2w2g7Y8ttJearDfbXY/QcD59.xCrAg3IQOA6hUTJh.', '09987654321', 'Customer', 'Active', 1, 1, NOW());
+(1, 'Jade', 'Carlos', 'Castillo', 'admin@program.com', '$2y$10$3SST.Pm/l3iJqWrP94J0b.j2ZXDtp7UGOuZo68sMUzqBOwKlvjrsG', '09123456789', 'Super Admin', 'Active', 1, 0, 'Confirmed', NOW()),
+(2, 'Juan', 'Dela', 'Cruz', 'customer@program.com', '$2y$10$TlE/N4h6/BW2w2g7Y8ttJearDfbXY/QcD59.xCrAg3IQOA6hUTJh.', '09987654321', 'Customer', 'Active', 1, 1, 'Confirmed', NOW());
 
 INSERT IGNORE INTO addresses
 (id, user_id, label, street_address, barangay, city, province, region, is_default)

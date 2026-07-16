@@ -2,6 +2,7 @@
 session_start();
 require_once '../includes/database.php';
 require_once '../includes/functions.php';
+require_once '../mailer.php';
 require_login('../login.php');
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -17,11 +18,17 @@ if ($action === 'update_profile') {
     $lastName = clean_input($_POST['last_name']);
     $email = strtolower(clean_input($_POST['email']));
     $contactNumber = str_replace(' ', '', clean_input($_POST['contact_number']));
+    $confirmationEmail = $email;
+    $confirmationName = trim($firstName . ' ' . $middleName . ' ' . $lastName);
 
     if (!preg_match('/^[A-Za-z .-]+$/', $firstName . $middleName . $lastName) || !preg_match('/^[^\s@]+@[^\s@]+\.[^\s@]+$/', $email) || !preg_match('/^09[0-9]{9}$/', $contactNumber)) {
         set_message('Please check your name, email, and contact number.', 'error');
         redirect_to('../pages/profile.php');
     }
+
+    $currentResult = mysqli_query($connection, "SELECT email FROM users WHERE id = $userId");
+    $currentUser = mysqli_fetch_assoc($currentResult);
+    $emailChanged = $currentUser && $currentUser['email'] !== $email;
 
     $email = mysqli_real_escape_string($connection, $email);
     $duplicate = mysqli_query($connection, "SELECT id FROM users WHERE email = '$email' AND id != $userId");
@@ -34,11 +41,28 @@ if ($action === 'update_profile') {
     $middleName = mysqli_real_escape_string($connection, $middleName);
     $lastName = mysqli_real_escape_string($connection, $lastName);
     $contactNumber = mysqli_real_escape_string($connection, $contactNumber);
-    mysqli_query($connection, "UPDATE users SET first_name = '$firstName', middle_name = '$middleName', last_name = '$lastName', email = '$email', contact_number = '$contactNumber' WHERE id = $userId");
+    $confirmationUpdate = '';
+    $token = '';
+
+    if ($emailChanged) {
+        $token = bin2hex(random_bytes(32));
+        $confirmationUpdate = ", email_status = 'Pending', verification_token = '$token', verification_expires_at = DATE_ADD(NOW(), INTERVAL 24 HOUR)";
+    }
+
+    mysqli_query($connection, "UPDATE users SET first_name = '$firstName', middle_name = '$middleName', last_name = '$lastName', email = '$email', contact_number = '$contactNumber'$confirmationUpdate WHERE id = $userId");
 
     $userResult = mysqli_query($connection, "SELECT * FROM users WHERE id = $userId");
     $_SESSION['user_name'] = user_full_name(mysqli_fetch_assoc($userResult));
-    set_message('Your profile was updated.');
+
+    if ($emailChanged) {
+        if (send_confirmation_email($confirmationEmail, $confirmationName, $token)) {
+            set_message('Your profile was updated. Your email status is Pending until you use the new confirmation link.');
+        } else {
+            set_message('Your profile was updated, but the confirmation email could not be sent.', 'error');
+        }
+    } else {
+        set_message('Your profile was updated.');
+    }
 }
 
 if ($action === 'change_password') {
@@ -90,4 +114,3 @@ if ($action === 'preferences') {
 
 redirect_to('../pages/profile.php');
 ?>
-
