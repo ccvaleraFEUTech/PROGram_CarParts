@@ -191,5 +191,6 @@ $buyer['name'] = "{$buyer['first']} {$buyer['middle']} {$buyer['surn']}";
     <?php endif; ?>
 
     <script src="<?php echo $basePath; ?>js/main.js"></script>
+    <script type="module" src="<?php echo $basePath; ?>js/profile.js"></script>
 </body>
 </html>
