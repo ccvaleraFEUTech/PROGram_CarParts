@@ -81,8 +81,22 @@ $buyer['name'] = "{$buyer['first']} {$buyer['middle']} {$buyer['surn']}";
                                     </div>
                                     <div class="group-input">
                                         <label class="form-label">Region</label>
-                                        <select name="region" class="form-select">
-                                            <option>National Capital Region</option>
+                                        <select name="region" id="region" class="form-select">
+                                        </select>
+                                    </div>
+                                    <div class="group-input">
+                                        <label class="form-label">Province</label>
+                                        <select name="province" id="province" class="form-select">
+                                        </select>
+                                    </div>
+                                    <div class="group-input">
+                                        <label class="form-label">City/Municipality</label>
+                                        <select name="city" id="city" class="form-select">
+                                        </select>
+                                    </div>
+                                    <div class="group-input">
+                                        <label class="form-label">Barangay</label>
+                                        <select name="barangay" id="barangay" class="form-select">
                                         </select>
                                     </div>
                                 </div>
