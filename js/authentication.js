@@ -9,12 +9,12 @@ export function validateEmail(emailInput) {
     const email = emailInput.value.trim();
 
     if (!email) {
-        displayEmailError(emailInput, ERROR_MESSAGE_EMAIL_REQUIRED);
+        displayEmailError(ERROR_MESSAGE_EMAIL_REQUIRED);
         return false;
     }
     
     if (!EMAIL_REGEX_PATTERN.test(email)) {
-        displayEmailError(emailInput, ERROR_MESSAGE_EMAIL_INVALID);
+        displayEmailError(ERROR_MESSAGE_EMAIL_INVALID);
         return false;
     }
     
@@ -22,7 +22,7 @@ export function validateEmail(emailInput) {
 }
 
 // Shows an email error message under the input field
-export function displayEmailError(emailInput, message) {
+export function displayEmailError(message) {
     // Clear any existing error
     hideFieldError('email-error-message');
     
