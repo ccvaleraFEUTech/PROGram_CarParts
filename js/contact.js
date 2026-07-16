@@ -1,4 +1,5 @@
-import { validateEmail, clearEmailError } from './authentication.js';
+import { showFieldError, hideFieldError } from './field_validation.js';
+import { validateEmail } from './authentication.js';
 
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('form[action="contact_handler.php"]');
@@ -23,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
             validateName(nameInput);
         });
         nameInput.addEventListener('input', function() {
-            clearNameError(nameInput);
+            hideNameError();
         });
     }
     
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
             validateSubject(subjectInput);
         });
         subjectInput.addEventListener('input', function() {
-            clearSubjectError(subjectInput);
+            hideSubjectError();
         });
     }
     
@@ -41,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
             validateConcern(concernInput);
         });
         concernInput.addEventListener('input', function() {
-            clearConcernError(concernInput);
+            clearConcernError();
         });
     }
 
@@ -68,18 +69,12 @@ function validateName(nameInput) {
     return true;
 }
 
-function showNameError(nameInput, message) {
-    clearNameError(nameInput);
-    
-    let nameErrorMessage = document.getElementById('name-error-message');
-    nameErrorMessage.style.display = 'block';
-    nameErrorMessage.textContent = message;
+function showNameError(message) {
+    showFieldError('name-error-message', message);
 }
 
-function clearNameError(nameInput) {
-    let nameErrorMessage = document.getElementById('name-error-message');
-    nameErrorMessage.style.display = 'none';
-    nameInput.classList.remove('error');
+function hideNameError() {
+    hideFieldError('name-error-message');
 }
 
 function validateSubject(subjectInput) {
@@ -98,48 +93,37 @@ function validateSubject(subjectInput) {
     return true;
 }
 
-function showSubjectError(subjectInput, message) {
-    clearSubjectError(subjectInput);
-    
-    let subjectErrorMessage = document.getElementById('subject-error-message');
-    subjectErrorMessage.style.display = 'block';
-    subjectErrorMessage.textContent = message;
+function showSubjectError(message) {
+    showFieldError('subject-error-message', message);
 }
 
-function clearSubjectError(subjectInput) {
-    let subjectErrorMessage = document.getElementById('subject-error-message');
-    subjectErrorMessage.style.display = 'none';
-    subjectInput.classList.remove('error');
+function hideSubjectError() {
+    hideFieldError('subject-error-message');
 }
 
 function validateConcern(concernInput) {
     const concern = concernInput.value.trim();
     
     if (!concern) {
-        showConcernError(concernInput, 'Concern is required.');
+        showConcernError('Concern is required.');
         return false;
     }
     
     if (concern.length < 10) {
-        showConcernError(concernInput, 'Concern must be at least 10 characters long.');
+        showConcernError('Concern must be at least 10 characters long.');
         return false;
     }
     
     return true;
 }
 
-function showConcernError(concernInput, message) {
-    clearConcernError(concernInput);
-    
-    let concernErrorMessage = document.getElementById('concern-error-message');
-    concernErrorMessage.style.display = 'block';
-    concernErrorMessage.textContent = message;
+function showConcernError(message) {
+    hideFieldError("concern-error-message");
+    showFieldError("concern-error-message", message);
 }
 
-function clearConcernError(concernInput) {
-    let concernErrorMessage = document.getElementById('concern-error-message');
-    concernErrorMessage.style.display = 'none';
-    concernInput.classList.remove('error');
+function clearConcernError() {
+    hideFieldError('concern-error-message');
 }
 
 function validateContactForm(form) {
