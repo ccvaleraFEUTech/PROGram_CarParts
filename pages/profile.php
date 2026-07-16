@@ -11,7 +11,7 @@ $buyer = [
     'middle' => 'Dela',
     'surn' => 'Cruz',
     'email' => 'juan.delacruz@email.com',
-    'contact' => '0912 345 6789',
+    'contact' => '09123456789',
     'joined' => 'March 2026',
     'initials' => 'JD',
 ];
