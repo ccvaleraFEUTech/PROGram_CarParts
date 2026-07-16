@@ -1,5 +1,5 @@
 import { validatePhoneNumber, formatPhoneNumber, validateConfirmPassword, hideConfirmPasswordError } from './field_validation.js';
-import { validateEmail } from './authentication.js';
+import { validateEmail, validatePasswordRequirements, addPasswordToggle } from './authentication.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     const updateProfileForm = document.getElementById('update-profile-form');
