@@ -128,14 +128,26 @@ $products = mysqli_query($connection, "SELECT products.*, categories.name AS cat
                             <td><?php echo $product['stock']; ?> (reorder: <?php echo $product['reorder_level']; ?>)</td>
                             <td><span class="badge <?php echo $stockStatus === 'In Stock' ? 'badge-success' : ($stockStatus === 'Low Stock' ? 'badge-warning' : 'badge-danger'); ?>"><?php echo $stockStatus; ?></span></td>
                             <td>
-                                <form action="inventory.php" method="post" class="inline-admin-form">
-                                    <input type="hidden" name="action" value="update"><input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
-                                    <input type="number" name="price" step="0.01" min="0" value="<?php echo $product['price']; ?>" class="form-control" title="Price" required>
-                                    <input type="number" name="stock" min="0" value="<?php echo $product['stock']; ?>" class="form-control" title="Stock" required>
-                                    <input type="number" name="reorder_level" min="0" value="<?php echo $product['reorder_level']; ?>" class="form-control" title="Reorder level" required>
-                                    <button type="submit" class="action-btn edit">Save</button>
-                                </form>
-                                <form action="inventory.php" method="post" class="inline-form"><input type="hidden" name="action" value="remove"><input type="hidden" name="product_id" value="<?php echo $product['id']; ?>"><button type="submit" class="action-btn danger">Remove</button></form>
+                                <div class="actions-wrapper">
+                                    <form action="inventory.php" method="post" class="inline-admin-form">
+                                        <input type="hidden" name="action" value="update"><input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
+                                        <div class="form-row">
+                                            <label>Price:</label> <input type="number" name="price" step="0.01" min="0" value="<?php echo $product['price']; ?>" class="form-control" title="Price" required>
+                                            <label>Stock:</label> <input type="number" name="stock" min="0" value="<?php echo $product['stock']; ?>" class="form-control" title="Stock" required>
+                                            <label>Reorder:</label> <input type="number" name="reorder_level" min="0" value="<?php echo $product['reorder_level']; ?>" class="form-control" title="Reorder level" required>
+                                        </div>
+                                    </form>
+                                    <div class="button-row">
+                                        <form action="inventory.php" method="post" class="inline-admin-form">
+                                            <input type="hidden" name="action" value="update"><input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
+                                            <input type="hidden" name="price" value="<?php echo $product['price']; ?>">
+                                            <input type="hidden" name="stock" value="<?php echo $product['stock']; ?>">
+                                            <input type="hidden" name="reorder_level" value="<?php echo $product['reorder_level']; ?>">
+                                            <button type="submit" class="action-btn edit">Save</button>
+                                        </form>
+                                        <form action="inventory.php" method="post" class="inline-form"><input type="hidden" name="action" value="remove"><input type="hidden" name="product_id" value="<?php echo $product['id']; ?>"><button type="submit" class="action-btn danger">Remove</button></form>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     <?php endwhile; ?>
