@@ -19,7 +19,10 @@ $orders = mysqli_query($connection, "SELECT * FROM orders WHERE user_id = $userI
     <title><?php echo $title; ?></title>
 </head>
 <body>
+    <!-- HEADER -->
     <?php include '../includes/header.php'; ?>
+
+    <!-- MAIN -->
     <main>
         <section class="profile-section">
             <div class="profile-container">
@@ -48,6 +51,8 @@ $orders = mysqli_query($connection, "SELECT * FROM orders WHERE user_id = $userI
             </div>
         </section>
     </main>
+
+    <!-- FOOTER -->
     <?php include '../includes/footer.php'; ?>
 
     <!-- JS -->

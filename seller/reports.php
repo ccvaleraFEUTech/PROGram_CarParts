@@ -33,9 +33,13 @@ $auditLog = mysqli_query($connection, "SELECT audit_logs.*, users.first_name, us
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="../assets/css/admin.css"><title><?php echo $title; ?> || PROGram Seller</title></head>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="<?= $basePath ?>assets/css/admin.css"><title><?php echo $title; ?> || PROGram Seller</title></head>
 <body class="admin-body">
+
+    <!-- HEADER -->
     <?php include '../includes/seller-header.php'; ?>
+
+    <!-- MAIN -->
     <main>
         <?php display_message(); ?>
         <div class="admin-panel">
@@ -61,6 +65,8 @@ $auditLog = mysqli_query($connection, "SELECT audit_logs.*, users.first_name, us
             </tbody></table></div>
         </div>
     </main>
+    
+    <!-- FOOTER -->
     <?php include '../includes/seller-footer.php'; ?>
 </body>
 </html>

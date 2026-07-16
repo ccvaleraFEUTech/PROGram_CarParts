@@ -17,10 +17,12 @@ $isLogged = isset($_SESSION['user_id']);
     <title><?php echo $title; ?></title>
 </head>
 <body>
+    <!-- HEADER -->
     <?php if(!isset($hideHeader) || !$hideHeader): ?>
         <?php include '../includes/header.php'; ?>
     <?php endif; ?>
 
+    <!-- MAIN -->
     <main>
         <section class="about-section">
             <div class="about-container">
@@ -68,10 +70,12 @@ $isLogged = isset($_SESSION['user_id']);
         </section>
     </main>
 
+    <!-- FOOTER -->
     <?php if(!isset($hideFooter) || !$hideFooter): ?>
         <?php include '../includes/footer.php'; ?>
     <?php endif; ?>
 
+    <!-- JS -->
     <script src="<?php echo $basePath; ?>js/main.js"></script>
 </body>
 </html>
