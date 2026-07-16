@@ -93,3 +93,27 @@ function validateUpdateForm(form) {
 
     return isValid;
 }
+
+function validateChangePasswordForm(form) {
+    let isValid = true;
+    // TODO: Add form validation
+
+    const currentPasswordInput = form.querySelector('input[name="current-password"]');
+    const newPasswordInput = form.querySelector('input[name="new-password"]');
+    const confirmPasswordInput = form.querySelector('input[name="confirm-new-password"]');
+
+    if (currentPasswordInput && !validatePassword(currentPasswordInput)) {
+        isValid = false;
+    }
+
+    if (newPasswordInput && !validatePassword(newPasswordInput)) {
+        isValid = false;
+    }
+
+    if (confirmPasswordInput && !validateConfirmPassword(newPasswordInput, confirmPasswordInput)) {
+        isValid = false;
+    }
+
+    return isValid;
+}
+
