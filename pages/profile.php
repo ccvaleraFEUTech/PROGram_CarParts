@@ -1,27 +1,19 @@
 <?php 
 session_start();
+require_once '../includes/database.php';
+require_once '../includes/functions.php';
+require_login('../login.php');
 
 $title = "My Profile";
 $basePath = '../';
 $whiteHeader = true;
 $isLogged = isset($_SESSION['user_id']);
 
-$buyer = [
-    'first' => 'Juan',
-    'middle' => 'Dela',
-    'surn' => 'Cruz',
-    'email' => 'juan.delacruz@email.com',
-    'contact' => '09123456789',
-    'joined' => 'March 2026',
-    'initials' => 'JD',
-];
-
-$addresses = [
-    ['tag' => 'Default', 'details' => '123 Juan Dela Cruz St., Brgy. Matibay, Marikina City, Metro Manila'],
-    ['tag' => 'Work',    'details' => '45 Shaw Blvd., Brgy. Wack-Wack, Mandaluyong City, Metro Manila'],
-];
-
-$buyer['name'] = "{$buyer['first']} {$buyer['middle']} {$buyer['surn']}";
+$userId = (int) $_SESSION['user_id'];
+$userResult = mysqli_query($connection, "SELECT * FROM users WHERE id = $userId");
+$user = mysqli_fetch_assoc($userResult);
+$addresses = mysqli_query($connection, "SELECT * FROM addresses WHERE user_id = $userId ORDER BY is_default DESC, id DESC");
+$recentOrders = mysqli_query($connection, "SELECT * FROM orders WHERE user_id = $userId ORDER BY created_at DESC LIMIT 3");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,14 +31,15 @@ $buyer['name'] = "{$buyer['first']} {$buyer['middle']} {$buyer['surn']}";
     <?php endif; ?>
 
     <main>
+        <?php display_message(); ?>
         <section class="profile-section">
             <div class="profile-container">
 
                 <div class="profile-head">
-                    <div class="profile-avatar"><?php echo htmlspecialchars($buyer['initials']); ?></div>
+                    <div class="profile-avatar"><?php echo htmlspecialchars(user_initials($user)); ?></div>
                     <div>
-                        <h1><?php echo htmlspecialchars($buyer['name']); ?></h1>
-                        <p>Member since <?php echo htmlspecialchars($buyer['joined']); ?> &middot; <?php echo htmlspecialchars($buyer['email']); ?></p>
+                        <h1><?php echo htmlspecialchars(user_full_name($user)); ?></h1>
+                        <p>Member since <?php echo date('F Y', strtotime($user['created_at'])); ?> &​middot; <?php echo htmlspecialchars($user['email']); ?></p>
                     </div>
                 </div>
 
@@ -55,144 +48,109 @@ $buyer['name'] = "{$buyer['first']} {$buyer['middle']} {$buyer['surn']}";
 
                         <div class="profile-card">
                             <h3>Account Information</h3>
-                            <form id="update-profile-form" action="<?php echo $basePath; ?>pages/update_profile.php" method="post">
+                            <form action="../actions/profile_handler.php" method="post">
+                                <input type="hidden" name="action" value="update_profile">
                                 <div class="form-grid">
-                                    <div class="group-input">
-                                        <label class="form-label">First Name</label>
-                                        <input type="text" name="first" class="form-control" value="<?php echo htmlspecialchars($buyer['first']); ?>">
-                                    </div>
-                                    <div class="group-input">
-                                        <label class="form-label">Middle Name</label>
-                                        <input type="text" name="middle" class="form-control" value="<?php echo htmlspecialchars($buyer['middle']); ?>">
-                                    </div>
-                                    <div class="group-input">
-                                        <label class="form-label">Surname</label>
-                                        <input type="text" name="surn" class="form-control" value="<?php echo htmlspecialchars($buyer['surn']); ?>">
-                                    </div>
-                                    <div class="group-input">
-                                        <label class="form-label">Email Address</label>
-                                        <input type="email" name="email" class="form-control" value="<?php echo htmlspecialchars($buyer['email']); ?>">
-                                        <p id="email-error-message" style="display: none">Email is required.</p>
-                                    </div>
-                                    <div class="group-input">
-                                        <label class="form-label">Contact Number</label>
-                                        <input type="text" name="contact-number" class="form-control" value="<?php echo htmlspecialchars($buyer['contact']); ?>">
-                                        <p id="phone-error-message" style="display: none">Phone number is required.</p>
-                                    </div>
-                                    <div class="group-input">
-                                        <label class="form-label">Region</label>
-                                        <select name="region" id="region" class="form-select">
-                                        </select>
-                                    </div>
-                                    <div class="group-input">
-                                        <label class="form-label">Province</label>
-                                        <select name="province" id="province" class="form-select">
-                                        </select>
-                                    </div>
-                                    <div class="group-input">
-                                        <label class="form-label">City/Municipality</label>
-                                        <select name="city" id="city" class="form-select">
-                                        </select>
-                                    </div>
-                                    <div class="group-input">
-                                        <label class="form-label">Barangay</label>
-                                        <select name="barangay" id="barangay" class="form-select">
-                                        </select>
-                                    </div>
+                                    <div class="group-input"><label class="form-label">First Name</label><input type="text" name="first_name" class="form-control" value="<?php echo htmlspecialchars($user['first_name']); ?>" required></div>
+                                    <div class="group-input"><label class="form-label">Middle Name</label><input type="text" name="middle_name" class="form-control" value="<?php echo htmlspecialchars($user['middle_name']); ?>"></div>
+                                    <div class="group-input"><label class="form-label">Last Name</label><input type="text" name="last_name" class="form-control" value="<?php echo htmlspecialchars($user['last_name']); ?>" required></div>
+                                    <div class="group-input"><label class="form-label">Email Address</label><input type="email" name="email" class="form-control" value="<?php echo htmlspecialchars($user['email']); ?>" required></div>
+                                    <div class="group-input"><label class="form-label">Contact Number</label><input type="text" name="contact_number" class="form-control" value="<?php echo htmlspecialchars($user['contact_number']); ?>" required></div>
                                 </div>
-                                <button type="submit" class="submit-btn" style="margin-top: 20px;">Save Changes</button>
+                                <button type="submit" class="submit-btn" style="margin-top:20px">Save Changes</button>
                             </form>
                         </div>
 
                         <div class="profile-card">
                             <h3>Change Password</h3>
-                            <form id="change-password-form" action="<?php echo $basePath; ?>pages/change_password.php" method="post">
+                            <form action="../actions/profile_handler.php" method="post">
+                                <input type="hidden" name="action" value="change_password">
                                 <div class="form-grid">
-                                    <div class="group-input full-width">
-                                        <label class="form-label">Current Password</label>
-                                        <div class="password-wrapper">
-                                            <input type="password" name="current-password" class="form-control">
-                                            <i class="fa-solid fa-eye-slash password-toggle"></i>
-                                        </div>
-                                    </div>
-                                    <div class="group-input">
-                                        <label class="form-label">New Password</label>
-                                        <div class="password-wrapper">
-                                            <input type="password" name="new-password" class="form-control" required>
-                                            <i class="fa-solid fa-eye-slash password-toggle"></i>
-                                        </div>
-                                        
-                                        <p id="new-password-error-message" style="display: none"></p>
-                                        <div class="password-requirements" style="display: none">
-                                            <p class="requirement" id="req-length">At least 8 characters</p>
-                                            <p class="requirement" id="req-uppercase">At least 1 uppercase letter</p>
-                                            <p class="requirement" id="req-lowercase">At least 1 lowercase letter</p>
-                                            <p class="requirement" id="req-number">At least 1 number</p>
-                                        </div>
-                                    </div>
-                                    <div class="group-input">
-                                        <label class="form-label">Confirm New Password</label>
-                                        <div class="password-wrapper">
-                                            <input type="password" name="confirm-new-password" class="form-control">
-                                            <i class="fa-solid fa-eye-slash password-toggle"></i>
-                                        </div>
-                                        <p id="confirm-password-error-message" style="display: none">Passwords do not match.</p>
-                                    </div>
+                                    <div class="group-input full-width"><label class="form-label">Current Password</label><input type="password" name="current_password" class="form-control" required></div>
+                                    <div class="group-input"><label class="form-label">New Password</label><input type="password" name="new_password" class="form-control" required></div>
+                                    <div class="group-input"><label class="form-label">Confirm New Password</label><input type="password" name="confirm_password" class="form-control" required></div>
                                 </div>
-                                <button type="submit" class="submit-btn" style="margin-top: 20px;">Update Password</button>
+                                <button type="submit" class="submit-btn" style="margin-top:20px">Update Password</button>
                             </form>
                         </div>
 
                         <div class="profile-card">
                             <h3>Saved Addresses</h3>
-                            <?php foreach ($addresses as $address): ?>
+                            <?php while ($address = mysqli_fetch_assoc($addresses)): ?>
                                 <div class="address-card">
-                                    <span class="tag"><?php echo htmlspecialchars($address['tag']); ?></span>
-                                    <p><?php echo htmlspecialchars($address['details']); ?></p>
+                                    <span class="tag"><?php echo $address['is_default'] ? 'Default' : htmlspecialchars($address['label']); ?></span>
+                                    <p><?php echo htmlspecialchars($address['street_address'] . ', Brgy. ' . $address['barangay'] . ', ' . $address['city'] . ', ' . $address['province'] . ', ' . $address['region']); ?></p>
+                                    <?php if (!$address['is_default']): ?>
+                                        <form action="../actions/profile_handler.php" method="post">
+                                            <input type="hidden" name="action" value="delete_address">
+                                            <input type="hidden" name="address_id" value="<?php echo $address['id']; ?>">
+                                            <button type="submit" class="remove">Remove</button>
+                                        </form>
+                                    <?php endif; ?>
                                 </div>
-                            <?php endforeach; ?>
-                            <a href="#" class="btn-outline-pill">+ Add New Address</a>
+                            <?php endwhile; ?>
+
+                            <h4>Add New Address</h4>
+                            <form action="../actions/profile_handler.php" method="post">
+                                <input type="hidden" name="action" value="add_address">
+                                <div class="form-grid">
+                                    <div class="group-input"><label class="form-label">Label</label><input type="text" name="label" class="form-control" placeholder="Home or Work" required></div>
+                                    <div class="group-input"><label class="form-label">Street / House No.</label><input type="text" name="street" class="form-control" required></div>
+                                    <div class="group-input"><label class="form-label">Region</label><select name="region" id="address-region" class="form-select"></select></div>
+                                    <div class="group-input"><label class="form-label">Province</label><select name="province" id="address-province" class="form-select"></select></div>
+                                    <div class="group-input"><label class="form-label">City/Municipality</label><select name="city" id="address-city" class="form-select"></select></div>
+                                    <div class="group-input"><label class="form-label">Barangay</label><select name="barangay" id="address-barangay" class="form-select"></select></div>
+                                </div>
+                                <button type="submit" class="btn-outline-pill" style="margin-top:15px">+ Add Address</button>
+                            </form>
                         </div>
 
                         <div class="profile-card">
-                            <h3>Notification Preferences</h3>
-                            <div class="pref-row">
-                                <div>
-                                    <p>Order Updates</p>
-                                    <span>Get notified about order status and delivery</span>
+                            <h3>Recent Orders</h3>
+                            <?php if (mysqli_num_rows($recentOrders) === 0): ?><p>You have not placed an order yet.</p><?php endif; ?>
+                            <?php while ($order = mysqli_fetch_assoc($recentOrders)): ?>
+                                <div class="address-card">
+                                    <span class="tag"><?php echo htmlspecialchars($order['status']); ?></span>
+                                    <p><strong><?php echo htmlspecialchars($order['order_number']); ?></strong> &middot; &#8369;<?php echo number_format($order['total_amount'], 2); ?> &middot; <?php echo date('M d, Y', strtotime($order['created_at'])); ?></p>
                                 </div>
-                                <label class="switch">
-                                    <input type="checkbox" checked>
-                                    <span class="slider-toggle"></span>
-                                </label>
-                            </div>
-                            <div class="pref-row">
-                                <div>
-                                    <p>Promotions & Discounts</p>
-                                    <span>Receive emails about sales and new products</span>
-                                </div>
-                                <label class="switch">
-                                    <input type="checkbox">
-                                    <span class="slider-toggle"></span>
-                                </label>
-                            </div>
+                            <?php endwhile; ?>
+                            <a href="orders.php" class="btn-outline-pill">View All Orders</a>
                         </div>
 
                     </div>
 
                     <div class="profile-side">
-                        <div class="seller-cta">
-                            <h3>Sell on PROGram</h3>
-                            <p>Have genuine car parts to offer? Apply for seller access and manage your own stock, pricing, and orders from the seller panel.</p>
-                            <a href="<?php echo $basePath; ?>seller/dashboard.php" class="btn-outline-pill" style="background-color:#ffffff;">Go to Seller Panel</a>
-                        </div>
-
-                        <div class="profile-card" style="margin-top: 30px;">
-                            <h3>Session</h3>
-                            <form action="#" method="post">
-                                <button type="submit" class="logout-full">Logout</button>
+                        <?php if ($user['role'] !== 'Customer'): ?>
+                            <div class="seller-cta"><h3>Seller Panel</h3><p>Manage products, users, inventory, orders, and reports.</p><a href="../seller/dashboard.php" class="btn-outline-pill" style="background:#fff">Go to Seller Panel</a></div>
+                        <?php endif; ?>
+                        <div class="profile-card" style="margin-top:30px">
+                            <h3>Notification Preferences</h3>
+                            <form action="../actions/profile_handler.php" method="post">
+                                <input type="hidden" name="action" value="preferences">
+                                <div class="pref-row">
+                                    <div>
+                                        <p>Order Updates</p>
+                                        <span>Get notified about order status and delivery</span>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" name="order_updates" <?php echo $user['order_updates'] ? 'checked' : ''; ?>>
+                                        <span class="slider-toggle"></span>
+                                    </label>
+                                </div>
+                                <div class="pref-row">
+                                    <div>
+                                        <p>Promotions & Discounts</p>
+                                        <span>Receive emails about sales and new products</span>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" name="promotions" <?php echo $user['promotions'] ? 'checked' : ''; ?>>
+                                        <span class="slider-toggle"></span>
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn-outline-pill">Save Preferences</button>
                             </form>
                         </div>
+                        <div class="profile-card" style="margin-top:30px"><h3>Session</h3><a href="../actions/logout.php" class="logout-full">Logout</a></div>
                     </div>
                 </div>
 

@@ -1,5 +1,6 @@
 import { formatPhoneNumber, validatePhoneNumber, 
-    validateConfirmPassword } from './field_validation.js';
+    validateConfirmPassword, 
+    hideFieldError} from './field_validation.js';
 import { validateEmail, addPasswordToggle } from './authentication.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -18,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         emailInput.addEventListener('input', () => {
-            hideConfirmPasswordError();
+            hideFieldError('email-error-message');
         });
     }
 
@@ -30,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         confirmPasswordInput.addEventListener('input', () => {
-            hideConfirmPasswordError();
+            hideFieldError('confirm-password-error-message');
         });
 
         passwordInput.addEventListener('input', () => {
@@ -60,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (phoneInput) {
 
         phoneInput.addEventListener('input', () => {
-            hidePhoneNumberError();
+            hideFieldError('phone-error-message');
             formatPhoneNumber(phoneInput);
         });
         

@@ -1,5 +1,6 @@
 <?php 
 session_start();
+require_once 'includes/functions.php';
 
 $title = "Register";
 $basePath = '';
@@ -27,6 +28,7 @@ $isLogged = isset($_SESSION['user_id']);
             <a href="<?php echo $basePath; ?>index.php" class="back">&larr;</a>
             <div class="card wide">
                 <div class="auth-card-body">
+                    <?php display_message(); ?>
                     <h3>Create an Account</h3>
                     <form action="login/register_handler.php" method="post">
                         <div class="field">

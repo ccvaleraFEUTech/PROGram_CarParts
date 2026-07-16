@@ -105,27 +105,32 @@ function populateBarangays(regionCode, provinceName, cityName) {
     });
 }
 
-function initLocationDropdowns() {
+function initLocationDropdowns(prefix = '') {
+    const regionId = prefix ? `${prefix}-region` : 'region';
+    const provinceId = prefix ? `${prefix}-province` : 'province';
+    const cityId = prefix ? `${prefix}-city` : 'city';
+    const barangayId = prefix ? `${prefix}-barangay` : 'barangay';
+
     loadLocationData().then(success => {
         if (success) {
-            populateRegions();
+            populateRegions(prefix);
         }
     });
 
-    const regionSelect = document.getElementById('region');
-    const provinceSelect = document.getElementById('province');
-    const citySelect = document.getElementById('city');
+    const regionSelect = document.getElementById(regionId);
+    const provinceSelect = document.getElementById(provinceId);
+    const citySelect = document.getElementById(cityId);
 
     if (regionSelect) {
         regionSelect.addEventListener('change', (e) => {
-            populateProvinces(e.target.value);
+            populateProvinces(e.target.value, prefix);
         });
     }
 
     if (provinceSelect) {
         provinceSelect.addEventListener('change', (e) => {
             const regionCode = regionSelect ? regionSelect.value : '';
-            populateCities(regionCode, e.target.value);
+            populateCities(regionCode, e.target.value, prefix);
         });
     }
 
@@ -133,12 +138,113 @@ function initLocationDropdowns() {
         citySelect.addEventListener('change', (e) => {
             const regionCode = regionSelect ? regionSelect.value : '';
             const provinceName = provinceSelect ? provinceSelect.value : '';
-            populateBarangays(regionCode, provinceName, e.target.value);
+            populateBarangays(regionCode, provinceName, e.target.value, prefix);
         });
     }
+}
+
+function populateRegions(prefix = '') {
+    const regionId = prefix ? `${prefix}-region` : 'region';
+    const regionSelect = document.getElementById(regionId);
+    if (!regionSelect || !locationData) return;
+
+    regionSelect.innerHTML = '<option value="">Select Region</option>';
+
+    const regionKeys = Object.keys(locationData).reverse();
+
+    for (const regionCode of regionKeys) {
+        const region = locationData[regionCode];
+        const option = document.createElement('option');
+        option.value = regionCode;
+        option.textContent = region.region_name;
+        regionSelect.appendChild(option);
+    }
+}
+
+function populateProvinces(regionCode, prefix = '') {
+    const provinceId = prefix ? `${prefix}-province` : 'province';
+    const cityId = prefix ? `${prefix}-city` : 'city';
+    const barangayId = prefix ? `${prefix}-barangay` : 'barangay';
+    
+    const provinceSelect = document.getElementById(provinceId);
+    const citySelect = document.getElementById(cityId);
+    const barangaySelect = document.getElementById(barangayId);
+    
+    if (!provinceSelect || !locationData || !regionCode) return;
+
+    provinceSelect.innerHTML = '<option value="">Select Province</option>';
+    citySelect.innerHTML = '<option value="">Select City/Municipality</option>';
+    if (barangaySelect) {
+        barangaySelect.innerHTML = '<option value="">Select Barangay</option>';
+    }
+
+    const region = locationData[regionCode];
+    if (!region || !region.province_list) return;
+
+    for (const provinceName in region.province_list) {
+        const option = document.createElement('option');
+        option.value = provinceName;
+        option.textContent = provinceName;
+        provinceSelect.appendChild(option);
+    }
+}
+
+function populateCities(regionCode, provinceName, prefix = '') {
+    const cityId = prefix ? `${prefix}-city` : 'city';
+    const barangayId = prefix ? `${prefix}-barangay` : 'barangay';
+    
+    const citySelect = document.getElementById(cityId);
+    const barangaySelect = document.getElementById(barangayId);
+    
+    if (!citySelect || !locationData || !regionCode || !provinceName) return;
+
+    citySelect.innerHTML = '<option value="">Select City/Municipality</option>';
+    if (barangaySelect) {
+        barangaySelect.innerHTML = '<option value="">Select Barangay</option>';
+    }
+
+    const region = locationData[regionCode];
+    if (!region || !region.province_list || !region.province_list[provinceName]) return;
+
+    const province = region.province_list[provinceName];
+    if (!province.municipality_list) return;
+
+    for (const cityName in province.municipality_list) {
+        const option = document.createElement('option');
+        option.value = cityName;
+        option.textContent = cityName;
+        citySelect.appendChild(option);
+    }
+}
+
+function populateBarangays(regionCode, provinceName, cityName, prefix = '') {
+    const barangayId = prefix ? `${prefix}-barangay` : 'barangay';
+    
+    const barangaySelect = document.getElementById(barangayId);
+    
+    if (!barangaySelect || !locationData || !regionCode || !provinceName || !cityName) return;
+
+    barangaySelect.innerHTML = '<option value="">Select Barangay</option>';
+
+    const region = locationData[regionCode];
+    if (!region || !region.province_list || !region.province_list[provinceName]) return;
+
+    const province = region.province_list[provinceName];
+    if (!province.municipality_list || !province.municipality_list[cityName]) return;
+
+    const city = province.municipality_list[cityName];
+    if (!city.barangay_list) return;
+
+    city.barangay_list.forEach(barangayName => {
+        const option = document.createElement('option');
+        option.value = barangayName;
+        option.textContent = barangayName;
+        barangaySelect.appendChild(option);
+    });
 }
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
     initLocationDropdowns();
+    initLocationDropdowns('address');
 });

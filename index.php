@@ -1,9 +1,12 @@
 <?php 
 session_start();
+require_once 'includes/database.php';
+require_once 'includes/functions.php';
 
 $title = "Home";
 $basePath = '';
 $isLogged = isset($_SESSION['user_id']);
+$featuredProducts = mysqli_query($connection, "SELECT * FROM products WHERE active = 1 ORDER BY id DESC LIMIT 3");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +24,7 @@ $isLogged = isset($_SESSION['user_id']);
     <?php endif; ?>
 
     <main>
+        <?php display_message(); ?>
         <section class="banner">
             <div class="container">
                 <h1>Welcome to PROGram</h1>
