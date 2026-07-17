@@ -1,6 +1,3 @@
-CREATE DATABASE IF NOT EXISTS program_carparts;
-USE program_carparts;
-
 CREATE TABLE IF NOT EXISTS users (
     id INT NOT NULL AUTO_INCREMENT,
     first_name VARCHAR(50) NOT NULL,
@@ -32,7 +29,7 @@ CREATE TABLE IF NOT EXISTS addresses (
     region VARCHAR(100) NOT NULL,
     is_default INT NOT NULL DEFAULT 0,
     PRIMARY KEY (id),
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS categories (
@@ -72,7 +69,7 @@ CREATE TABLE IF NOT EXISTS orders (
     created_at DATETIME NOT NULL,
     PRIMARY KEY (id),
     UNIQUE KEY (order_number),
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS order_items (
@@ -97,7 +94,7 @@ CREATE TABLE IF NOT EXISTS contact_messages (
     message VARCHAR(1000) NOT NULL,
     created_at DATETIME NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS audit_logs (
@@ -108,7 +105,7 @@ CREATE TABLE IF NOT EXISTS audit_logs (
     details VARCHAR(500) NOT NULL,
     created_at DATETIME NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
 INSERT IGNORE INTO users
