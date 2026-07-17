@@ -77,11 +77,31 @@ $recentOrders = mysqli_query($connection, "SELECT * FROM orders WHERE user_id = 
 
                         <div class="profile-card">
                             <h3>Change Password</h3>
-                            <form action="../actions/profile_handler.php" method="post">
+                            <form action="../actions/profile_handler.php" method="post" id="change-password-form">
                                 <input type="hidden" name="action" value="change_password">
                                 <div class="form-grid">
                                     <div class="group-input full-width"><label class="form-label">Current Password</label><input type="password" name="current_password" class="form-control" required></div>
-                                    <div class="group-input"><label class="form-label">New Password</label><input type="password" name="new_password" class="form-control" required></div>
+                                    <div class="group-input">
+                                        <label class="form-label">New Password</label>
+                                        <input type="password" name="new_password" class="form-control" required>
+                                        <ul class="password-requirements" style="display: none">
+                                            <li data-rule="length">
+                                                <i class="fa-solid fa-circle"></i> At least 8 characters
+                                            </li>
+                                            <li data-rule="uppercase">
+                                                <i class="fa-solid fa-circle"></i> One uppercase letter
+                                            </li>
+                                            <li data-rule="lowercase">
+                                                <i class="fa-solid fa-circle"></i> One lowercase letter
+                                            </li>
+                                            <li data-rule="number">
+                                                <i class="fa-solid fa-circle"></i> One number
+                                            </li>
+                                            <li data-rule="symbol">
+                                                <i class="fa-solid fa-circle"></i> One special character
+                                            </li>
+                                        </ul>
+                                    </div>
                                     <div class="group-input"><label class="form-label">Confirm New Password</label><input type="password" name="confirm_password" class="form-control" required></div>
                                 </div>
                                 <button type="submit" class="submit-btn" style="margin-top:20px">Update Password</button>
