@@ -4,6 +4,8 @@ require_once "../phpmailer/src/PHPMailer.php";
 require_once "../phpmailer/src/SMTP.php";
 require_once "../phpmailer/src/Exception.php";
 
+$isLocal = ($_SERVER['HTTP_HOST'] === 'localhost');
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -11,9 +13,6 @@ function send_confirmation_email($to_email, $to_name, $token) {
     $mail = new PHPMailer(true);
 
     try {
-
-
-       
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com'; 
         $smtp_username = 'chocholoy@gmail.com';
@@ -27,7 +26,10 @@ function send_confirmation_email($to_email, $to_name, $token) {
         $mail->setFrom($smtp_username, "PROGram Registration Confirmation");
         $mail->addAddress($to_email, $to_name); 
 
-        $confirmation_link = "http://localhost/PROGram_CarParts/confirm_email.php?token=" . urlencode($token);
+        // if it is localhost, use localhost, otherwise use the domain
+        $confirmation_link = $isLocal ? 
+            "http://localhost/PROGram_CarParts/confirm_email.php?token=" . urlencode($token) 
+            : "https://program-carparts.infinityfree.me/confirm_email.php?token=" . urlencode($token);
         $mail->isHTML(true);
         $mail->Subject = "Confirm Your Registration";
         $mail->Body = "
@@ -48,3 +50,4 @@ function send_confirmation_email($to_email, $to_name, $token) {
 }
 
 ?>
+
