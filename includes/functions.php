@@ -16,15 +16,16 @@ function set_message($message, $type = 'success')
     $_SESSION['message_type'] = $type;
 }
 
-function display_message()
+function display_message($context = 'main')
 {
     if (!isset($_SESSION['message'])) {
         return;
     }
 
     $message = $_SESSION['message'];
-    $type = isset($_SESSION['message_type']) ? $_SESSION['message_type'] : 'success';
-    echo '<div class="site-message ' . htmlspecialchars($type) . '">' . htmlspecialchars($message) . '</div>';
+    $messageType = isset($_SESSION['message_type']) ? $_SESSION['message_type'] : 'success';
+    $contextClass = $context === 'auth' ? 'auth' : '';
+    echo '<div class="site-message ' . htmlspecialchars($messageType) . ' ' . $contextClass . '">' . htmlspecialchars($message) . '</div>';
     unset($_SESSION['message']);
     unset($_SESSION['message_type']);
 }
