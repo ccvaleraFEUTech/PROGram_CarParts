@@ -9,13 +9,6 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 $action = isset($_POST['action']) ? $_POST['action'] : '';
 
-if (isset($_POST['remove_id'])) {
-    $productId = (int) $_POST['remove_id'];
-    unset($_SESSION['cart'][$productId]);
-    set_message('Product removed from your cart.');
-    redirect_to('../pages/cart.php');
-}
-
 if ($action === 'add') {
     $productId = (int) $_POST['product_id'];
     $quantity = max(1, (int) $_POST['quantity']);
@@ -55,7 +48,7 @@ if ($action === 'update' && isset($_POST['quantity'])) {
     redirect_to('../pages/cart.php');
 }
 
-if ($action === 'remove') {
+if ($action === 'remove' && isset($_POST['product_id'])) {
     $productId = (int) $_POST['product_id'];
     unset($_SESSION['cart'][$productId]);
     set_message('Product removed from your cart.');
