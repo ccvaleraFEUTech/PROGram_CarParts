@@ -33,7 +33,7 @@ if (!preg_match('/^09[0-9]{9}$/', $contactNumber)) {
     redirect_to('../pages/checkout.php');
 }
 
-if ($payment !== 'Cash on Delivery' && $payment !== 'GCash') {
+if ($payment !== 'Cash on Delivery' && $payment !== 'GCash' && $payment !== 'Debit/Credit Card') {
     $payment = 'Cash on Delivery';
 }
 
