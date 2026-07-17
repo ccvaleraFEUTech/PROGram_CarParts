@@ -28,6 +28,12 @@ if (!$updated) {
 }
 
 mysqli_query($connection, "INSERT INTO audit_logs (user_id, action, module, details, created_at) VALUES ($userId, 'Confirmed Email', 'Auth', 'Confirmed customer email address', NOW())");
-set_message('Your email is confirmed. You can now log in.');
-redirect_to('login.php');
+
+if (isset($_SESSION['user_id'])) {
+    set_message('Your email has been confirmed successfully.');
+    redirect_to('pages/profile.php');
+} else {
+    set_message('Your email is confirmed. You can now log in.');
+    redirect_to('login.php');
+}
 ?>
