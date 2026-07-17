@@ -45,19 +45,33 @@ $recentOrders = mysqli_query($connection, "SELECT * FROM orders WHERE user_id = 
 
                 <div class="profile-grid">
                     <div class="profile-main">
-
                         <div class="profile-card">
-                            <h3>Account Information</h3>
-                            <form action="../actions/profile_handler.php" method="post">
+                            <div class="card-header">
+                                <h3>Account Information</h3>
+                                <button type="button" class="edit-toggle-btn" id="edit-account-btn">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </div>
+                            <form action="../actions/profile_handler.php" method="post" id="account-form">
                                 <input type="hidden" name="action" value="update_profile">
                                 <div class="form-grid">
-                                    <div class="group-input"><label class="form-label">First Name</label><input type="text" name="first_name" class="form-control" value="<?php echo htmlspecialchars($user['first_name']); ?>" required></div>
-                                    <div class="group-input"><label class="form-label">Middle Name</label><input type="text" name="middle_name" class="form-control" value="<?php echo htmlspecialchars($user['middle_name']); ?>"></div>
-                                    <div class="group-input"><label class="form-label">Last Name</label><input type="text" name="last_name" class="form-control" value="<?php echo htmlspecialchars($user['last_name']); ?>" required></div>
-                                    <div class="group-input"><label class="form-label">Email Address</label><input type="email" name="email" class="form-control" value="<?php echo htmlspecialchars($user['email']); ?>" required></div>
-                                    <div class="group-input"><label class="form-label">Contact Number</label><input type="text" name="contact_number" class="form-control" value="<?php echo htmlspecialchars($user['contact_number']); ?>" required></div>
+                                    <div class="group-input"><label class="form-label">First Name</label><input type="text" name="first_name" class="form-control" value="<?php echo htmlspecialchars($user['first_name']); ?>" disabled></div>
+                                    <div class="group-input"><label class="form-label">Middle Name</label><input type="text" name="middle_name" class="form-control" value="<?php echo htmlspecialchars($user['middle_name']); ?>" disabled></div>
+                                    <div class="group-input"><label class="form-label">Last Name</label><input type="text" name="last_name" class="form-control" value="<?php echo htmlspecialchars($user['last_name']); ?>" disabled></div>
+                                    <div class="group-input">
+                                        <label class="form-label">Email Address</label>
+                                        <input type="email" name="email" class="form-control" value="<?php echo htmlspecialchars($user['email']); ?>" disabled>
+                                        <div class="email-verification-status <?php echo strtolower($user['email_status']) === 'confirmed' ? 'verified' : 'pending'; ?>">
+                                            <?php if (strtolower($user['email_status']) === 'confirmed'): ?>
+                                                <i class="fas fa-check-circle"></i> Email Verified
+                                            <?php else: ?>
+                                                <i class="fas fa-clock"></i> Verification Pending
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                    <div class="group-input"><label class="form-label">Contact Number</label><input type="text" name="contact_number" class="form-control" value="<?php echo htmlspecialchars($user['contact_number']); ?>" disabled></div>
                                 </div>
-                                <button type="submit" class="submit-btn" style="margin-top:20px">Save Changes</button>
+                                <button type="submit" class="submit-btn" style="margin-top:20px; display:none;" id="save-account-btn">Save Changes</button>
                             </form>
                         </div>
 
