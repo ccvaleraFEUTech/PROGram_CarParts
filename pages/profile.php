@@ -164,7 +164,7 @@ $recentOrders = mysqli_query($connection, "SELECT * FROM orders WHERE user_id = 
                         <?php if ($user['role'] !== 'Customer'): ?>
                             <div class="seller-cta"><h3>Seller Panel</h3><p>Manage products, users, inventory, orders, and reports.</p><a href="../seller/dashboard.php" class="btn-outline-pill" style="background:#fff">Go to Seller Panel</a></div>
                         <?php endif; ?>
-                        <div class="profile-card" style="margin-top:30px">
+                        <div class="profile-card" >
                             <h3>Notification Preferences</h3>
                             <form action="../actions/profile_handler.php" method="post">
                                 <input type="hidden" name="action" value="preferences">
