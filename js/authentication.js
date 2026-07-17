@@ -61,7 +61,7 @@ export function validatePasswordRequirements(password) {
         uppercase: /[A-Z]/.test(password),
         lowercase: /[a-z]/.test(password),
         number: /[0-9]/.test(password),
-        symbol: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)
+        symbol: /[^A-Za-z0-9]/.test(password)
     };
 
     return requirements;
