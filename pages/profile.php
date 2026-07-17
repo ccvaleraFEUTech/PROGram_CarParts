@@ -137,10 +137,10 @@ $recentOrders = mysqli_query($connection, "SELECT * FROM orders WHERE user_id = 
                                         <option value="Other">Other</option>
                                     </select></div>
                                     <div class="group-input"><label class="form-label">Street / House No.</label><input type="text" name="street" class="form-control" required></div>
-                                    <div class="group-input"><label class="form-label">Region</label><select name="region" id="address-region" class="form-select"></select></div>
-                                    <div class="group-input"><label class="form-label">Province</label><select name="province" id="address-province" class="form-select"></select></div>
-                                    <div class="group-input"><label class="form-label">City/Municipality</label><select name="city" id="address-city" class="form-select"></select></div>
-                                    <div class="group-input"><label class="form-label">Barangay</label><select name="barangay" id="address-barangay" class="form-select"></select></div>
+                                    <div class="group-input"><label class="form-label">Region</label><select name="region" id="address-region" class="form-select" required></select></div>
+                                    <div class="group-input"><label class="form-label">Province</label><select name="province" id="address-province" class="form-select" required></select></div>
+                                    <div class="group-input"><label class="form-label">City/Municipality</label><select name="city" id="address-city" class="form-select" required></select></div>
+                                    <div class="group-input"><label class="form-label">Barangay</label><select name="barangay" id="address-barangay" class="form-select" required></select></div>
                                 </div>
                                 <button type="submit" class="btn-outline-pill" style="margin-top:15px">+ Add Address</button>
                             </form>
