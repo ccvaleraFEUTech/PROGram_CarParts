@@ -48,7 +48,7 @@ $total = get_cart_total($cartProducts);
                                     <td>&#8369;<?php echo number_format($product['price'], 2); ?></td>
                                     <td><input type="number" name="quantity[<?php echo $product['id']; ?>]" class="form-control" value="<?php echo $product['quantity']; ?>" min="1" max="<?php echo $product['stock']; ?>" style="width:80px"></td>
                                     <td>&#8369;<?php echo number_format($product['subtotal'], 2); ?></td>
-                                    <td><button type="submit" name="remove_id" value="<?php echo $product['id']; ?>" class="remove">Remove</button></td>
+                                    <td><button type="submit" name="remove_id" value="<?php echo $product['id']; ?>" class="remove-cart-order">Remove</button></td>
                                 </tr>
                             <?php endforeach; ?>
                             </tbody>
