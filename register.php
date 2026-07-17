@@ -58,7 +58,7 @@ $isLogged = isset($_SESSION['user_id']);
                                 </div>
 
                                 <ul class="password-requirements" id="password-requirements" style="display: none">
-                                    <li data-rule="minlength">
+                                    <li data-rule="length">
                                         <i class="fa-solid fa-circle"></i> At least 8 characters
                                     </li>
                                     <li data-rule="uppercase">
@@ -70,7 +70,7 @@ $isLogged = isset($_SESSION['user_id']);
                                     <li data-rule="number">
                                         <i class="fa-solid fa-circle"></i> One number
                                     </li>
-                                    <li data-rule="special">
+                                    <li data-rule="symbol">
                                         <i class="fa-solid fa-circle"></i> One special character
                                     </li>
                                 </ul>
