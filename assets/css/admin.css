@@ -349,7 +349,8 @@ img{
 
 .admin-form-card .form-control,
 .admin-form-card .form-select,
-.admin-table .form-control{
+.admin-table .form-control,
+.admin-table .form-select{
     font-family: 'Kumbh Sans', sans-serif;
     font-size: 15px;
     outline: none;
