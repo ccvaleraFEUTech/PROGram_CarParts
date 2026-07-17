@@ -24,7 +24,7 @@ $featuredProducts = mysqli_query($connection, "SELECT * FROM products WHERE acti
     <?php endif; ?>
 
     <main>
-        <?php display_message(); ?>
+        <?php display_message('main'); ?>
         <section class="banner">
             <div class="container">
                 <h1>Welcome to PROGram</h1>

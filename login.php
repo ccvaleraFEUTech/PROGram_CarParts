@@ -30,7 +30,7 @@ $isLogged = isset($_SESSION['user_id']);
             <a href="<?php echo $basePath; ?>index.php" class="back">&larr;</a>
             <div class="card">
                 <div class="auth-card-body">
-                    <?php display_message(); ?>
+                    <?php display_message('auth'); ?>
                     <h3>Login</h3>
                     <form action="login/login_handler.php" method="post">
                         <div class="field">

@@ -31,7 +31,7 @@ $recentOrders = mysqli_query($connection, "SELECT * FROM orders WHERE user_id = 
     <?php endif; ?>
 
     <main>
-        <?php display_message(); ?>
+        <?php display_message('main'); ?>
         <section class="profile-section">
             <div class="profile-container">
 
