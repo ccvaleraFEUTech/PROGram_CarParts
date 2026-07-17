@@ -209,6 +209,104 @@ section.container h2, section.why h2{
     background-color: #333333;
 }
 
+.site-message {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    max-width: 600px;
+    width: 90%;
+    padding: 16px 20px;
+    border-radius: 10px;
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.5;
+    text-align: center;
+    border: 1px solid transparent;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.site-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+.site-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+}
+
+.site-message.auth {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    z-index: auto;
+    max-width: 100%;
+    width: 100%;
+    margin-bottom: 20px;
+    box-shadow: none;
+}
+
+.email-verification-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: var(--font-ui);
+    margin-top: 4px;
+}
+
+.email-verification-status.verified {
+    color: #155724;
+}
+
+.email-verification-status.pending {
+    color: #856404;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.card-header h3 {
+    margin: 0;
+    font-size: inherit;
+}
+
+.edit-toggle-btn {
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.edit-toggle-btn:hover {
+    background-color: #f4f4f4;
+    color: #000;
+}
+
+.edit-toggle-btn.editing {
+    color: #155724;
+}
+
+.form-control:disabled {
+    background-color: #f9f9f9;
+    color: #666;
+    cursor: not-allowed;
+}
+
 .price{
     color: #ffffff;
     font-size: 30px;
@@ -838,17 +936,21 @@ form.contact-form textarea{
     box-shadow: 0 0 8px rgba(0,0,0,0.1);
 }
 
-.remove{
-    color: #ff4d4d;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 14px;
-    transition: color 0.3s ease;
+.remove-cart-order{
+    background-color: #fbe3e3;
+    color: #c0392b;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
 }
 
-.remove:hover{
-    color: #cc0000;
-    text-decoration: underline;
+.remove-cart-order:hover{
+    background-color: #f4c9c9;
 }
 
 .text-end{
@@ -1569,6 +1671,14 @@ img{
     border-radius: 10px;
     padding: 18px 20px;
     margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.address-content {
+    flex: 1;
 }
  
 .address-card p{
@@ -1631,41 +1741,59 @@ img{
     font-family: var(--font-ui);
     font-size: 14px;
     padding: 10px 22px;
+    margin-top: 12px;
     border: 1px solid #CCCCCC;
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
+.remove-address {
+    background-color: #fbe3e3;
+    color: #c0392b;
+    padding: 8px 16px;
+    margin-top: 0;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+}
+
+.remove-address:hover {
+    background-color: #f4c9c9;
+}
 .password-requirements {
     font-size: 12px;
     color: #666;
     margin-top: 5px;
+    padding-left: 0;
+    list-style: none;
 }
 
-.requirement {
-    margin: 2px 0;
-    padding-left: 15px;
-    position: relative;
-}
-
-p.requirement {
+.password-requirements li {
+    font-size: 12px;
     color: #666;
+    text-decoration: none;
+    padding: 2px 0;
+    position: relative;
+    padding-left: 20px;
 }
 
-.requirement::before {
-    content: '○';
+.password-requirements li i {
+    text-decoration: none;
+    margin-right: 5px;
     position: absolute;
     left: 0;
-    color: #999;
 }
 
-.requirement.valid::before {
-    content: '✓';
+.password-requirements li.valid {
     color: #28a745;
 }
 
-.requirement.valid {
+.password-requirements li.valid i {
     color: #28a745;
 }
 
