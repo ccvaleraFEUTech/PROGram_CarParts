@@ -33,13 +33,13 @@ function send_confirmation_email($to_email, $to_name, $token) {
         $mail->isHTML(true);
         $mail->Subject = "Confirm Your Registration";
         $mail->Body = "
-        <p>Dear <strong>$to_name</strong>,</p>
-        <p>Thank you for registering. Please click the following link to confirm your registration:</p>
-        <p><a href='$confirmation_link'>Confirm Account!</a></p>
-        <p>If the link does not work, click copy-paste this link to your web browser:</p>
-        <p><a href='$confirmation_link'>Confirm_link!</a></p>
-        <p>Best regards,<br>PROGram</p>
-    ";
+            <p>Dear <strong>$to_name</strong>,</p>
+            <p>Thank you for registering. Please click the following link to confirm your registration:</p>
+            <p><a href='$confirmation_link'>Confirm Account!</a></p>
+            <p>If the link does not work, click copy-paste this link to your web browser:</p>
+            <p><a href='$confirmation_link'>Confirm_link!</a></p>
+            <p>Best regards,<br>PROGram</p>
+        ";
 
         $mail->send();
         return true;
@@ -50,4 +50,3 @@ function send_confirmation_email($to_email, $to_name, $token) {
 }
 
 ?>
-
