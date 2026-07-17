@@ -112,13 +112,15 @@ $recentOrders = mysqli_query($connection, "SELECT * FROM orders WHERE user_id = 
                             <h3>Saved Addresses</h3>
                             <?php while ($address = mysqli_fetch_assoc($addresses)): ?>
                                 <div class="address-card">
-                                    <span class="tag"><?php echo $address['is_default'] ? 'Default' : htmlspecialchars($address['label']); ?></span>
-                                    <p><?php echo htmlspecialchars($address['street_address'] . ', Brgy. ' . $address['barangay'] . ', ' . $address['city'] . ', ' . $address['province'] . ', ' . $address['region']); ?></p>
+                                    <div class="address-content">
+                                        <span class="tag"><?php echo $address['is_default'] ? 'Default' : htmlspecialchars($address['label']); ?></span>
+                                        <p><?php echo htmlspecialchars($address['street_address'] . ', Brgy. ' . $address['barangay'] . ', ' . $address['city'] . ', ' . $address['province'] . ', ' . $address['region']); ?></p>
+                                    </div>
                                     <?php if (!$address['is_default']): ?>
                                         <form action="../actions/profile_handler.php" method="post">
                                             <input type="hidden" name="action" value="delete_address">
                                             <input type="hidden" name="address_id" value="<?php echo $address['id']; ?>">
-                                            <button type="submit" class="remove">Remove</button>
+                                            <button type="submit" class="remove-address"><i class="fas fa-trash"></i></button>
                                         </form>
                                     <?php endif; ?>
                                 </div>
