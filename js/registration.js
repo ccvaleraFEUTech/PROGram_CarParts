@@ -1,7 +1,5 @@
-import { formatPhoneNumber, validatePhoneNumber, 
-    validateConfirmPassword, 
-    hideFieldError} from './field_validation.js';
-import { validateEmail, addPasswordToggle } from './authentication.js';
+import { formatPhoneNumber, validatePhoneNumber, validateConfirmPassword, hideFieldError } from './field_validation.js';
+import { validateEmail, addPasswordToggle, validatePasswordRequirements } from './authentication.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('form[action="login/register_handler.php"]');
@@ -23,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    
 
     // Confirm Password Validation
     if (confirmPasswordInput && passwordInput) {
@@ -34,10 +33,22 @@ document.addEventListener('DOMContentLoaded', () => {
             hideFieldError('confirm-password-error-message');
         });
 
+        passwordInput.addEventListener('blur', () => {
+            validatePasswordRequirements(passwordInput);
+        });
+
         passwordInput.addEventListener('input', () => {
             if (confirmPasswordInput.value) {
                 validateConfirmPassword(passwordInput, confirmPasswordInput);
             }
+
+            const requirements = document.querySelector('.password-requirements');
+            if (passwordInput.value) {
+                requirements.style.display = 'block';
+            } else {
+                requirements.style.display = 'none';
+            }
+            updatePasswordRequirements(passwordInput.value);
         });
     }
 
@@ -71,6 +82,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+function updatePasswordRequirements(password) {
+    const requirements = validatePasswordRequirements(password);
+    const requirementItems = document.querySelectorAll('.password-requirements li');
+
+    Object.keys(requirements).forEach((key, index) => {
+        if (requirementItems[index]) {
+            const icon = requirementItems[index].querySelector('i');
+            if (requirements[key]) {
+                requirementItems[index].classList.add('valid');
+                if (icon) icon.className = 'fa-solid fa-check-circle';
+            } else {
+                requirementItems[index].classList.remove('valid');
+                if (icon) icon.className = 'fa-solid fa-circle';
+            }
+        }
+    });
+}
 
 function validateRegistrationForm(form) {
     const emailInput = form.querySelector('input[name="email"]');
@@ -84,8 +112,13 @@ function validateRegistrationForm(form) {
         isValid = false;
     }
     
-    if (passwordInput && confirmPasswordInput && !validateConfirmPassword(passwordInput, confirmPasswordInput)) {
-        isValid = false;
+    if (passwordInput && confirmPasswordInput) {
+        const passwordRequirements = validatePasswordRequirements(passwordInput.value);
+        const meetsRequirements = Object.values(passwordRequirements).every(req => req === true);
+        
+        if (!validateConfirmPassword(passwordInput, confirmPasswordInput) || !meetsRequirements) {
+            isValid = false;
+        }
     }
 
     if (phoneInput && !validatePhoneNumber(phoneInput)) {
