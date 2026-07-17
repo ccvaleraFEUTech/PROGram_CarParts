@@ -27,7 +27,6 @@ $isLogged = isset($_SESSION['user_id']);
             <?php if ($isLogged): ?>
                 <a href="<?php echo $basePath; ?>pages/profile.php" class="auth-btn"><button class="authentication">Profile</button></a>
                 <a href="<?php echo $basePath; ?>pages/orders.php" class="auth-btn"><button class="authentication">Orders</button></a>
-                <a href="<?php echo $basePath; ?>actions/logout.php" class="auth-btn"><button class="authentication">Logout</button></a>
             <?php else: ?>
                 <a href="<?php echo $basePath; ?>login.php" class="auth-btn"><button class="authentication">Login</button></a>
                 <a href="<?php echo $basePath; ?>register.php" class="auth-btn"><button class="authentication">Register</button></a>
