@@ -1,4 +1,4 @@
-import { validateEmail, addPasswordToggle, validatePassword } from './authentication.js';
+import { validateEmail, addPasswordToggle } from './authentication.js';
 import { hideFieldError, showFieldError } from './field_validation.js';
 
 const ERROR_MESSAGE_PASSWORD_REQUIRED = 'Password is required.';
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         passwordInput.addEventListener('input', () => {
-            clearPasswordError(passwordInput);
+            clearPasswordError();
         });
     }
 
@@ -45,17 +45,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+function validatePassword(passwordInput) {
+    const password = passwordInput.value.trim();
+    
+    if (!password) {
+        showPasswordError(ERROR_MESSAGE_PASSWORD_REQUIRED);
+        return false;
+    }   
+    
+    return true;
+}
+
 // Shows a password error message under the input field
-function showPasswordError(passwordInput, message) {
-    clearPasswordError(passwordInput);
+function showPasswordError(message) {
+    clearPasswordError();
     
     showFieldError("password-error-message", message);
 }
 
 // Clears any existing password error message
-function clearPasswordError(passwordInput) {
+function clearPasswordError() {
     hideFieldError("password-error-message");
-    passwordInput.classList.remove('error');
 }
 
 // Validates the entire login form
