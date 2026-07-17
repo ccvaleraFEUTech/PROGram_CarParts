@@ -130,7 +130,12 @@ $recentOrders = mysqli_query($connection, "SELECT * FROM orders WHERE user_id = 
                             <form action="../actions/profile_handler.php" method="post">
                                 <input type="hidden" name="action" value="add_address">
                                 <div class="form-grid">
-                                    <div class="group-input"><label class="form-label">Label</label><input type="text" name="label" class="form-control" placeholder="Home or Work" required></div>
+                                    <div class="group-input"><label class="form-label">Label</label><select name="label" class="form-select" required>
+                                        <option value="">Select Label</option>
+                                        <option value="Home">Home</option>
+                                        <option value="Work">Work</option>
+                                        <option value="Other">Other</option>
+                                    </select></div>
                                     <div class="group-input"><label class="form-label">Street / House No.</label><input type="text" name="street" class="form-control" required></div>
                                     <div class="group-input"><label class="form-label">Region</label><select name="region" id="address-region" class="form-select"></select></div>
                                     <div class="group-input"><label class="form-label">Province</label><select name="province" id="address-province" class="form-select"></select></div>
