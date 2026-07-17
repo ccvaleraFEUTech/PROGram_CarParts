@@ -1,4 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const siteMessages = document.querySelectorAll('.site-message');
+    siteMessages.forEach(message => {
+        setTimeout(() => {
+            message.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            message.style.opacity = '0';
+            message.style.transform = 'translateX(-50%) translateY(-20px)';
+            setTimeout(() => {
+                message.remove();
+            }, 500);
+        }, 5000);
+    });
+    
     const header = document.querySelector('.webhead');
 
     if (!header) return;
@@ -15,6 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', toggleHead);
     toggleHead();
+
+    
 });
 
 const buttonToggle = document.getElementById('ham-toggle');
