@@ -1,8 +1,17 @@
 <?php
-$databaseHost = 'localhost';
-$databaseUser = 'root';
-$databasePassword = '';
-$databaseName = 'program_carparts';
+$isLocal = ($_SERVER['HTTP_HOST'] === 'localhost');
+
+if ($isLocal) {
+    $databaseHost = "localhost";
+    $databaseUser = "root";
+    $databasePassword = "";
+    $databaseName = "program_carparts";
+} else {
+    $databaseHost = "sql210.infinityfree.com";
+    $databaseUser = "if0_42429884";
+    $databasePassword = "PROGramproj2026";
+    $databaseName = "if0_42429884_program_carparts";
+}
 
 $connection = mysqli_connect($databaseHost, $databaseUser, $databasePassword, $databaseName);
 
