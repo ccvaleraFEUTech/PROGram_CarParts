@@ -1,6 +1,6 @@
 # PROGram Car Parts
 
-A web-based e-commerce system developed as a final project for PHP Server-Side Programming. The system allows customers to browse and purchase motorcycle/car parts while providing administrators with tools to manage products, users, inventory, and reports.
+A web-based e-commerce system developed as a final project for CCS0043/L - APPLICATION DEVELOPMENT AND EMERGING TECHNOLOGIES. The system allows customers to browse and purchase motorcycle/car parts while providing administrators with tools to manage products, users, inventory, and reports.
 
 > **Educational Purpose Only**
 >
