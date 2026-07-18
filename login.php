@@ -47,9 +47,14 @@ $isLogged = isset($_SESSION['user_id']);
                         <button type="submit" class="submit-btn">Login</button>
                     </form>
 
+                    
+
                     <p class="forgot">
-                        <a href="resend-confirmation.php">Resend Confirmation Email</a><br>
                         Don't have an account? <a href="register.php">Register Here</a>
+                    </p>
+
+                    <p class="forgot-top">
+                        <a href="resend-confirmation.php">Resend Confirmation Email</a>
                     </p>
                 </div>
             </div>
