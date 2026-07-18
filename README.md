@@ -1,144 +1,149 @@
 # PROGram Car Parts
 
-A web-based e-commerce system developed as a final project for CCS0043/L - APPLICATION DEVELOPMENT AND EMERGING TECHNOLOGIES. The system allows customers to browse and purchase motorcycle/car parts while providing administrators with tools to manage products, users, inventory, and reports.
+PROGram Car Parts is a web-based motorcycle and car parts e-commerce platform developed using native PHP and MySQL. This repository contains the complete source code and database for the project. The website follows a dual-system architecture consisting of a Buyer System for customers and a Seller System for administrators to manage products, inventory, users, and reports.
 
-> **Educational Purpose Only**
->
-> This website was developed solely for educational purposes as a requirement for a college course.
+> **Note:** PROGram Car Parts was primarily developed as a desktop website for educational purposes. Mobile responsiveness has been partially implemented, and some layouts may not display optimally on smaller screens.
 
 ---
 
-# Features
+# Main Features
 
-## Buyer Module
+## Buyer System
 
-- User Registration
-- Email Verification using PHPMailer
-- User Login and Logout
-- Browse Products by Category
-- Product Search
-- Add to Cart
-- Shopping Cart Management
-- Checkout
-- Payment Information Page (No payment gateway integration)
-- Order History
-- User Profile Management
-- Contact Page
-- About Page
+- Buyer registration with email confirmation
+- Secure user login
+- Browse products by category
+- Shopping cart with quantity management
+- Checkout and simulated payment process
+- Buyer order history
+- User profile management
+
+## Seller System
+
+- Administrator login
+- User management
+- Product and inventory management
+- Price management
+- Inventory report
+- Audit log report
+- Order management
 
 ---
 
-## Seller / Admin Module
+# Core System Features
 
-- Admin Dashboard
-- Manage Products
-- Manage Product Categories
-- Inventory Management
-- Order Management
-- User Management
-- Admin User Management
-- Inventory Reports
-- Audit Log Reports
+## 3.1 Buyer Experience
+
+The buyer-facing application provides a complete shopping workflow while emphasizing account verification and ease of use.
+
+- **User Registration**  
+  Allows customers to create an account by providing their complete name, email address, password, address, and contact number.
+
+- **Email Confirmation**  
+  Newly registered users receive a verification email through PHPMailer before accessing their account.
+
+- **Product Catalog**  
+  Products are organized into categories, allowing users to browse motorcycle and car parts more efficiently.
+
+- **Shopping Cart**  
+  Customers can add products to their cart, update quantities, and review selected items before checkout.
+
+- **Checkout Process**  
+  Users can proceed through checkout and a simulated payment page for demonstration purposes.
+
+- **Order History**  
+  Buyers can review their previous purchases through their account.
+
+---
+
+## 3.2 Seller Administration
+
+The Seller System serves as the administrative backend for managing the platform.
+
+- **Administrator Management**  
+  Manage administrator accounts with appropriate system access.
+
+- **Product Management**  
+  Add, edit, update, or remove products available in the online store.
+
+- **Inventory Management**  
+  Monitor available stock levels and update product quantities.
+
+- **Price Management**  
+  Modify product pricing whenever necessary.
+
+- **Reports**
+  - Inventory Report showing remaining stock.
+  - Audit Log recording activities performed by administrators.
+
+- **Order Management**  
+  View and manage customer orders placed through the website.
+
+---
+
+# Website Access
+
+- Open the project root directory to access the Buyer Store.
+- Open `/seller/` to access the Seller Administration panel.
+- Buyer pages are available through the main navigation menu.
+- Seller pages require administrator authentication.
 
 ---
 
 # Technologies Used
 
-- PHP
+| Component | Technology |
+|-----------|------------|
+| Backend | Native PHP (No PHP Frameworks) |
+| Database | MySQL / MariaDB |
+| Frontend | HTML5, CSS3, JavaScript |
+| Email Service | PHPMailer (SMTP) |
+| Development Environment | XAMPP |
+| Hosting | InfinityFree |
+
+---
+
+# Development Notes
+
+This project complies with the academic integrity policy of the course. All members of the group are expected to understand and explain the code they contributed.
+
+AI-assisted tools were used primarily for debugging, code review, documentation, and conceptual guidance rather than generating the project's complete implementation.
+
+---
+
+# Project Timeline
+
+| Phase | Timeline | Deliverables |
+|--------|----------|--------------|
+| Phase 1: Planning | June 22 – June 28 | Project planning, brainstorming, sitemap, and wireframes |
+| Phase 2: Frontend Development | June 29 – July 10 | Website layout, styling, responsiveness, and JavaScript functionality |
+| Phase 3: Backend Development | July 11 – July 17 | PHP development, MySQL integration, email verification, and deployment |
+| Final Submission | July 18, 2026 | GitHub repository, hosted website, documentation, and database |
+
+> **Development Note:**  
+> Since several members were still learning GitHub collaboration, source code integration was initially performed manually by exchanging project ZIP files. The finalized project was then consolidated and uploaded to the GitHub repository.
+
+---
+
+# Installation & Usage
+
+## Prerequisites
+
+- XAMPP (or any PHP + MySQL environment)
+- PHP 8.0 or later
 - MySQL / MariaDB
-- HTML5
-- CSS3
-- JavaScript
-- PHPMailer
-- XAMPP (Development Environment)
+- Web browser
 
 ---
 
-# Project Structure
+## Local Setup
 
-```
-PROGram_CarParts/
-│
-├── actions/              # Form processing and business logic
-├── assets/
-│   ├── css/
-│   ├── images/
-│   └── json/
-├── includes/             # Shared PHP files
-├── js/                   # JavaScript files
-├── pages/                # Buyer pages
-├── seller/               # Admin/Seller pages
-├── phpmailer/            # PHPMailer library
-├── index.php
-├── login.php
-├── register.php
-└── confirm_email.php
-```
-
----
-
-# Installation
-
-## Requirements
-
-- PHP 8.x or later
-- MySQL / MariaDB
-- XAMPP
-- Web Browser
-
----
-
-## Setup
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/yourusername/PROGram_CarParts.git
-```
-
-or download the ZIP.
-
----
-
-### 2. Move the project
-
-Copy the project folder into
-
-```
-xampp/htdocs/
-```
-
----
-
-### 3. Import the database
-
-1. Start **Apache** and **MySQL** using XAMPP.
-2. Open **phpMyAdmin**.
-3. Create a new database.
-4. Import the provided SQL file.
-
----
-
-### 4. Configure Email
-
-Create or update the email configuration file with your SMTP credentials.
-
-Example:
-
-```php
-define('SMTP_HOST', 'smtp.gmail.com');
-define('SMTP_USER', 'your_email@gmail.com');
-define('SMTP_PASS', 'your_app_password');
-define('SMTP_PORT', 587);
-```
-
-> **Important:** Do not upload your real SMTP credentials to a public GitHub repository.
-
----
-
-### 5. Run the project
-
-Open your browser and visit
+1. Clone or download this repository.
+2. Place the project folder inside the `htdocs` directory of XAMPP.
+3. Start **Apache** and **MySQL**.
+4. Import the provided SQL database using phpMyAdmin.
+5. Configure the SMTP email credentials for PHPMailer.
+6. Open:
 
 ```
 http://localhost/PROGram_CarParts/
@@ -146,46 +151,10 @@ http://localhost/PROGram_CarParts/
 
 ---
 
-# Default Accounts
+# Educational Disclaimer
 
-Please refer to the provided **sample_accounts.txt** file for testing credentials.
+This website was developed solely for educational purposes as a final project requirement for the course **CCS0043/L – Application Development and Emerging Technologies**.
 
----
-
-# Email Verification
-
-This project uses **PHPMailer** to send email verification messages during user registration.
-
-A Gmail account with an App Password is recommended for SMTP configuration.
-
----
-
-# Screenshots
-
-Screenshots of the system are included in the project documentation submitted for the course.
-
----
-
-# Developers
-
-**Group Name:** PROGram
-
-Developed by the members of Group PROGram.
-
----
-
-# Course Information
-
-This project was developed as partial fulfillment of the requirements for the course on PHP Server-Side Programming.
-
----
-
-# Disclaimer
-
-This website is intended **for educational purposes only**. Product names, images, and information used within this project are solely for demonstration and academic requirements. No commercial use is intended.
-
----
-
-# License
-
-This project is intended for academic and educational use only.
+- The group name and project logo are displayed throughout the website in compliance with the project requirements.
+- A disclaimer stating that the website is for educational purposes only is included in the footer of every webpage.
+- Product listings, transactions, and payment pages are intended for demonstration purposes only. No real financial transactions are processed.
