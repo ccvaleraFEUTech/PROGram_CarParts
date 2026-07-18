@@ -24,7 +24,7 @@ $sellerRole = $_SESSION['user_role'] ?? 'Super Admin';
 
         <div class="admin-sidebar-footer">
             <a href="<?php echo $basePath; ?>index.php">&larr; Back to Store</a>
-            <a href="#" class="logout-link">Logout</a>
+            <a href="<?php echo $basePath; ?>/actions/logout.php" class="logout-link">Logout</a>
         </div>
     </aside>
 
