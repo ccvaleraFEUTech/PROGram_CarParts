@@ -9,11 +9,13 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 $action = isset($_POST['action']) ? $_POST['action'] : '';
 
+// User is adding product to their cart
 if ($action === 'add') {
     $productId = (int) $_POST['product_id'];
     $quantity = max(1, (int) $_POST['quantity']);
     $result = mysqli_query($connection, "SELECT id, name, stock FROM products WHERE id = $productId AND active = 1");
 
+    // Inform user that the product they are adding cannot be found
     if (mysqli_num_rows($result) !== 1) {
         set_message('Product not found.', 'error');
         redirect_to('../pages/products.php');
@@ -22,6 +24,7 @@ if ($action === 'add') {
     $product = mysqli_fetch_assoc($result);
     $currentQuantity = isset($_SESSION['cart'][$productId]) ? (int) $_SESSION['cart'][$productId] : 0;
 
+    // Inform user that the requested quantity is not available
     if ($product['stock'] <= 0 || $currentQuantity + $quantity > $product['stock']) {
         set_message('The requested quantity is not available.', 'error');
         redirect_to('../pages/product-info.php?id=' . $productId);
@@ -32,6 +35,7 @@ if ($action === 'add') {
     redirect_to('../pages/cart.php');
 }
 
+// User is updating their cart
 if ($action === 'update' && isset($_POST['quantity'])) {
     foreach ($_POST['quantity'] as $productId => $quantity) {
         $productId = (int) $productId;
@@ -48,12 +52,14 @@ if ($action === 'update' && isset($_POST['quantity'])) {
     redirect_to('../pages/cart.php');
 }
 
+// User is removing a product from their cart
 if ($action === 'remove' && isset($_POST['product_id'])) {
     $productId = (int) $_POST['product_id'];
     unset($_SESSION['cart'][$productId]);
     set_message('Product removed from your cart.');
 }
 
+// User is clearing their cart
 if ($action === 'clear') {
     unset($_SESSION['cart']);
     set_message('Your cart is now empty.');

@@ -13,6 +13,7 @@ $email = mysqli_real_escape_string($connection, $email);
 
 $result = mysqli_query($connection, "SELECT * FROM users WHERE email = '$email' AND status = 'Active'");
 
+// Check if user account exists and is active
 if (mysqli_num_rows($result) !== 1) {
     set_message('Invalid email or password.', 'error');
     redirect_to('../login.php');
@@ -20,6 +21,7 @@ if (mysqli_num_rows($result) !== 1) {
 
 $user = mysqli_fetch_assoc($result);
 
+// Check if entered password matches the one in the database
 if (!password_verify($password, $user['password'])) {
     set_message('Invalid email or password.', 'error');
     redirect_to('../login.php');
@@ -30,13 +32,17 @@ $_SESSION['user_id'] = $user['id'];
 $_SESSION['user_name'] = user_full_name($user);
 $_SESSION['user_role'] = $user['role'];
 
+// Add audit log
 add_audit_log($connection, 'Logged In', 'Auth', 'Signed in to the website');
+
+// Check if email is confirmed
 if ($user['email_status'] === 'Pending') {
     set_message('Welcome, ' . $_SESSION['user_name'] . '! Your email confirmation is still pending. Please check your email for the confirmation link.');
 } else {
     set_message('Welcome back, ' . $_SESSION['user_name'] . '!');
 }
 
+// Redirect based on user role
 if ($user['role'] !== 'Customer') {
     redirect_to('../seller/dashboard.php');
 }
