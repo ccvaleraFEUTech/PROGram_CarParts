@@ -24,8 +24,10 @@ function display_message($context = 'main')
 
     $message = $_SESSION['message'];
     $messageType = isset($_SESSION['message_type']) ? $_SESSION['message_type'] : 'success';
-    $contextClass = $context === 'auth' ? 'auth' : '';
-    echo '<div class="site-message ' . htmlspecialchars($messageType) . ' ' . $contextClass . '">' . htmlspecialchars($message) . '</div>';
+    echo '<div class="site-message ' . htmlspecialchars($messageType) . '">
+        <div class="site-message-content">' . htmlspecialchars($message) . '</div>
+        <div class="site-message-progress"></div>
+    </div>';
     unset($_SESSION['message']);
     unset($_SESSION['message_type']);
 }
