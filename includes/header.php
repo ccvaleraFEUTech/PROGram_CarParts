@@ -17,10 +17,10 @@ $isLogged = isset($_SESSION['user_id']);
     <nav id="main-menu">
         <ul class="navigation">
             <li><a href="<?php echo $basePath; ?>">Home</a></li>
-            <li><a href="<?php echo $basePath; ?>pages/about.php">About</a></li>
             <li><a href="<?php echo $basePath; ?>pages/products.php">Products</a></li>
-            <li><a href="<?php echo $basePath; ?>pages/contact.php">Contacts</a></li>
             <li><a href="<?php echo $basePath; ?>pages/cart.php">Cart</a></li>
+            <li><a href="<?php echo $basePath; ?>pages/contact.php">Contacts</a></li>
+            <li><a href="<?php echo $basePath; ?>pages/about.php">About</a></li>
         </ul>
 
         <div class="auth-group">
