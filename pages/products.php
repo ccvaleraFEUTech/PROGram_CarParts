@@ -88,7 +88,6 @@ $products = mysqli_query($connection, "SELECT products.*, categories.name AS cat
     <?php endif; ?>
 
     <script src="<?php echo $basePath; ?>js/main.js"></script>
-    <script src="<?php echo $basePath; ?>js/location.js"></script>
     <script src="<?php echo $basePath; ?>js/products.js"></script>
 </body>
 </html>
