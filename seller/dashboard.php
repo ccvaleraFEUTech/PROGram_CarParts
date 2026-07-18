@@ -43,10 +43,33 @@ $recentActivity = mysqli_query($connection, "SELECT audit_logs.*, users.first_na
             <a href="orders.php" class="quick-action-card"><h4>Orders</h4><p>Review orders and update their status.</p></a>
             <a href="reports.php" class="quick-action-card"><h4>Reports</h4><p>Check inventory and the audit log.</p></a>
         </div>
-        <div class="admin-panel"><div class="admin-panel-header"><div><h2>Recent Activity</h2><p class="panel-sub">Latest actions recorded in the database</p></div><a href="reports.php" class="btn-outline-pill">View Full Audit Log</a></div>
-            <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Date & Time</th><th>User</th><th>Action</th><th>Details</th></tr></thead><tbody>
-                <?php while ($log = mysqli_fetch_assoc($recentActivity)): ?><tr><td><?php echo date('M j, Y - g:i A', strtotime($log['created_at'])); ?></td><td><?php echo htmlspecialchars(trim($log['first_name'] . ' ' . $log['last_name'])); ?></td><td><?php echo htmlspecialchars($log['action']); ?></td><td><?php echo htmlspecialchars($log['details']); ?></td></tr><?php endwhile; ?>
-            </tbody></table></div>
+        <div class="admin-panel">
+            <div class="admin-panel-header">
+                <div><h2>Recent Activity</h2><p class="panel-sub">Latest actions recorded in the database</p></div>
+                <a href="reports.php" class="btn-outline-pill">View Full Audit Log</a>
+            </div>
+            <div class="admin-table-wrap">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Date & Time</th>
+                            <th>User</th>
+                            <th>Action</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php while ($log = mysqli_fetch_assoc($recentActivity)): ?>
+                            <tr>
+                                <td><?php echo date('M j, Y - g:i A', strtotime($log['created_at'])); ?></td>
+                                <td><?php echo htmlspecialchars(trim($log['first_name'] . ' ' . $log['last_name'])); ?></td>
+                                <td><?php echo htmlspecialchars($log['action']); ?></td>
+                                <td><?php echo htmlspecialchars($log['details']); ?></td>
+                            </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </main>
     
