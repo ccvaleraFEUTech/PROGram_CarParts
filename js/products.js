@@ -1,24 +1,3 @@
-// Add event listeners to category filters
-document.querySelectorAll('.category a').forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const category = link.textContent.toLowerCase();
-        filterProducts(category);
-    });
-});
-
-// Filter products by category
-function filterProducts(category) {
-    const products = document.querySelectorAll('.product-card');
-    products.forEach(product => {
-        if (category === 'all' || product.dataset.category === category) {
-            product.style.display = 'block';
-        } else {
-            product.style.display = 'none';
-        }
-    });
-}
-
 // Search products by title
 const searchInput = document.querySelector('.search');
 searchInput.addEventListener('input', (e) => {
