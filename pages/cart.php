@@ -27,6 +27,7 @@ $total = get_cart_total($cartProducts);
     <?php endif; ?>
 
     <main>
+        <?php display_message(); ?>
         <section class="add-to-cart-section">
             <div class="add-to-cart-container">
                 <h1>Your Cart</h1>
