@@ -111,20 +111,6 @@ AI-assisted tools were used primarily for debugging, code review, documentation,
 
 ---
 
-# Project Timeline
-
-| Phase | Timeline | Deliverables |
-|--------|----------|--------------|
-| Phase 1: Planning | June 22 – June 28 | Project planning, brainstorming, sitemap, and wireframes |
-| Phase 2: Frontend Development | June 29 – July 10 | Website layout, styling, responsiveness, and JavaScript functionality |
-| Phase 3: Backend Development | July 11 – July 17 | PHP development, MySQL integration, email verification, and deployment |
-| Final Submission | July 18, 2026 | GitHub repository, hosted website, documentation, and database |
-
-> **Development Note:**  
-> Since several members were still learning GitHub collaboration, source code integration was initially performed manually by exchanging project ZIP files. The finalized project was then consolidated and uploaded to the GitHub repository.
-
----
-
 # Installation & Usage
 
 ## Prerequisites
