@@ -27,7 +27,6 @@ $isLogged = isset($_SESSION['user_id']);
     <!-- MAIN -->
     <main>
         <div class="auth-page">
-            <a href="<?php echo $basePath; ?>index.php" class="back">&larr;</a>
             <div class="card">
                 <div class="auth-card-body">
                     <?php display_message('auth'); ?>
