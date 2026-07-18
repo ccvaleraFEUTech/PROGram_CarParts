@@ -16,7 +16,7 @@ $isLogged = isset($_SESSION['user_id']);
     </button>
     <nav id="main-menu">
         <ul class="navigation">
-            <li><a href="<?php echo $basePath; ?>index.php">Home</a></li>
+            <li><a href="<?php echo $basePath; ?>">Home</a></li>
             <li><a href="<?php echo $basePath; ?>pages/about.php">About</a></li>
             <li><a href="<?php echo $basePath; ?>pages/products.php">Products</a></li>
             <li><a href="<?php echo $basePath; ?>pages/contact.php">Contacts</a></li>
