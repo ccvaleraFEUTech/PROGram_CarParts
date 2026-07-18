@@ -3,6 +3,7 @@
 require_once "../phpmailer/src/PHPMailer.php";
 require_once "../phpmailer/src/SMTP.php";
 require_once "../phpmailer/src/Exception.php";
+require_once "../includes/email_config.php";
 
 $isLocal = ($_SERVER['HTTP_HOST'] === 'localhost');
 
@@ -14,19 +15,18 @@ function send_confirmation_email($to_email, $to_name, $token) {
 
     try {
         $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com'; 
-        $smtp_username = 'chocholoy@gmail.com';
+        $mail->Host = SMTP_HOST; 
+        $smtp_username = SMTP_USERNAME;
         $mail->Username = $smtp_username;
-        $mail->Password = 'cdwzebfddrfuvisd'; 
+        $mail->Password = SMTP_PASSWORD; 
         $mail->SMTPAuth = true;
-        $mail->SMTPSecure = 'tls';
+        $mail->SMTPSecure = SMTP_SECURE;
         $mail->Port = 587;
         $mail->Timeout = 15;
 
         $mail->setFrom($smtp_username, "PROGram Registration Confirmation");
         $mail->addAddress($to_email, $to_name); 
 
-        // if it is localhost, use localhost, otherwise use the domain
         $confirmation_link = $isLocal ? 
             "http://localhost/PROGram_CarParts/confirm_email.php?token=" . urlencode($token) 
             : "https://program-carparts.infinityfree.me/confirm_email.php?token=" . urlencode($token);
