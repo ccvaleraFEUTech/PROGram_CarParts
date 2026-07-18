@@ -1,8 +1,11 @@
 <?php 
 session_start();
 
+
 $title = "Contacts";
 $basePath = '../';
+
+require_once $basePath . 'includes/functions.php';
 $isLogged = isset($_SESSION['user_id']);
 ?>
 <!DOCTYPE html>
@@ -21,10 +24,11 @@ $isLogged = isset($_SESSION['user_id']);
     <?php endif; ?>
 
     <main>
+        <?php display_message('auth'); ?>
         <section class="contacts-section">
             <div class="contacts-container">
                 <div class="contact-form">
-                    <form action="contact_handler.php" method="post" class="contact-form">
+                    <form action="<?php echo $basePath; ?>actions/contact_handler.php" method="post" class="contact-form">
                         <div class="field">
                             <input type="text" name="name" placeholder="Your Name" required>
                             <p id="name-error-message" style="display: none">Name is required.</p>
