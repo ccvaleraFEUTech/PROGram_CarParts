@@ -1,4 +1,5 @@
 CREATE DATABASE IF NOT EXISTS program_carparts;
+USE program_carparts;
 
 CREATE TABLE IF NOT EXISTS users (
     id INT NOT NULL AUTO_INCREMENT,
