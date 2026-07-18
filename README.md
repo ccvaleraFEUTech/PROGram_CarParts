@@ -103,14 +103,6 @@ The Seller System serves as the administrative backend for managing the platform
 
 ---
 
-# Development Notes
-
-This project complies with the academic integrity policy of the course. All members of the group are expected to understand and explain the code they contributed.
-
-AI-assisted tools were used primarily for debugging, code review, documentation, and conceptual guidance rather than generating the project's complete implementation.
-
----
-
 # Installation & Usage
 
 ## Prerequisites
