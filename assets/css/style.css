@@ -1554,7 +1554,7 @@ select option {
     position: relative;
     min-height: 100vh;
     display: flex;
-    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('../images/index/banner-bg.jpg') center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('../images/index/banner-bg.jpg') center/cover fixed;
     padding: 100px 20px 40px;
     align-items: center;
     justify-content: center;
